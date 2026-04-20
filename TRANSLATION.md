@@ -52,27 +52,7 @@ This document shows the translation status of each locale file in the repository
 
 </details>
 
-### ![es__ES](https://img.shields.io/badge/es__ES-98.58%25-yellow)
-
-<details>
-<summary>Missing keys in es_ES.axaml</summary>
-
-- Text.App.HideOthers
-- Text.Clone.Bookmark
-- Text.Clone.Group
-- Text.ConfigureCustomActionControls.StringFormatter
-- Text.ConfigureCustomActionControls.StringFormatter.Tip
-- Text.ConfigureCustomActionControls.UseFriendlyName
-- Text.Diff.Submodule.UncommittedChanges
-- Text.Hotkeys.Global.OpenLocalRepository
-- Text.OpenLocalRepository
-- Text.OpenLocalRepository.Bookmark
-- Text.OpenLocalRepository.Group
-- Text.OpenLocalRepository.Path
-- Text.SubmoduleRevisionCompare
-- Text.SubmoduleRevisionCompare.OpenDetails
-
-</details>
+### ![es__ES](https://img.shields.io/badge/es__ES-%E2%88%9A-brightgreen)
 
 ### ![fr__FR](https://img.shields.io/badge/fr__FR-90.06%25-yellow)
 
