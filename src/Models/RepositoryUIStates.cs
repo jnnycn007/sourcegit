@@ -246,11 +246,10 @@ namespace SourceGit.Models
             return states;
         }
 
-        public void Unload(string lastCommitMessage)
+        public void Unload()
         {
             try
             {
-                LastCommitMessage = lastCommitMessage;
                 using var stream = File.Create(_file);
                 JsonSerializer.Serialize(stream, this, JsonCodeGen.Default.RepositoryUIStates);
             }

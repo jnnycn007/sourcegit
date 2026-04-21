@@ -10,7 +10,7 @@ using CommunityToolkit.Mvvm.ComponentModel;
 
 namespace SourceGit.ViewModels
 {
-    public class Histories : ObservableObject, IDisposable
+    public class Histories : ObservableObject
     {
         public bool IsLoading
         {
@@ -89,7 +89,7 @@ namespace SourceGit.ViewModels
             private set => SetProperty(ref _navigationId, value);
         }
 
-        public IDisposable DetailContext
+        public object DetailContext
         {
             get => _detailContext;
             set => SetProperty(ref _detailContext, value);
@@ -129,16 +129,6 @@ namespace SourceGit.ViewModels
         {
             _repo = repo;
             _commitDetailSharedData = new CommitDetailSharedData();
-        }
-
-        public void Dispose()
-        {
-            Commits = [];
-            _repo = null;
-            _graph = null;
-            _selectedCommit = null;
-            _detailContext?.Dispose();
-            _detailContext = null;
         }
 
         public Models.BisectState UpdateBisectInfo()
@@ -454,7 +444,7 @@ namespace SourceGit.ViewModels
         private Models.Commit _selectedCommit = null;
         private Models.Bisect _bisect = null;
         private long _navigationId = 0;
-        private IDisposable _detailContext = null;
+        private object _detailContext = null;
         private bool _ignoreSelectionChange = false;
 
         private GridLength _leftArea = new GridLength(1, GridUnitType.Star);

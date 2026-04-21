@@ -483,10 +483,14 @@ namespace SourceGit.ViewModels
 
         public void Close()
         {
-            SelectedView = null; // Do NOT modify. Used to remove exists widgets for GC.Collect
-            Logs.Clear();
+            SelectedView = new Models.Null();
 
-            _uiStates.Unload(_workingCopy.CommitMessage);
+            var commitMessage = _workingCopy.CommitMessage;
+            if (!string.IsNullOrEmpty(commitMessage) && _workingCopy.InProgressContext != null)
+                File.WriteAllText(Path.Combine(GitDir, "MERGE_MSG"), commitMessage);
+
+            _uiStates.LastCommitMessage = commitMessage;
+            _uiStates.Unload();
 
             if (_cancellationRefreshBranches is { IsCancellationRequested: false })
                 _cancellationRefreshBranches.Cancel();
@@ -499,35 +503,8 @@ namespace SourceGit.ViewModels
             if (_cancellationRefreshStashes is { IsCancellationRequested: false })
                 _cancellationRefreshStashes.Cancel();
 
-            _autoFetchTimer.Dispose();
-            _autoFetchTimer = null;
-
-            _settings = null;
-            _uiStates = null;
-            _historyFilterMode = Models.FilterMode.None;
-
             _watcher?.Dispose();
-            _histories.Dispose();
-            _workingCopy.Dispose();
-            _stashesPage.Dispose();
-            _searchCommitContext.Dispose();
-
-            _watcher = null;
-            _histories = null;
-            _workingCopy = null;
-            _stashesPage = null;
-
-            _localChangesCount = 0;
-            _stashesCount = 0;
-
-            _remotes.Clear();
-            _branches.Clear();
-            _localBranchTrees.Clear();
-            _remoteBranchTrees.Clear();
-            _tags.Clear();
-            _visibleTags = null;
-            _submodules.Clear();
-            _visibleSubmodules = null;
+            _autoFetchTimer.Dispose();
         }
 
         public void SendNotification(string message, bool isError = false)
