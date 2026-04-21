@@ -1471,6 +1471,14 @@ namespace SourceGit.ViewModels
                 ShowPopup(new DeleteRemote(this, remote));
         }
 
+        public async Task ToggleAutoFetchOnRemoteAsync(Models.Remote remote)
+        {
+            var val = remote.DisableAutoFetch ? "false" : "true";
+            var succ = await new Commands.Config(FullPath).SetAsync($"remote.{remote.Name.Quoted()}.disableautofetch", val);
+            if (succ)
+                remote.DisableAutoFetch = !remote.DisableAutoFetch;
+        }
+
         public void AddSubmodule()
         {
             if (CanCreatePopup())
@@ -1881,7 +1889,10 @@ namespace SourceGit.ViewModels
 
                 var remotes = new List<string>();
                 foreach (var r in _remotes)
-                    remotes.Add(r.Name);
+                {
+                    if (!r.DisableAutoFetch)
+                        remotes.Add(r.Name);
+                }
 
                 if (remotes.Count == 0)
                     return;
@@ -1889,19 +1900,8 @@ namespace SourceGit.ViewModels
                 IsAutoFetching = true;
                 log = CreateLog("Auto-Fetch");
 
-                if (_uiStates.FetchAllRemotes)
-                {
-                    foreach (var remote in remotes)
-                        await new Commands.Fetch(FullPath, remote).Use(log).RunAsync();
-                }
-                else
-                {
-                    var remote = string.IsNullOrEmpty(_settings.DefaultRemote) ?
-                        remotes.Find(x => x.Equals(_settings.DefaultRemote, StringComparison.Ordinal)) :
-                        remotes[0];
-
+                foreach (var remote in remotes)
                     await new Commands.Fetch(FullPath, remote).Use(log).RunAsync();
-                }
 
                 _lastFetchTime = DateTime.Now;
                 IsAutoFetching = false;

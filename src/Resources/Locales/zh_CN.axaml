@@ -740,6 +740,7 @@
   <x:String x:Key="Text.RemoteCM.CustomAction" xml:space="preserve">自定义操作</x:String>
   <x:String x:Key="Text.RemoteCM.Delete" xml:space="preserve">删除 ...</x:String>
   <x:String x:Key="Text.RemoteCM.Edit" xml:space="preserve">编辑 ...</x:String>
+  <x:String x:Key="Text.RemoteCM.EnableAutoFetch" xml:space="preserve">启用自动拉取</x:String>
   <x:String x:Key="Text.RemoteCM.Fetch" xml:space="preserve">拉取(fetch)更新</x:String>
   <x:String x:Key="Text.RemoteCM.OpenInBrowser" xml:space="preserve">在浏览器中打开</x:String>
   <x:String x:Key="Text.RemoteCM.Prune" xml:space="preserve">清理远程已删除分支</x:String>
