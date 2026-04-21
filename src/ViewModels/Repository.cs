@@ -1865,7 +1865,7 @@ namespace SourceGit.ViewModels
 
         private async Task AutoFetchOnUIThread()
         {
-            if (_uiStates == null)
+            if (IsAutoFetching)
                 return;
 
             CommandLog log = null;
