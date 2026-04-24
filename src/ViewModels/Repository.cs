@@ -490,7 +490,7 @@ namespace SourceGit.ViewModels
                 File.WriteAllText(Path.Combine(GitDir, "MERGE_MSG"), commitMessage);
 
             _uiStates.LastCommitMessage = commitMessage;
-            _uiStates.Unload();
+            _uiStates.Save();
 
             if (_cancellationRefreshBranches is { IsCancellationRequested: false })
                 _cancellationRefreshBranches.Cancel();
