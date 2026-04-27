@@ -133,9 +133,6 @@ namespace SourceGit.Views
         {
             base.OnSelectionChanged(e);
 
-            if (DataContext is not ViewModels.Histories vm)
-                return;
-
             var commits = new List<Models.Commit>();
             foreach (var o in SelectedItems)
             {
@@ -150,7 +147,7 @@ namespace SourceGit.Views
             {
                 _ignoreSelectionChanged = true;
 
-                var old = vm.SelectedCommits;
+                var old = SelectedCommits;
                 if (old.Count != commits.Count)
                 {
                     SetCurrentValue(SelectedCommitsProperty, commits);
