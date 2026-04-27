@@ -79,6 +79,24 @@ namespace SourceGit.Views
 
     public partial class Histories : UserControl
     {
+        public static readonly StyledProperty<List<Models.Commit>> CommitsProperty =
+            AvaloniaProperty.Register<Histories, List<Models.Commit>>(nameof(Commits), []);
+
+        public List<Models.Commit> Commits
+        {
+            get => GetValue(CommitsProperty);
+            set => SetValue(CommitsProperty, value);
+        }
+
+        public static readonly StyledProperty<List<Models.Commit>> SelectedCommitsProperty =
+            AvaloniaProperty.Register<Histories, List<Models.Commit>>(nameof(SelectedCommits), []);
+
+        public List<Models.Commit> SelectedCommits
+        {
+            get => GetValue(SelectedCommitsProperty);
+            set => SetValue(SelectedCommitsProperty, value);
+        }
+
         public static readonly StyledProperty<Models.Branch> CurrentBranchProperty =
             AvaloniaProperty.Register<Histories, Models.Branch>(nameof(CurrentBranch));
 
@@ -113,15 +131,6 @@ namespace SourceGit.Views
         {
             get => GetValue(OnlyHighlightCurrentBranchProperty);
             set => SetValue(OnlyHighlightCurrentBranchProperty, value);
-        }
-
-        public static readonly StyledProperty<List<Models.Commit>> SelectedCommitsProperty =
-            AvaloniaProperty.Register<Histories, List<Models.Commit>>(nameof(SelectedCommits), []);
-
-        public List<Models.Commit> SelectedCommits
-        {
-            get => GetValue(SelectedCommitsProperty);
-            set => SetValue(SelectedCommitsProperty, value);
         }
 
         public static readonly StyledProperty<bool> IsScrollToTopVisibleProperty =

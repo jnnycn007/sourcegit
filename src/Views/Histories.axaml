@@ -39,7 +39,7 @@
                 ScrollViewer.AllowAutoHide="False"
                 Background="{DynamicResource Brush.DataGridHeaderBG}"
                 SelectionMode="Extended"
-                ItemsSource="{Binding Commits, Mode=OneWay}"
+                ItemsSource="{Binding #ThisControl.Commits, Mode=OneWay}"
                 CanUserReorderColumns="False"
                 CanUserResizeColumns="True"
                 CanUserSortColumns="False"
