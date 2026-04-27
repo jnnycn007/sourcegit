@@ -185,14 +185,14 @@ namespace SourceGit.ViewModels
                         if (subject.StartsWith("fixup! ", StringComparison.Ordinal))
                         {
                             item.Action = Models.InteractiveRebaseAction.Fixup;
-                            needReorder.Add(new(subject.Substring(7), item));
+                            needReorder.Add(new(subject.Substring(7).Trim(), item));
                             continue;
                         }
 
                         if (subject.StartsWith("squash! ", StringComparison.Ordinal))
                         {
                             item.Action = Models.InteractiveRebaseAction.Squash;
-                            needReorder.Add(new(subject.Substring(8), item));
+                            needReorder.Add(new(subject.Substring(8).Trim(), item));
                             continue;
                         }
                     }
@@ -200,7 +200,7 @@ namespace SourceGit.ViewModels
                     var reordered = new List<InteractiveRebaseReorderItem>();
                     foreach (var o in needReorder)
                     {
-                        if (subject.StartsWith(o.Key, StringComparison.Ordinal))
+                        if (subject.Trim().Equals(o.Key, StringComparison.Ordinal))
                         {
                             list.Add(o.Item);
                             reordered.Add(o);
