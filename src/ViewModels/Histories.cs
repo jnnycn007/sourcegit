@@ -385,9 +385,10 @@ namespace SourceGit.ViewModels
 
         private void PostCommitsChanged()
         {
-            if (_commits.Count == 0 ||
-                _selectedCommits.Count == 0 ||
-                _selectedCommits.Count > 2)
+            if (_selectedCommits.Count == 0)
+                return;
+
+            if (_commits.Count == 0 || _selectedCommits.Count > 2)
             {
                 SelectedCommits = [];
                 return;
