@@ -115,13 +115,13 @@ namespace SourceGit.Views
             set => SetValue(OnlyHighlightCurrentBranchProperty, value);
         }
 
-        public static readonly StyledProperty<long> NavigationIdProperty =
-            AvaloniaProperty.Register<Histories, long>(nameof(NavigationId));
+        public static readonly StyledProperty<List<Models.Commit>> SelectedCommitsProperty =
+            AvaloniaProperty.Register<Histories, List<Models.Commit>>(nameof(SelectedCommits), []);
 
-        public long NavigationId
+        public List<Models.Commit> SelectedCommits
         {
-            get => GetValue(NavigationIdProperty);
-            set => SetValue(NavigationIdProperty, value);
+            get => GetValue(SelectedCommitsProperty);
+            set => SetValue(SelectedCommitsProperty, value);
         }
 
         public static readonly StyledProperty<bool> IsScrollToTopVisibleProperty =
@@ -142,10 +142,21 @@ namespace SourceGit.Views
         {
             base.OnPropertyChanged(change);
 
-            if (change.Property == NavigationIdProperty)
+            if (change.Property == SelectedCommitsProperty &&
+                CommitListContainer.IsLoaded &&
+                !_ignoreSelectionChanged)
             {
-                if (CommitListContainer is { SelectedItems.Count: 1, IsLoaded: true } dataGrid)
-                    dataGrid.ScrollIntoView(dataGrid.SelectedItem, null);
+                _ignoreSelectionChanged = true;
+
+                var dataGrid = CommitListContainer;
+                dataGrid.SelectedItems.Clear();
+                if (SelectedCommits is { Count: > 0 })
+                {
+                    foreach (var c in SelectedCommits)
+                        dataGrid.SelectedItems.Add(c);
+                }
+
+                _ignoreSelectionChanged = false;
             }
         }
 
@@ -156,8 +167,16 @@ namespace SourceGit.Views
             if (rowsPresenter is { Children: { Count: > 0 } rows })
                 CommitGraph.Layout = new(0, dataGrid.Columns[0].ActualWidth - 4, rows[0].Bounds.Height);
 
-            if (dataGrid.SelectedItems.Count == 1)
-                dataGrid.ScrollIntoView(dataGrid.SelectedItem, null);
+            _ignoreSelectionChanged = true;
+
+            dataGrid.SelectedItems.Clear();
+            if (SelectedCommits is { Count: > 0 })
+            {
+                foreach (var c in SelectedCommits)
+                    dataGrid.SelectedItems.Add(c);
+            }
+
+            _ignoreSelectionChanged = false;
         }
 
         private async void OnGotoParent(object sender, RoutedEventArgs e)
@@ -299,10 +318,28 @@ namespace SourceGit.Views
                 CommitListContainer.ScrollIntoView(histories.Commits[0], null);
         }
 
-        private void OnCommitListSelectionChanged(object _, SelectionChangedEventArgs e)
+        private void OnCommitListSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (DataContext is ViewModels.Histories histories)
-                histories.Select(CommitListContainer.SelectedItems);
+            if (sender is not DataGrid dataGrid)
+                return;
+
+            var selected = dataGrid.SelectedItems;
+            var commits = new List<Models.Commit>();
+            foreach (var o in selected)
+            {
+                if (o is Models.Commit c)
+                    commits.Add(c);
+            }
+
+            if (commits.Count > 0 && commits.Count < 3)
+                dataGrid.ScrollIntoView(commits[^1], null);
+
+            if (DataContext is ViewModels.Histories histories && !_ignoreSelectionChanged)
+            {
+                _ignoreSelectionChanged = true;
+                histories.SetSelectedCommitsDirectly(commits);
+                _ignoreSelectionChanged = false;
+            }
 
             e.Handled = true;
         }
@@ -1437,5 +1474,6 @@ namespace SourceGit.Views
         private double _lastGraphStartY = 0;
         private double _lastGraphClipWidth = 0;
         private double _lastGraphRowHeight = 0;
+        private bool _ignoreSelectionChanged = false;
     }
 }

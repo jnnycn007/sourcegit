@@ -927,10 +927,10 @@
           
           <DataTemplate DataType="vm:Histories">
             <v:Histories CurrentBranch="{Binding $parent[v:Repository].((vm:Repository)DataContext).CurrentBranch}"
-                         Bisect="{Binding Bisect}"
+                         Bisect="{Binding Bisect, Mode=OneWay}"
+                         SelectedCommits="{Binding SelectedCommits, Mode=OneWay}"
                          IssueTrackers="{Binding $parent[v:Repository].((vm:Repository)DataContext).IssueTrackers}"
-                         OnlyHighlightCurrentBranch="{Binding $parent[v:Repository].((vm:Repository)DataContext).OnlyHighlightCurrentBranchInHistory}"
-                         NavigationId="{Binding NavigationId}"/>
+                         OnlyHighlightCurrentBranch="{Binding $parent[v:Repository].((vm:Repository)DataContext).OnlyHighlightCurrentBranchInHistory}"/>
           </DataTemplate>
 
           <DataTemplate DataType="vm:WorkingCopy">

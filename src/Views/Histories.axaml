@@ -40,7 +40,6 @@
                 Background="{DynamicResource Brush.DataGridHeaderBG}"
                 SelectionMode="Extended"
                 ItemsSource="{Binding Commits, Mode=OneWay}"
-                SelectedItem="{Binding SelectedCommit, Mode=OneWay}"
                 CanUserReorderColumns="False"
                 CanUserResizeColumns="True"
                 CanUserSortColumns="False"
