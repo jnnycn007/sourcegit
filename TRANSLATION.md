@@ -855,28 +855,7 @@ This document shows the translation status of each locale file in the repository
 
 </details>
 
-### ![ru__RU](https://img.shields.io/badge/ru__RU-98.48%25-yellow)
-
-<details>
-<summary>Missing keys in ru_RU.axaml</summary>
-
-- Text.App.HideOthers
-- Text.Clone.Bookmark
-- Text.Clone.Group
-- Text.ConfigureCustomActionControls.StringFormatter
-- Text.ConfigureCustomActionControls.StringFormatter.Tip
-- Text.ConfigureCustomActionControls.UseFriendlyName
-- Text.Diff.Submodule.UncommittedChanges
-- Text.Hotkeys.Global.OpenLocalRepository
-- Text.OpenLocalRepository
-- Text.OpenLocalRepository.Bookmark
-- Text.OpenLocalRepository.Group
-- Text.OpenLocalRepository.Path
-- Text.RemoteCM.EnableAutoFetch
-- Text.SubmoduleRevisionCompare
-- Text.SubmoduleRevisionCompare.OpenDetails
-
-</details>
+### ![ru__RU](https://img.shields.io/badge/ru__RU-%E2%88%9A-brightgreen)
 
 ### ![ta__IN](https://img.shields.io/badge/ta__IN-68.79%25-red)
 
