@@ -77,10 +77,10 @@ namespace SourceGit.Views
         }
     }
 
-    public partial class Histories : UserControl
+    public class HistoriesCommitList : DataGrid
     {
         public static readonly StyledProperty<List<Models.Commit>> CommitsProperty =
-            AvaloniaProperty.Register<Histories, List<Models.Commit>>(nameof(Commits), []);
+            AvaloniaProperty.Register<HistoriesCommitList, List<Models.Commit>>(nameof(Commits), []);
 
         public List<Models.Commit> Commits
         {
@@ -89,7 +89,7 @@ namespace SourceGit.Views
         }
 
         public static readonly StyledProperty<List<Models.Commit>> SelectedCommitsProperty =
-            AvaloniaProperty.Register<Histories, List<Models.Commit>>(nameof(SelectedCommits), []);
+            AvaloniaProperty.Register<HistoriesCommitList, List<Models.Commit>>(nameof(SelectedCommits), []);
 
         public List<Models.Commit> SelectedCommits
         {
@@ -97,6 +97,107 @@ namespace SourceGit.Views
             set => SetValue(SelectedCommitsProperty, value);
         }
 
+        protected override Type StyleKeyOverride => typeof(DataGrid);
+
+        public HistoriesCommitList()
+        {
+            SelectionMode = DataGridSelectionMode.Extended;
+            CanUserReorderColumns = false;
+            CanUserResizeColumns = true;
+            CanUserSortColumns = false;
+            AutoGenerateColumns = false;
+            IsReadOnly = true;
+            HeadersVisibility = DataGridHeadersVisibility.Column;
+            ClipboardCopyMode = DataGridClipboardCopyMode.None;
+            Focusable = false;
+            HorizontalScrollBarVisibility = ScrollBarVisibility.Disabled;
+            VerticalScrollBarVisibility = ScrollBarVisibility.Auto;
+        }
+
+        protected override void OnLoaded(RoutedEventArgs e)
+        {
+            base.OnLoaded(e);
+            ApplySelection();
+            UpdateLayout();
+        }
+
+        protected override void OnPropertyChanged(AvaloniaPropertyChangedEventArgs change)
+        {
+            base.OnPropertyChanged(change);
+
+            if (change.Property == SelectedCommitsProperty && IsLoaded && !_ignoreSelectionChanged)
+                ApplySelection();
+        }
+
+        protected override void OnSelectionChanged(SelectionChangedEventArgs e)
+        {
+            base.OnSelectionChanged(e);
+
+            if (DataContext is not ViewModels.Histories vm)
+                return;
+
+            var commits = new List<Models.Commit>();
+            foreach (var o in SelectedItems)
+            {
+                if (o is Models.Commit c)
+                    commits.Add(c);
+            }
+
+            if (commits.Count > 0 && commits.Count < 3)
+                ScrollIntoView(commits[^1], null);
+
+            if (!_ignoreSelectionChanged)
+            {
+                _ignoreSelectionChanged = true;
+
+                var old = vm.SelectedCommits;
+                if (old.Count != commits.Count)
+                {
+                    SetCurrentValue(SelectedCommitsProperty, commits);
+                }
+                else if (commits.Count > 0)
+                {
+                    var set = new HashSet<string>();
+                    foreach (var c in old)
+                        set.Add(c.SHA);
+
+                    var equals = true;
+                    foreach (var c in commits)
+                    {
+                        if (!set.Contains(c.SHA))
+                        {
+                            equals = false;
+                            break;
+                        }
+                    }
+
+                    if (!equals)
+                        SetCurrentValue(SelectedCommitsProperty, commits);
+                }
+
+                _ignoreSelectionChanged = false;
+            }
+        }
+
+        private void ApplySelection()
+        {
+            _ignoreSelectionChanged = true;
+
+            SelectedItems.Clear();
+            if (SelectedCommits is { Count: > 0 })
+            {
+                foreach (var c in SelectedCommits)
+                    SelectedItems.Add(c);
+            }
+
+            _ignoreSelectionChanged = false;
+        }
+
+        private bool _ignoreSelectionChanged = false;
+    }
+
+    public partial class Histories : UserControl
+    {
         public static readonly StyledProperty<Models.Branch> CurrentBranchProperty =
             AvaloniaProperty.Register<Histories, Models.Branch>(nameof(CurrentBranch));
 
@@ -145,47 +246,6 @@ namespace SourceGit.Views
         public Histories()
         {
             InitializeComponent();
-        }
-
-        protected override void OnPropertyChanged(AvaloniaPropertyChangedEventArgs change)
-        {
-            base.OnPropertyChanged(change);
-
-            if (change.Property == SelectedCommitsProperty &&
-                CommitListContainer.IsLoaded &&
-                !_ignoreSelectionChanged)
-            {
-                _ignoreSelectionChanged = true;
-
-                var dataGrid = CommitListContainer;
-                dataGrid.SelectedItems.Clear();
-                if (SelectedCommits is { Count: > 0 })
-                {
-                    foreach (var c in SelectedCommits)
-                        dataGrid.SelectedItems.Add(c);
-                }
-
-                _ignoreSelectionChanged = false;
-            }
-        }
-
-        private void OnCommitListLoaded(object sender, RoutedEventArgs e)
-        {
-            var dataGrid = CommitListContainer;
-            var rowsPresenter = dataGrid.FindDescendantOfType<DataGridRowsPresenter>();
-            if (rowsPresenter is { Children: { Count: > 0 } rows })
-                CommitGraph.Layout = new(0, dataGrid.Columns[0].ActualWidth - 4, rows[0].Bounds.Height);
-
-            _ignoreSelectionChanged = true;
-
-            dataGrid.SelectedItems.Clear();
-            if (SelectedCommits is { Count: > 0 })
-            {
-                foreach (var c in SelectedCommits)
-                    dataGrid.SelectedItems.Add(c);
-            }
-
-            _ignoreSelectionChanged = false;
         }
 
         private async void OnGotoParent(object sender, RoutedEventArgs e)
@@ -325,32 +385,6 @@ namespace SourceGit.Views
         {
             if (DataContext is ViewModels.Histories histories)
                 CommitListContainer.ScrollIntoView(histories.Commits[0], null);
-        }
-
-        private void OnCommitListSelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if (sender is not DataGrid dataGrid)
-                return;
-
-            var selected = dataGrid.SelectedItems;
-            var commits = new List<Models.Commit>();
-            foreach (var o in selected)
-            {
-                if (o is Models.Commit c)
-                    commits.Add(c);
-            }
-
-            if (commits.Count > 0 && commits.Count < 3)
-                dataGrid.ScrollIntoView(commits[^1], null);
-
-            if (DataContext is ViewModels.Histories histories && !_ignoreSelectionChanged)
-            {
-                _ignoreSelectionChanged = true;
-                histories.SetSelectedCommitsDirectly(commits);
-                _ignoreSelectionChanged = false;
-            }
-
-            e.Handled = true;
         }
 
         private void OnCommitListContextRequested(object sender, ContextRequestedEventArgs e)
@@ -1483,6 +1517,5 @@ namespace SourceGit.Views
         private double _lastGraphStartY = 0;
         private double _lastGraphClipWidth = 0;
         private double _lastGraphRowHeight = 0;
-        private bool _ignoreSelectionChanged = false;
     }
 }

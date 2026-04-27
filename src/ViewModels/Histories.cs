@@ -191,32 +191,6 @@ namespace SourceGit.ViewModels
             });
         }
 
-        public void SetSelectedCommitsDirectly(List<Models.Commit> commits)
-        {
-            if (_selectedCommits.Count != commits.Count)
-            {
-                SelectedCommits = commits;
-                return;
-            }
-
-            var hashes = new HashSet<string>();
-            foreach (var c in _selectedCommits)
-                hashes.Add(c.SHA);
-
-            var equals = true;
-            foreach (var c in commits)
-            {
-                if (!hashes.Contains(c.SHA))
-                {
-                    equals = false;
-                    break;
-                }
-            }
-
-            if (!equals)
-                SelectedCommits = commits;
-        }
-
         public async Task<Models.Commit> GetCommitAsync(string sha)
         {
             return await new Commands.QuerySingleCommit(_repo.FullPath, sha)

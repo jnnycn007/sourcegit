@@ -926,9 +926,7 @@
           </DataTemplate>
           
           <DataTemplate DataType="vm:Histories">
-            <v:Histories Commits="{Binding Commits, Mode=OneWay}"
-                         SelectedCommits="{Binding SelectedCommits, Mode=OneWay}"
-                         CurrentBranch="{Binding $parent[v:Repository].((vm:Repository)DataContext).CurrentBranch}"
+            <v:Histories CurrentBranch="{Binding $parent[v:Repository].((vm:Repository)DataContext).CurrentBranch}"
                          Bisect="{Binding Bisect, Mode=OneWay}"
                          IssueTrackers="{Binding $parent[v:Repository].((vm:Repository)DataContext).IssueTrackers}"
                          OnlyHighlightCurrentBranch="{Binding $parent[v:Repository].((vm:Repository)DataContext).OnlyHighlightCurrentBranchInHistory}"/>
