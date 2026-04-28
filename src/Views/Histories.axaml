@@ -39,6 +39,7 @@
                              ScrollViewer.AllowAutoHide="False"
                              Background="{DynamicResource Brush.DataGridHeaderBG}"
                              ItemsSource="{Binding Commits, Mode=OneWay}"
+                             TotalCommits="{Binding Commits.Count, Mode=OneWay}"
                              SelectedCommits="{Binding SelectedCommits, Mode=TwoWay}"
                              ColumnHeaderHeight="24"
                              RowHeight="26"

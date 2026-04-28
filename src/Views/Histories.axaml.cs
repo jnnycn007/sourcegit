@@ -79,13 +79,13 @@ namespace SourceGit.Views
 
     public class HistoriesCommitList : DataGrid
     {
-        public static readonly StyledProperty<List<Models.Commit>> CommitsProperty =
-            AvaloniaProperty.Register<HistoriesCommitList, List<Models.Commit>>(nameof(Commits), []);
+        public static readonly StyledProperty<int> TotalCommitsProperty =
+            AvaloniaProperty.Register<HistoriesCommitList, int>(nameof(TotalCommits), 0);
 
-        public List<Models.Commit> Commits
+        public int TotalCommits
         {
-            get => GetValue(CommitsProperty);
-            set => SetValue(CommitsProperty, value);
+            get => GetValue(TotalCommitsProperty);
+            set => SetValue(TotalCommitsProperty, value);
         }
 
         public static readonly StyledProperty<List<Models.Commit>> SelectedCommitsProperty =
@@ -114,23 +114,18 @@ namespace SourceGit.Views
             VerticalScrollBarVisibility = ScrollBarVisibility.Auto;
         }
 
+        protected override void OnLoaded(RoutedEventArgs e)
+        {
+            base.OnLoaded(e);
+            ApplySelection();
+        }
+
         protected override void OnPropertyChanged(AvaloniaPropertyChangedEventArgs change)
         {
             base.OnPropertyChanged(change);
 
             if (change.Property == SelectedCommitsProperty && IsLoaded && !_ignoreSelectionChanged)
-            {
-                _ignoreSelectionChanged = true;
-
-                SelectedItems.Clear();
-                if (SelectedCommits is { Count: > 0 })
-                {
-                    foreach (var c in SelectedCommits)
-                        SelectedItems.Add(c);
-                }
-
-                _ignoreSelectionChanged = false;
-            }
+                ApplySelection();
         }
 
         protected override void OnSelectionChanged(SelectionChangedEventArgs e)
@@ -178,6 +173,28 @@ namespace SourceGit.Views
 
                 _ignoreSelectionChanged = false;
             }
+        }
+
+        private void ApplySelection()
+        {
+            _ignoreSelectionChanged = true;
+
+            if (SelectedCommits == null || SelectedCommits.Count == 0)
+            {
+                SelectedItems.Clear();
+            }
+            else if (SelectedCommits.Count == TotalCommits)
+            {
+                SelectAll();
+            }
+            else
+            {
+                SelectedItems.Clear();
+                foreach (var c in SelectedCommits)
+                    SelectedItems.Add(c);
+            }
+
+            _ignoreSelectionChanged = false;
         }
 
         private bool _ignoreSelectionChanged = false;
