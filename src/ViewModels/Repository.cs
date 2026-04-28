@@ -63,20 +63,41 @@ namespace SourceGit.ViewModels
             {
                 if (SetProperty(ref _selectedViewIndex, value))
                 {
-                    SelectedView = value switch
-                    {
-                        1 => _workingCopy,
-                        2 => _stashesPage,
-                        _ => _histories,
-                    };
+                    OnPropertyChanged(nameof(IsHistoriesVisible));
+                    OnPropertyChanged(nameof(IsWorkingCopyVisible));
+                    OnPropertyChanged(nameof(IsStashesVisible));
                 }
             }
         }
 
-        public object SelectedView
+        public Histories Histories
         {
-            get => _selectedView;
-            set => SetProperty(ref _selectedView, value);
+            get => _histories;
+        }
+
+        public WorkingCopy WorkingCopy
+        {
+            get => _workingCopy;
+        }
+
+        public StashesPage StashesPage
+        {
+            get => _stashesPage;
+        }
+
+        public bool IsHistoriesVisible
+        {
+            get => SelectedViewIndex == 0;
+        }
+
+        public bool IsWorkingCopyVisible
+        {
+            get => SelectedViewIndex == 1;
+        }
+
+        public bool IsStashesVisible
+        {
+            get => SelectedViewIndex == 2;
         }
 
         public bool EnableTopoOrderInHistory
@@ -464,18 +485,7 @@ namespace SourceGit.ViewModels
             _workingCopy = new WorkingCopy(this) { CommitMessage = _uiStates.LastCommitMessage };
             _stashesPage = new StashesPage(this);
             _searchCommitContext = new SearchCommitContext(this);
-
-            if (Preferences.Instance.ShowLocalChangesByDefault)
-            {
-                _selectedView = _workingCopy;
-                _selectedViewIndex = 1;
-            }
-            else
-            {
-                _selectedView = _histories;
-                _selectedViewIndex = 0;
-            }
-
+            _selectedViewIndex = Preferences.Instance.ShowLocalChangesByDefault ? 1 : 0;
             _lastFetchTime = DateTime.Now;
             _autoFetchTimer = new Timer(AutoFetchByTimer, null, 5000, 5000);
             RefreshAll();
@@ -483,8 +493,6 @@ namespace SourceGit.ViewModels
 
         public void Close()
         {
-            SelectedView = new Models.Null();
-
             var commitMessage = _workingCopy.CommitMessage;
             if (!string.IsNullOrEmpty(commitMessage) && _workingCopy.InProgressContext != null)
                 File.WriteAllText(Path.Combine(GitDir, "MERGE_MSG"), commitMessage);
@@ -1926,7 +1934,6 @@ namespace SourceGit.ViewModels
         private WorkingCopy _workingCopy = null;
         private StashesPage _stashesPage = null;
         private int _selectedViewIndex = 0;
-        private object _selectedView = null;
 
         private int _localBranchesCount = 0;
         private int _localChangesCount = 0;
