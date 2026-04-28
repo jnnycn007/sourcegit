@@ -465,15 +465,24 @@ namespace SourceGit.ViewModels
 
                     if (hasPending)
                     {
-                        var builder = new StringBuilder();
-                        builder.Append(item.OriginalFullMessage);
-                        for (var j = pendingMessages.Count - 1; j >= 0; j--)
-                            builder.Append("\n").Append(pendingMessages[j]);
+                        if (pendingMessages.Count > 0)
+                        {
+                            var builder = new StringBuilder();
+                            builder.Append(item.OriginalFullMessage);
+                            for (var j = pendingMessages.Count - 1; j >= 0; j--)
+                                builder.Append("\n").Append(pendingMessages[j]);
 
-                        item.Action = Models.InteractiveRebaseAction.Reword;
-                        item.PendingType = Models.InteractiveRebasePendingType.Target;
-                        item.ShowEditMessageButton = true;
-                        item.FullMessage = builder.ToString();
+                            item.Action = Models.InteractiveRebaseAction.Reword;
+                            item.PendingType = Models.InteractiveRebasePendingType.Target;
+                            item.ShowEditMessageButton = true;
+                            item.FullMessage = builder.ToString();
+                        }
+                        else
+                        {
+                            item.PendingType = Models.InteractiveRebasePendingType.Target;
+                            item.ShowEditMessageButton = false;
+                            item.FullMessage = item.OriginalFullMessage;
+                        }
 
                         hasPending = false;
                         pendingMessages.Clear();
