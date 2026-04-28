@@ -114,19 +114,23 @@ namespace SourceGit.Views
             VerticalScrollBarVisibility = ScrollBarVisibility.Auto;
         }
 
-        protected override void OnLoaded(RoutedEventArgs e)
-        {
-            base.OnLoaded(e);
-            ApplySelection();
-            UpdateLayout();
-        }
-
         protected override void OnPropertyChanged(AvaloniaPropertyChangedEventArgs change)
         {
             base.OnPropertyChanged(change);
 
             if (change.Property == SelectedCommitsProperty && IsLoaded && !_ignoreSelectionChanged)
-                ApplySelection();
+            {
+                _ignoreSelectionChanged = true;
+
+                SelectedItems.Clear();
+                if (SelectedCommits is { Count: > 0 })
+                {
+                    foreach (var c in SelectedCommits)
+                        SelectedItems.Add(c);
+                }
+
+                _ignoreSelectionChanged = false;
+            }
         }
 
         protected override void OnSelectionChanged(SelectionChangedEventArgs e)
@@ -174,20 +178,6 @@ namespace SourceGit.Views
 
                 _ignoreSelectionChanged = false;
             }
-        }
-
-        private void ApplySelection()
-        {
-            _ignoreSelectionChanged = true;
-
-            SelectedItems.Clear();
-            if (SelectedCommits is { Count: > 0 })
-            {
-                foreach (var c in SelectedCommits)
-                    SelectedItems.Add(c);
-            }
-
-            _ignoreSelectionChanged = false;
         }
 
         private bool _ignoreSelectionChanged = false;
