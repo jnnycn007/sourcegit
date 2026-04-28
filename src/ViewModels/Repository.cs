@@ -126,17 +126,10 @@ namespace SourceGit.ViewModels
             }
         }
 
-        public bool OnlyHighlightCurrentBranchInHistory
+        public bool HighlightCurrentBranchOnlyInHistory
         {
-            get => _uiStates.OnlyHighlightCurrentBranchInHistory;
-            set
-            {
-                if (value != _uiStates.OnlyHighlightCurrentBranchInHistory)
-                {
-                    _uiStates.OnlyHighlightCurrentBranchInHistory = value;
-                    OnPropertyChanged();
-                }
-            }
+            get => _histories.HighlightCurrentBranchOnly;
+            set => _histories.HighlightCurrentBranchOnly = value;
         }
 
         public string Filter
@@ -173,9 +166,10 @@ namespace SourceGit.ViewModels
             private set
             {
                 var oldHead = _currentBranch?.Head;
-                if (SetProperty(ref _currentBranch, value) && value != null)
+                if (SetProperty(ref _currentBranch, value))
                 {
-                    if (oldHead != _currentBranch.Head && _workingCopy is { UseAmend: true })
+                    _histories.NotifyCurrentBranchChanged();
+                    if (value != null && !value.Head.Equals(oldHead, StringComparison.Ordinal) && _workingCopy is { UseAmend: true })
                         _workingCopy.UseAmend = false;
                 }
             }

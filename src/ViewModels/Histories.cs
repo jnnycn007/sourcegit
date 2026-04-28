@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
 
+using Avalonia.Collections;
 using Avalonia.Controls;
 using Avalonia.Threading;
 using CommunityToolkit.Mvvm.ComponentModel;
@@ -94,6 +95,29 @@ namespace SourceGit.ViewModels
             private set => SetProperty(ref _bisect, value);
         }
 
+        public Models.Branch CurrentBranch
+        {
+            get => _repo.CurrentBranch;
+        }
+
+        public bool HighlightCurrentBranchOnly
+        {
+            get => _repo.UIStates.OnlyHighlightCurrentBranchInHistory;
+            set
+            {
+                if (_repo.UIStates.OnlyHighlightCurrentBranchInHistory != value)
+                {
+                    _repo.UIStates.OnlyHighlightCurrentBranchInHistory = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
+
+        public AvaloniaList<Models.IssueTracker> IssueTrackers
+        {
+            get => _repo.IssueTrackers;
+        }
+
         public GridLength LeftArea
         {
             get => _leftArea;
@@ -122,6 +146,11 @@ namespace SourceGit.ViewModels
         {
             _repo = repo;
             _commitDetailSharedData = new CommitDetailSharedData();
+        }
+
+        public void NotifyCurrentBranchChanged()
+        {
+            OnPropertyChanged(nameof(CurrentBranch));
         }
 
         public Models.BisectState UpdateBisectInfo()

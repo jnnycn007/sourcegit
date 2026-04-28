@@ -101,7 +101,7 @@
                                 Classes="line_path"
                                 Width="26" Height="26"
                                 Background="Transparent"
-                                IsChecked="{Binding OnlyHighlightCurrentBranchInHistory, Mode=TwoWay}"
+                                IsChecked="{Binding HighlightCurrentBranchOnlyInHistory, Mode=TwoWay}"
                                 ToolTip.Tip="{DynamicResource Text.Repository.OnlyHighlightCurrentBranchInGraph}">
                     <Path Width="12" Height="12" Data="{StaticResource Icons.LightOn}"/>
                   </ToggleButton>
@@ -923,10 +923,10 @@
         <ContentControl Content="{Binding Histories, Mode=OneWay}" IsVisible="{Binding IsHistoriesVisible, Mode=OneWay}">
           <ContentControl.DataTemplates>
             <DataTemplate DataType="vm:Histories">
-              <v:Histories CurrentBranch="{Binding $parent[v:Repository].((vm:Repository)DataContext).CurrentBranch}"
+              <v:Histories CurrentBranch="{Binding CurrentBranch, Mode=OneWay}"
                            Bisect="{Binding Bisect, Mode=OneWay}"
-                           IssueTrackers="{Binding $parent[v:Repository].((vm:Repository)DataContext).IssueTrackers}"
-                           OnlyHighlightCurrentBranch="{Binding $parent[v:Repository].((vm:Repository)DataContext).OnlyHighlightCurrentBranchInHistory}"/>
+                           IssueTrackers="{Binding IssueTrackers, Mode=OneWay}"
+                           OnlyHighlightCurrentBranch="{Binding HighlightCurrentBranchOnly, Mode=OneWay}"/>
             </DataTemplate>
           </ContentControl.DataTemplates>
         </ContentControl>
