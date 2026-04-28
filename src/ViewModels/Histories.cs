@@ -468,9 +468,9 @@ namespace SourceGit.ViewModels
                 _repo.SearchCommitContext.Selected = null;
 
                 if (_detailContext is RevisionCompare compare)
-                    compare.SetTargets(_selectedCommits[0], _selectedCommits[1]);
+                    compare.SetTargets(_selectedCommits[1], _selectedCommits[0]);
                 else
-                    DetailContext = new RevisionCompare(_repo, _selectedCommits[0], _selectedCommits[1]);
+                    DetailContext = new RevisionCompare(_repo, _selectedCommits[1], _selectedCommits[0]);
             }
             else
             {
