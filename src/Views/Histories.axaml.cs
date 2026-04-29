@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -189,12 +190,34 @@ namespace SourceGit.Views
             }
             else
             {
+                IncrNoSelectionChangeCount();
                 SelectedItems.Clear();
                 foreach (var c in SelectedCommits)
                     SelectedItems.Add(c);
+                DecrNoSelectionChangeCount();
             }
 
             _ignoreSelectionChanged = false;
+        }
+
+        private void IncrNoSelectionChangeCount()
+        {
+            var property = typeof(DataGrid).GetProperty("NoSelectionChangeCount", BindingFlags.Instance | BindingFlags.NonPublic);
+            if (property != null)
+            {
+                var old = (int)property.GetValue(this);
+                property.SetValue(this, old + 1);
+            }
+        }
+
+        private void DecrNoSelectionChangeCount()
+        {
+            var property = typeof(DataGrid).GetProperty("NoSelectionChangeCount", BindingFlags.Instance | BindingFlags.NonPublic);
+            if (property != null)
+            {
+                var old = (int)property.GetValue(this);
+                property.SetValue(this, old - 1);
+            }
         }
 
         private bool _ignoreSelectionChanged = false;
