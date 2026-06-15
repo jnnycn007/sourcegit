@@ -265,6 +265,22 @@ namespace SourceGit.Views
                     menu.Items.Add(startFeature);
                     menu.Items.Add(startRelease);
                     menu.Items.Add(startHotfix);
+
+                    var type = repo.CurrentBranch != null ? repo.GetGitFlowType(repo.CurrentBranch) : Models.GitFlowBranchType.None;
+                    if (type != Models.GitFlowBranchType.None)
+                    {
+                        var finish = new MenuItem();
+                        finish.Header = App.Text("GitFlow.Finish", repo.CurrentBranch.Name);
+                        finish.Icon = this.CreateMenuIcon("Icons.GitFlow");
+                        finish.Click += (_, e) =>
+                        {
+                            if (repo.CanCreatePopup())
+                                repo.ShowPopup(new ViewModels.GitFlowFinish(repo, repo.CurrentBranch, type));
+                            e.Handled = true;
+                        };
+                        menu.Items.Add(new MenuItem() { Header = "-" });
+                        menu.Items.Add(finish);
+                    }
                 }
                 else
                 {

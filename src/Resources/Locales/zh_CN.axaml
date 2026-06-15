@@ -447,6 +447,7 @@
   <x:String x:Key="Text.GitFlow.DevelopBranch" xml:space="preserve">开发分支 ：</x:String>
   <x:String x:Key="Text.GitFlow.Feature" xml:space="preserve">特性分支 ：</x:String>
   <x:String x:Key="Text.GitFlow.FeaturePrefix" xml:space="preserve">特性分支名前缀 ：</x:String>
+  <x:String x:Key="Text.GitFlow.Finish" xml:space="preserve">完成 ${0}$</x:String>
   <x:String x:Key="Text.GitFlow.FinishFeature" xml:space="preserve">结束特性分支</x:String>
   <x:String x:Key="Text.GitFlow.FinishHotfix" xml:space="preserve">结束修复分支</x:String>
   <x:String x:Key="Text.GitFlow.FinishRelease" xml:space="preserve">结束版本分支</x:String>
