@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:m="using:SourceGit.Models"
              xmlns:vm="using:SourceGit.ViewModels"
+             xmlns:v="using:SourceGit.Views"
              mc:Ignorable="d" d:DesignWidth="500" d:DesignHeight="450"
              x:Class="SourceGit.Views.GitFlowStart"
              x:DataType="vm:GitFlowStart">
@@ -31,13 +32,20 @@
       <TextBlock Grid.Column="0"
                  HorizontalAlignment="Right" VerticalAlignment="Center"
                  Margin="0,0,8,0"
-                 Text="{Binding Prefix}"/>
-      <TextBox Grid.Column="1"
-               Height="26"
-               VerticalAlignment="Center"
-               CornerRadius="3"
-               PlaceholderText="{DynamicResource Text.GitFlow.StartPlaceholder}"
-               Text="{Binding Name, Mode=TwoWay}"/>
+                 Text="{DynamicResource Text.GitFlow.StartTarget}"/>
+      <v:BranchOrTagNameTextBox Grid.Column="1"
+                                Height="26"
+                                VerticalAlignment="Center"
+                                CornerRadius="3"
+                                PlaceholderText="{DynamicResource Text.GitFlow.StartPlaceholder}"
+                                Text="{Binding Name, Mode=TwoWay}"
+                                ClipToBounds="True">
+        <v:BranchOrTagNameTextBox.InnerLeftContent>
+          <Border Height="25" Padding="6,0" BorderThickness="0,0,1,0" BorderBrush="{DynamicResource Brush.Border1}">
+            <TextBlock Text="{Binding Prefix, Mode=OneWay}"/>
+          </Border>
+        </v:BranchOrTagNameTextBox.InnerLeftContent>
+      </v:BranchOrTagNameTextBox>
     </Grid>
   </StackPanel>
 </UserControl>

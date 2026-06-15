@@ -467,6 +467,7 @@
   <x:String x:Key="Text.GitFlow.StartPlaceholder" xml:space="preserve">輸入分支名稱</x:String>
   <x:String x:Key="Text.GitFlow.StartRelease" xml:space="preserve">開始發行分支...</x:String>
   <x:String x:Key="Text.GitFlow.StartReleaseTitle" xml:space="preserve">開始發行分支</x:String>
+  <x:String x:Key="Text.GitFlow.StartTarget" xml:space="preserve">分支名稱 ：</x:String>
   <x:String x:Key="Text.GitFlow.TagPrefix" xml:space="preserve">版本標籤前置詞:</x:String>
   <x:String x:Key="Text.GitLFS" xml:space="preserve">Git LFS</x:String>
   <x:String x:Key="Text.GitLFS.AddTrackPattern" xml:space="preserve">加入追蹤檔案規則...</x:String>
