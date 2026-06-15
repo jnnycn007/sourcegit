@@ -936,6 +936,7 @@
   <x:String x:Key="Text.Sure" xml:space="preserve">OK</x:String>
   <x:String x:Key="Text.Tag.Tagger" xml:space="preserve">TAGGER</x:String>
   <x:String x:Key="Text.Tag.Time" xml:space="preserve">TIME</x:String>
+  <x:String x:Key="Text.TagCM.Checkout" xml:space="preserve">Checkout</x:String>
   <x:String x:Key="Text.TagCM.CompareTwo" xml:space="preserve">Compare 2 tags</x:String>
   <x:String x:Key="Text.TagCM.CompareWith" xml:space="preserve">Compare with...</x:String>
   <x:String x:Key="Text.TagCM.CompareWithHead" xml:space="preserve">Compare with HEAD</x:String>

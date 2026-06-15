@@ -234,6 +234,7 @@ namespace SourceGit.Views
             if (selected.Count == 1)
             {
                 var tag = selected[0];
+                var menu = new ContextMenu();
 
                 var createBranch = new MenuItem();
                 createBranch.Icon = this.CreateMenuIcon("Icons.Branch.Add");
@@ -244,6 +245,27 @@ namespace SourceGit.Views
                         repo.ShowPopup(new ViewModels.CreateBranch(repo, tag));
                     ev.Handled = true;
                 };
+                menu.Items.Add(createBranch);
+
+                if (repo.CurrentBranch != null && !tag.SHA.Equals(repo.CurrentBranch.Head, StringComparison.Ordinal))
+                {
+                    var checkoutCommit = new MenuItem();
+                    checkoutCommit.Header = App.Text("TagCM.Checkout");
+                    checkoutCommit.Icon = this.CreateMenuIcon("Icons.Detached");
+                    checkoutCommit.Click += async (_, e) =>
+                    {
+                        var commit = await new Commands.QuerySingleCommit(repo.FullPath, tag.SHA)
+                            .GetResultAsync();
+
+                        if (commit != null && repo.CanCreatePopup())
+                            repo.ShowPopup(new ViewModels.CheckoutCommit(repo, commit));
+
+                        e.Handled = true;
+                    };
+                    menu.Items.Add(checkoutCommit);
+                }
+
+                menu.Items.Add(new MenuItem() { Header = "-" });
 
                 var pushTag = new MenuItem();
                 pushTag.Header = App.Text("TagCM.Push", tag.Name);
@@ -292,9 +314,6 @@ namespace SourceGit.Views
                     ev.Handled = true;
                 };
 
-                var menu = new ContextMenu();
-                menu.Items.Add(createBranch);
-                menu.Items.Add(new MenuItem() { Header = "-" });
                 menu.Items.Add(pushTag);
                 menu.Items.Add(deleteTag);
                 menu.Items.Add(new MenuItem() { Header = "-" });
