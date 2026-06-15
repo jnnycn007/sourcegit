@@ -26,9 +26,43 @@ namespace SourceGit.Models
         public string ReleasePrefix { get; set; } = string.Empty;
         public string HotfixPrefix { get; set; } = string.Empty;
 
-        public void Parse(Dictionary<string, string> config, GitFlowVersion version)
+        public void Parse(Dictionary<string, string> config)
         {
-            if (version == GitFlowVersion.Classic)
+            // Reset to default values
+            ProductionBranch = string.Empty;
+            DevelopmentBranch = string.Empty;
+            FeaturePrefix = string.Empty;
+            ReleasePrefix = string.Empty;
+            HotfixPrefix = string.Empty;
+
+            // Try to parse `git-flow-next` style configuration first.
+            foreach (var kv in config)
+            {
+                if (!kv.Key.StartsWith("gitflow.branch.", StringComparison.Ordinal))
+                    continue;
+
+                if (kv.Key.EndsWith(".type", StringComparison.Ordinal) && kv.Value.Equals("base", StringComparison.Ordinal))
+                {
+                    var b = kv.Key.Substring("gitflow.branch.".Length, kv.Key.Length - "gitflow.branch.".Length - ".type".Length);
+                    if (config.ContainsKey($"gitflow.branch.{b}.parent"))
+                        DevelopmentBranch = b;
+                    else
+                        ProductionBranch = b;
+                }
+                else if (kv.Key.EndsWith(".prefix", StringComparison.Ordinal))
+                {
+                    var t = kv.Key.Substring("gitflow.branch.".Length, kv.Key.Length - "gitflow.branch.".Length - ".prefix".Length);
+                    if (t.Equals("feature", StringComparison.Ordinal))
+                        FeaturePrefix = kv.Value;
+                    else if (t.Equals("release", StringComparison.Ordinal))
+                        ReleasePrefix = kv.Value;
+                    else if (t.Equals("hotfix", StringComparison.Ordinal))
+                        HotfixPrefix = kv.Value;
+                }
+            }
+
+            // Fall back to `git-flow` style configuration if `git-flow-next` style is not valid.
+            if (!IsValid)
             {
                 if (config.TryGetValue("gitflow.branch.master", out var masterName))
                     ProductionBranch = masterName;
@@ -40,41 +74,6 @@ namespace SourceGit.Models
                     ReleasePrefix = releasePrefix;
                 if (config.TryGetValue("gitflow.prefix.hotfix", out var hotfixPrefix))
                     HotfixPrefix = hotfixPrefix;
-            }
-            else if (version == GitFlowVersion.Next)
-            {
-                foreach (var kv in config)
-                {
-                    if (!kv.Key.StartsWith("gitflow.branch.", StringComparison.Ordinal))
-                        continue;
-
-                    if (kv.Key.EndsWith(".type", StringComparison.Ordinal) && kv.Value.Equals("base", StringComparison.Ordinal))
-                    {
-                        var b = kv.Key.Substring("gitflow.branch.".Length, kv.Key.Length - "gitflow.branch.".Length - ".type".Length);
-                        if (config.ContainsKey($"gitflow.branch.{b}.parent"))
-                            DevelopmentBranch = b;
-                        else
-                            ProductionBranch = b;
-                    }
-                    else if (kv.Key.EndsWith(".prefix", StringComparison.Ordinal))
-                    {
-                        var t = kv.Key.Substring("gitflow.branch.".Length, kv.Key.Length - "gitflow.branch.".Length - ".prefix".Length);
-                        if (t.Equals("feature", StringComparison.Ordinal))
-                            FeaturePrefix = kv.Value;
-                        else if (t.Equals("release", StringComparison.Ordinal))
-                            ReleasePrefix = kv.Value;
-                        else if (t.Equals("hotfix", StringComparison.Ordinal))
-                            HotfixPrefix = kv.Value;
-                    }
-                }
-            }
-            else
-            {
-                ProductionBranch = string.Empty;
-                DevelopmentBranch = string.Empty;
-                FeaturePrefix = string.Empty;
-                ReleasePrefix = string.Empty;
-                HotfixPrefix = string.Empty;
             }
         }
 

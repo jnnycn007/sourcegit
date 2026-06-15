@@ -654,7 +654,7 @@ namespace SourceGit.ViewModels
 
                 var config = await new Commands.Config(FullPath).ReadAllAsync().ConfigureAwait(false);
                 _hasAllowedSignersFile = config.TryGetValue("gpg.ssh.allowedsignersfile", out var allowedSignersFile) && !string.IsNullOrEmpty(allowedSignersFile);
-                GitFlow.Parse(config, Native.OS.GitFlowVersion);
+                GitFlow.Parse(config);
             });
         }
 
