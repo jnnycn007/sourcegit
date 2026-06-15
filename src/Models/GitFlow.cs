@@ -36,7 +36,9 @@ namespace SourceGit.Models
             HotfixPrefix = string.Empty;
 
             // Try to parse `git-flow-next` style configuration first if the `git-flow-next` is installed.
-            if (Native.OS.GitFlowVersion == GitFlowVersion.Next)
+            if (Native.OS.GitFlowVersion == GitFlowVersion.Next &&
+                config.TryGetValue("gitflow.initialized", out var initialized) &&
+                initialized.Equals("true", StringComparison.OrdinalIgnoreCase))
             {
                 foreach (var kv in config)
                 {
