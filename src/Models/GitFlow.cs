@@ -35,29 +35,32 @@ namespace SourceGit.Models
             ReleasePrefix = string.Empty;
             HotfixPrefix = string.Empty;
 
-            // Try to parse `git-flow-next` style configuration first.
-            foreach (var kv in config)
+            // Try to parse `git-flow-next` style configuration first if the `git-flow-next` is installed.
+            if (Native.OS.GitFlowVersion == GitFlowVersion.Next)
             {
-                if (!kv.Key.StartsWith("gitflow.branch.", StringComparison.Ordinal))
-                    continue;
+                foreach (var kv in config)
+                {
+                    if (!kv.Key.StartsWith("gitflow.branch.", StringComparison.Ordinal))
+                        continue;
 
-                if (kv.Key.EndsWith(".type", StringComparison.Ordinal) && kv.Value.Equals("base", StringComparison.Ordinal))
-                {
-                    var b = kv.Key.Substring("gitflow.branch.".Length, kv.Key.Length - "gitflow.branch.".Length - ".type".Length);
-                    if (config.ContainsKey($"gitflow.branch.{b}.parent"))
-                        DevelopmentBranch = b;
-                    else
-                        ProductionBranch = b;
-                }
-                else if (kv.Key.EndsWith(".prefix", StringComparison.Ordinal))
-                {
-                    var t = kv.Key.Substring("gitflow.branch.".Length, kv.Key.Length - "gitflow.branch.".Length - ".prefix".Length);
-                    if (t.Equals("feature", StringComparison.Ordinal))
-                        FeaturePrefix = kv.Value;
-                    else if (t.Equals("release", StringComparison.Ordinal))
-                        ReleasePrefix = kv.Value;
-                    else if (t.Equals("hotfix", StringComparison.Ordinal))
-                        HotfixPrefix = kv.Value;
+                    if (kv.Key.EndsWith(".type", StringComparison.Ordinal) && kv.Value.Equals("base", StringComparison.Ordinal))
+                    {
+                        var b = kv.Key.Substring("gitflow.branch.".Length, kv.Key.Length - "gitflow.branch.".Length - ".type".Length);
+                        if (config.ContainsKey($"gitflow.branch.{b}.parent"))
+                            DevelopmentBranch = b;
+                        else
+                            ProductionBranch = b;
+                    }
+                    else if (kv.Key.EndsWith(".prefix", StringComparison.Ordinal))
+                    {
+                        var t = kv.Key.Substring("gitflow.branch.".Length, kv.Key.Length - "gitflow.branch.".Length - ".prefix".Length);
+                        if (t.Equals("feature", StringComparison.Ordinal))
+                            FeaturePrefix = kv.Value;
+                        else if (t.Equals("release", StringComparison.Ordinal))
+                            ReleasePrefix = kv.Value;
+                        else if (t.Equals("hotfix", StringComparison.Ordinal))
+                            HotfixPrefix = kv.Value;
+                    }
                 }
             }
 
