@@ -461,14 +461,15 @@
   <x:String x:Key="Text.GitFlow.ProductionBranch" xml:space="preserve">发布分支 ：</x:String>
   <x:String x:Key="Text.GitFlow.Release" xml:space="preserve">版本分支 ：</x:String>
   <x:String x:Key="Text.GitFlow.ReleasePrefix" xml:space="preserve">版本分支名前缀 ：</x:String>
+  <x:String x:Key="Text.GitFlow.StartAt" xml:space="preserve">开始于 ：</x:String>
   <x:String x:Key="Text.GitFlow.StartFeature" xml:space="preserve">开始特性分支...</x:String>
   <x:String x:Key="Text.GitFlow.StartFeatureTitle" xml:space="preserve">开始特性分支</x:String>
   <x:String x:Key="Text.GitFlow.StartHotfix" xml:space="preserve">开始修复分支...</x:String>
   <x:String x:Key="Text.GitFlow.StartHotfixTitle" xml:space="preserve">开始修复分支</x:String>
+  <x:String x:Key="Text.GitFlow.StartName" xml:space="preserve">分支名 ：</x:String>
   <x:String x:Key="Text.GitFlow.StartPlaceholder" xml:space="preserve">输入分支名</x:String>
   <x:String x:Key="Text.GitFlow.StartRelease" xml:space="preserve">开始版本分支...</x:String>
   <x:String x:Key="Text.GitFlow.StartReleaseTitle" xml:space="preserve">开始版本分支</x:String>
-  <x:String x:Key="Text.GitFlow.StartTarget" xml:space="preserve">新分支名 ：</x:String>
   <x:String x:Key="Text.GitFlow.TagPrefix" xml:space="preserve">版本标签前缀 ：</x:String>
   <x:String x:Key="Text.GitLFS" xml:space="preserve">Git LFS</x:String>
   <x:String x:Key="Text.GitLFS.AddTrackPattern" xml:space="preserve">添加追踪文件规则...</x:String>

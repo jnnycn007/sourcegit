@@ -457,14 +457,15 @@
   <x:String x:Key="Text.GitFlow.ProductionBranch" xml:space="preserve">Production Branch:</x:String>
   <x:String x:Key="Text.GitFlow.Release" xml:space="preserve">Release:</x:String>
   <x:String x:Key="Text.GitFlow.ReleasePrefix" xml:space="preserve">Release Prefix:</x:String>
+  <x:String x:Key="Text.GitFlow.StartAt" xml:space="preserve">Start at:</x:String>
   <x:String x:Key="Text.GitFlow.StartFeature" xml:space="preserve">Start Feature...</x:String>
   <x:String x:Key="Text.GitFlow.StartFeatureTitle" xml:space="preserve">Start Feature</x:String>
   <x:String x:Key="Text.GitFlow.StartHotfix" xml:space="preserve">Start Hotfix...</x:String>
   <x:String x:Key="Text.GitFlow.StartHotfixTitle" xml:space="preserve">Start Hotfix</x:String>
+  <x:String x:Key="Text.GitFlow.StartName" xml:space="preserve">Name:</x:String>
   <x:String x:Key="Text.GitFlow.StartPlaceholder" xml:space="preserve">Enter name</x:String>
   <x:String x:Key="Text.GitFlow.StartRelease" xml:space="preserve">Start Release...</x:String>
   <x:String x:Key="Text.GitFlow.StartReleaseTitle" xml:space="preserve">Start Release</x:String>
-  <x:String x:Key="Text.GitFlow.StartTarget" xml:space="preserve">New Branch:</x:String>
   <x:String x:Key="Text.GitFlow.TagPrefix" xml:space="preserve">Version Tag Prefix:</x:String>
   <x:String x:Key="Text.GitLFS" xml:space="preserve">Git LFS</x:String>
   <x:String x:Key="Text.GitLFS.AddTrackPattern" xml:space="preserve">Add Track Pattern...</x:String>

@@ -11,6 +11,12 @@ namespace SourceGit.ViewModels
             private set;
         }
 
+        public string StartPoint
+        {
+            get;
+            private set;
+        }
+
         public string Prefix
         {
             get;
@@ -32,6 +38,11 @@ namespace SourceGit.ViewModels
 
             Type = type;
             Prefix = _repo.GitFlow.GetPrefix(type);
+            StartPoint = type switch
+            {
+                Models.GitFlowBranchType.Hotfix => _repo.GitFlow.ProductionBranch,
+                _ => _repo.GitFlow.DevelopmentBranch,
+            };
         }
 
         public static ValidationResult ValidateBranchName(string name, ValidationContext ctx)
