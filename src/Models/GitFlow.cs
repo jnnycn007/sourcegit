@@ -6,7 +6,7 @@ namespace SourceGit.Models
     public enum GitFlowVersion
     {
         None = 0,
-        Classic,
+        Legacy,
         Next,
     }
 

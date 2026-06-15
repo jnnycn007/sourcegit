@@ -353,7 +353,7 @@ namespace SourceGit.Native
                     if (rs.Contains("git-flow-next", StringComparison.Ordinal))
                         GitFlowVersion = Models.GitFlowVersion.Next;
                     else
-                        GitFlowVersion = Models.GitFlowVersion.Classic;
+                        GitFlowVersion = Models.GitFlowVersion.Legacy;
                 }
             }
             catch

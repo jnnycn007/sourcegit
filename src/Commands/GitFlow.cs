@@ -99,7 +99,7 @@ namespace SourceGit.Commands
             if (squash)
                 builder.Append("--squash ");
             if (keepBranch)
-                builder.Append(Native.OS.GitFlowVersion == Models.GitFlowVersion.Next ? "--keep " : "-k ");
+                builder.Append("--keep ");
             builder.Append(name);
 
             var finish = new Command();
