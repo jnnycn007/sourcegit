@@ -4,7 +4,6 @@
   </ResourceDictionary.MergedDictionaries>
 
   <x:String x:Key="Text.About" xml:space="preserve">À propos</x:String>
-  <x:String x:Key="Text.About.GitSourceRevision" xml:space="preserve">Révision source :</x:String>
   <x:String x:Key="Text.About.Menu" xml:space="preserve">À propos de SourceGit</x:String>
   <x:String x:Key="Text.About.ReleaseDate" xml:space="preserve">Date de publication : {0}</x:String>
   <x:String x:Key="Text.About.ReleaseNotes" xml:space="preserve">Notes de Version</x:String>

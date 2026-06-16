@@ -6,12 +6,11 @@ This document shows the translation status of each locale file in the repository
 
 ### ![en_US](https://img.shields.io/badge/en__US-%E2%88%9A-brightgreen)
 
-### ![de__DE](https://img.shields.io/badge/de__DE-90.99%25-yellow)
+### ![de__DE](https://img.shields.io/badge/de__DE-91.08%25-yellow)
 
 <details>
 <summary>Missing keys in de_DE.axaml</summary>
 
-- Text.About.GitSourceRevision
 - Text.AIAssistant.Use
 - Text.App.HideOthers
 - Text.Apply.3Way
@@ -231,12 +230,11 @@ This document shows the translation status of each locale file in the repository
 
 </details>
 
-### ![id__ID](https://img.shields.io/badge/id__ID-83.86%25-yellow)
+### ![id__ID](https://img.shields.io/badge/id__ID-83.94%25-yellow)
 
 <details>
 <summary>Missing keys in id_ID.axaml</summary>
 
-- Text.About.GitSourceRevision
 - Text.About.ReleaseDate
 - Text.About.ReleaseNotes
 - Text.AIAssistant.Use
@@ -402,12 +400,11 @@ This document shows the translation status of each locale file in the repository
 
 </details>
 
-### ![it__IT](https://img.shields.io/badge/it__IT-90.50%25-yellow)
+### ![it__IT](https://img.shields.io/badge/it__IT-90.58%25-yellow)
 
 <details>
 <summary>Missing keys in it_IT.axaml</summary>
 
-- Text.About.GitSourceRevision
 - Text.AIAssistant.Use
 - Text.App.HideOthers
 - Text.Apply.3Way
@@ -506,12 +503,11 @@ This document shows the translation status of each locale file in the repository
 
 </details>
 
-### ![ja__JP](https://img.shields.io/badge/ja__JP-91.29%25-yellow)
+### ![ja__JP](https://img.shields.io/badge/ja__JP-91.38%25-yellow)
 
 <details>
 <summary>Missing keys in ja_JP.axaml</summary>
 
-- Text.About.GitSourceRevision
 - Text.AIAssistant.Use
 - Text.App.HideOthers
 - Text.Apply.3Way
@@ -624,12 +620,11 @@ This document shows the translation status of each locale file in the repository
 
 </details>
 
-### ![pt__BR](https://img.shields.io/badge/pt__BR-63.76%25-red)
+### ![pt__BR](https://img.shields.io/badge/pt__BR-63.83%25-red)
 
 <details>
 <summary>Missing keys in pt_BR.axaml</summary>
 
-- Text.About.GitSourceRevision
 - Text.AIAssistant.Use
 - Text.App.HideOthers
 - Text.Apply.3Way
@@ -1020,12 +1015,11 @@ This document shows the translation status of each locale file in the repository
 
 </details>
 
-### ![ta__IN](https://img.shields.io/badge/ta__IN-65.64%25-red)
+### ![ta__IN](https://img.shields.io/badge/ta__IN-65.71%25-red)
 
 <details>
 <summary>Missing keys in ta_IN.axaml</summary>
 
-- Text.About.GitSourceRevision
 - Text.About.ReleaseDate
 - Text.About.ReleaseNotes
 - Text.AddToIgnore
@@ -1375,12 +1369,11 @@ This document shows the translation status of each locale file in the repository
 
 </details>
 
-### ![uk__UA](https://img.shields.io/badge/uk__UA-66.44%25-red)
+### ![uk__UA](https://img.shields.io/badge/uk__UA-66.50%25-red)
 
 <details>
 <summary>Missing keys in uk_UA.axaml</summary>
 
-- Text.About.GitSourceRevision
 - Text.About.ReleaseDate
 - Text.About.ReleaseNotes
 - Text.AddToIgnore

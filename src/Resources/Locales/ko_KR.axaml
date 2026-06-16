@@ -4,7 +4,6 @@
   </ResourceDictionary.MergedDictionaries>
 
   <x:String x:Key="Text.About" xml:space="preserve">정보</x:String>
-  <x:String x:Key="Text.About.GitSourceRevision" xml:space="preserve">소스 버전:</x:String>
   <x:String x:Key="Text.About.Menu" xml:space="preserve">SourceGit 정보</x:String>
   <x:String x:Key="Text.About.ReleaseDate" xml:space="preserve">배포일: {0}</x:String>
   <x:String x:Key="Text.About.ReleaseNotes" xml:space="preserve">릴리스 노트</x:String>

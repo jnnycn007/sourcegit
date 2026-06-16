@@ -4,7 +4,6 @@
   </ResourceDictionary.MergedDictionaries>
 
   <x:String x:Key="Text.About" xml:space="preserve">Σχετικά</x:String>
-  <x:String x:Key="Text.About.GitSourceRevision" xml:space="preserve">Αναθεώρηση πηγαίου κώδικα:</x:String>
   <x:String x:Key="Text.About.Menu" xml:space="preserve">Σχετικά με το SourceGit</x:String>
   <x:String x:Key="Text.About.ReleaseDate" xml:space="preserve">Ημερομηνία έκδοσης: {0}</x:String>
   <x:String x:Key="Text.About.ReleaseNotes" xml:space="preserve">Σημειώσεις έκδοσης</x:String>
