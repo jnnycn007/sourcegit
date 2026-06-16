@@ -117,6 +117,9 @@
   <x:String x:Key="Text.ChangeSubmoduleUrl.Submodule" xml:space="preserve">子模組:</x:String>
   <x:String x:Key="Text.ChangeSubmoduleUrl.URL" xml:space="preserve">遠端網址:</x:String>
   <x:String x:Key="Text.Checkout" xml:space="preserve">簽出 (checkout) 分支</x:String>
+  <x:String x:Key="Text.Checkout.Commit" xml:space="preserve">簽出 (checkout) 提交</x:String>
+  <x:String x:Key="Text.Checkout.Commit.Target" xml:space="preserve">提交:</x:String>
+  <x:String x:Key="Text.Checkout.Commit.Warning" xml:space="preserve">注意: 執行該操作後，目前 HEAD 會變為分離 (detached) 狀態!</x:String>
   <x:String x:Key="Text.Checkout.LocalChanges" xml:space="preserve">未提交變更:</x:String>
   <x:String x:Key="Text.Checkout.Target" xml:space="preserve">目標分支:</x:String>
   <x:String x:Key="Text.Checkout.WarnLostCommits" xml:space="preserve">您目前的分離的 HEAD 包含與任何分支/標籤無關的提交! 您要繼續嗎?</x:String>
@@ -940,7 +943,7 @@
   <x:String x:Key="Text.Sure" xml:space="preserve">確  定</x:String>
   <x:String x:Key="Text.Tag.Tagger" xml:space="preserve">建立者</x:String>
   <x:String x:Key="Text.Tag.Time" xml:space="preserve">建立時間</x:String>
-  <x:String x:Key="Text.TagCM.Checkout" xml:space="preserve">簽出標籤</x:String>
+  <x:String x:Key="Text.TagCM.Checkout" xml:space="preserve">簽出標籤...</x:String>
   <x:String x:Key="Text.TagCM.CompareTwo" xml:space="preserve">比較 2 個標籤</x:String>
   <x:String x:Key="Text.TagCM.CompareWith" xml:space="preserve">與分支或標籤進行比較...</x:String>
   <x:String x:Key="Text.TagCM.CompareWithHead" xml:space="preserve">與目前 HEAD 比較</x:String>

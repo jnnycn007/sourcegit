@@ -151,7 +151,7 @@
   <x:String x:Key="Text.CommandPalette.RevisionFiles" xml:space="preserve">Revision Files</x:String>
   <x:String x:Key="Text.CommitCM.Checkout" xml:space="preserve">Checkout Commit</x:String>
   <x:String x:Key="Text.CommitCM.CherryPick" xml:space="preserve">Cherry-Pick Commit</x:String>
-  <x:String x:Key="Text.CommitCM.CherryPickMultiple" xml:space="preserve">Cherry-Pick ...</x:String>
+  <x:String x:Key="Text.CommitCM.CherryPickMultiple" xml:space="preserve">Cherry-Pick...</x:String>
   <x:String x:Key="Text.CommitCM.CompareWithHead" xml:space="preserve">Compare with HEAD</x:String>
   <x:String x:Key="Text.CommitCM.CompareWithWorktree" xml:space="preserve">Compare with Worktree</x:String>
   <x:String x:Key="Text.CommitCM.CopyAuthor" xml:space="preserve">Author</x:String>
@@ -169,7 +169,7 @@
   <x:String x:Key="Text.CommitCM.InteractiveRebase.Manually" xml:space="preserve">Interactively Rebase ${0}$ on ${1}$</x:String>
   <x:String x:Key="Text.CommitCM.InteractiveRebase.Reword" xml:space="preserve">Reword...</x:String>
   <x:String x:Key="Text.CommitCM.InteractiveRebase.Squash" xml:space="preserve">Squash into Parent...</x:String>
-  <x:String x:Key="Text.CommitCM.MergeMultiple" xml:space="preserve">Merge ...</x:String>
+  <x:String x:Key="Text.CommitCM.MergeMultiple" xml:space="preserve">Merge...</x:String>
   <x:String x:Key="Text.CommitCM.PushRevision" xml:space="preserve">Push ${0}$ to ${1}$</x:String>
   <x:String x:Key="Text.CommitCM.Rebase" xml:space="preserve">Rebase ${0}$ on ${1}$</x:String>
   <x:String x:Key="Text.CommitCM.Reset" xml:space="preserve">Reset ${0}$ to ${1}$</x:String>
@@ -749,7 +749,7 @@
   <x:String x:Key="Text.Rebase.AutoStash" xml:space="preserve">Stash &amp; reapply local changes</x:String>
   <x:String x:Key="Text.Rebase.NoVerify" xml:space="preserve">Bypass the pre-rebase hook</x:String>
   <x:String x:Key="Text.Rebase.On" xml:space="preserve">On:</x:String>
-  <x:String x:Key="Text.Rebase.Test" xml:space="preserve">Testing for rebase ...</x:String>
+  <x:String x:Key="Text.Rebase.Test" xml:space="preserve">Testing for rebase...</x:String>
   <x:String x:Key="Text.Rebase.Test.OK" xml:space="preserve">Rebase can be done without conflicts</x:String>
   <x:String x:Key="Text.Rebase.Test.UnknownError" xml:space="preserve">Unknown error occurs while testing for rebase</x:String>
   <x:String x:Key="Text.Rebase.Test.WillCauseConflicts" xml:space="preserve">Rebase will cause conflicts</x:String>
@@ -936,7 +936,7 @@
   <x:String x:Key="Text.Sure" xml:space="preserve">OK</x:String>
   <x:String x:Key="Text.Tag.Tagger" xml:space="preserve">TAGGER</x:String>
   <x:String x:Key="Text.Tag.Time" xml:space="preserve">TIME</x:String>
-  <x:String x:Key="Text.TagCM.Checkout" xml:space="preserve">Checkout Tag</x:String>
+  <x:String x:Key="Text.TagCM.Checkout" xml:space="preserve">Checkout Tag...</x:String>
   <x:String x:Key="Text.TagCM.CompareTwo" xml:space="preserve">Compare 2 tags</x:String>
   <x:String x:Key="Text.TagCM.CompareWith" xml:space="preserve">Compare with...</x:String>
   <x:String x:Key="Text.TagCM.CompareWithHead" xml:space="preserve">Compare with HEAD</x:String>

@@ -42,7 +42,7 @@
   <x:String x:Key="Text.ApplyStash.DropAfterApply" xml:space="preserve">在成功应用后丢弃该贮藏</x:String>
   <x:String x:Key="Text.ApplyStash.RestoreIndex" xml:space="preserve">恢复索引中已暂存的变化</x:String>
   <x:String x:Key="Text.ApplyStash.Stash" xml:space="preserve">已选贮藏 ：</x:String>
-  <x:String x:Key="Text.Archive" xml:space="preserve">存档(archive) ...</x:String>
+  <x:String x:Key="Text.Archive" xml:space="preserve">存档(archive)...</x:String>
   <x:String x:Key="Text.Archive.File" xml:space="preserve">存档文件路径：</x:String>
   <x:String x:Key="Text.Archive.File.Placeholder" xml:space="preserve">选择存档文件的存放路径</x:String>
   <x:String x:Key="Text.Archive.Revision" xml:space="preserve">指定的提交：</x:String>
@@ -73,8 +73,8 @@
   <x:String x:Key="Text.BranchCM.CompareWithHead" xml:space="preserve">与当前 HEAD 比较</x:String>
   <x:String x:Key="Text.BranchCM.CompareWithSpecial" xml:space="preserve">与 ${0}$ 比较</x:String>
   <x:String x:Key="Text.BranchCM.CopyName" xml:space="preserve">复制分支名</x:String>
-  <x:String x:Key="Text.BranchCM.CreatePR" xml:space="preserve">创建合并请求 ...</x:String>
-  <x:String x:Key="Text.BranchCM.CreatePRForUpstream" xml:space="preserve">为上游分支 ${0}$ 创建合并请求 ...</x:String>
+  <x:String x:Key="Text.BranchCM.CreatePR" xml:space="preserve">创建合并请求...</x:String>
+  <x:String x:Key="Text.BranchCM.CreatePRForUpstream" xml:space="preserve">为上游分支 ${0}$ 创建合并请求...</x:String>
   <x:String x:Key="Text.BranchCM.CustomAction" xml:space="preserve">自定义操作</x:String>
   <x:String x:Key="Text.BranchCM.Delete" xml:space="preserve">删除 ${0}$...</x:String>
   <x:String x:Key="Text.BranchCM.DeleteMultiBranches" xml:space="preserve">删除选中的 {0} 个分支</x:String>
@@ -92,7 +92,7 @@
   <x:String x:Key="Text.BranchCM.Rename" xml:space="preserve">重命名 ${0}$...</x:String>
   <x:String x:Key="Text.BranchCM.ResetToSelectedCommit" xml:space="preserve">重置(reset) ${0}$ 到 ${1}$...</x:String>
   <x:String x:Key="Text.BranchCM.SwitchToWorktree" xml:space="preserve">切换到 ${0}$ (工作树)</x:String>
-  <x:String x:Key="Text.BranchCM.Tracking" xml:space="preserve">切换上游分支 ...</x:String>
+  <x:String x:Key="Text.BranchCM.Tracking" xml:space="preserve">切换上游分支...</x:String>
   <x:String x:Key="Text.BranchTree.Ahead" xml:space="preserve">领先 {0} 个提交</x:String>
   <x:String x:Key="Text.BranchTree.AheadBehind" xml:space="preserve">领先 {0} 个提交，落后 {1} 个提交</x:String>
   <x:String x:Key="Text.BranchTree.Behind" xml:space="preserve">落后 {0} 个提交</x:String>
@@ -178,7 +178,7 @@
   <x:String x:Key="Text.CommitCM.Rebase" xml:space="preserve">变基(rebase) ${0}$ 到 ${1}</x:String>
   <x:String x:Key="Text.CommitCM.Reset" xml:space="preserve">重置(reset) ${0}$ 到 ${1}</x:String>
   <x:String x:Key="Text.CommitCM.Revert" xml:space="preserve">回滚此提交</x:String>
-  <x:String x:Key="Text.CommitCM.SaveAsPatch" xml:space="preserve">另存为补丁 ...</x:String>
+  <x:String x:Key="Text.CommitCM.SaveAsPatch" xml:space="preserve">另存为补丁...</x:String>
   <x:String x:Key="Text.CommitDetail.Changes" xml:space="preserve">变更对比</x:String>
   <x:String x:Key="Text.CommitDetail.Changes.Count" xml:space="preserve">个文件发生变更</x:String>
   <x:String x:Key="Text.CommitDetail.Changes.Search" xml:space="preserve">查找变更...</x:String>
@@ -318,7 +318,7 @@
   <x:String x:Key="Text.CopyAsPatch" xml:space="preserve">复制为补丁</x:String>
   <x:String x:Key="Text.CopyFullPath" xml:space="preserve">复制完整路径</x:String>
   <x:String x:Key="Text.CopyPath" xml:space="preserve">复制路径</x:String>
-  <x:String x:Key="Text.CreateBranch" xml:space="preserve">新建分支 ...</x:String>
+  <x:String x:Key="Text.CreateBranch" xml:space="preserve">新建分支...</x:String>
   <x:String x:Key="Text.CreateBranch.BasedOn" xml:space="preserve">新分支基于 ：</x:String>
   <x:String x:Key="Text.CreateBranch.Checkout" xml:space="preserve">完成后切换到新分支</x:String>
   <x:String x:Key="Text.CreateBranch.LocalChanges" xml:space="preserve">未提交更改 ：</x:String>
@@ -326,7 +326,7 @@
   <x:String x:Key="Text.CreateBranch.Name.Placeholder" xml:space="preserve">填写分支名称。</x:String>
   <x:String x:Key="Text.CreateBranch.Title" xml:space="preserve">创建本地分支</x:String>
   <x:String x:Key="Text.CreateBranch.OverwriteExisting" xml:space="preserve">允许重置已存在的分支</x:String>
-  <x:String x:Key="Text.CreateTag" xml:space="preserve">新建标签 ...</x:String>
+  <x:String x:Key="Text.CreateTag" xml:space="preserve">新建标签...</x:String>
   <x:String x:Key="Text.CreateTag.BasedOn" xml:space="preserve">标签位于 ：</x:String>
   <x:String x:Key="Text.CreateTag.GPGSign" xml:space="preserve">使用GPG签名</x:String>
   <x:String x:Key="Text.CreateTag.Message" xml:space="preserve">标签描述 ：</x:String>
@@ -753,7 +753,7 @@
   <x:String x:Key="Text.Rebase.AutoStash" xml:space="preserve">自动贮藏并恢复本地变更</x:String>
   <x:String x:Key="Text.Rebase.NoVerify" xml:space="preserve">绕过 pre-rebase 钩子</x:String>
   <x:String x:Key="Text.Rebase.On" xml:space="preserve">目标提交 ：</x:String>
-  <x:String x:Key="Text.Rebase.Test" xml:space="preserve">检测变基冲突中 ...</x:String>
+  <x:String x:Key="Text.Rebase.Test" xml:space="preserve">检测变基冲突中...</x:String>
   <x:String x:Key="Text.Rebase.Test.OK" xml:space="preserve">未检测到文件冲突</x:String>
   <x:String x:Key="Text.Rebase.Test.UnknownError" xml:space="preserve">检测变基冲突时出现未知错误</x:String>
   <x:String x:Key="Text.Rebase.Test.WillCauseConflicts" xml:space="preserve">检测到冲突文件</x:String>
@@ -765,8 +765,8 @@
   <x:String x:Key="Text.Remote.URL.Placeholder" xml:space="preserve">远程仓库的地址</x:String>
   <x:String x:Key="Text.RemoteCM.CopyURL" xml:space="preserve">复制远程地址</x:String>
   <x:String x:Key="Text.RemoteCM.CustomAction" xml:space="preserve">自定义操作</x:String>
-  <x:String x:Key="Text.RemoteCM.Delete" xml:space="preserve">删除 ...</x:String>
-  <x:String x:Key="Text.RemoteCM.Edit" xml:space="preserve">编辑 ...</x:String>
+  <x:String x:Key="Text.RemoteCM.Delete" xml:space="preserve">删除...</x:String>
+  <x:String x:Key="Text.RemoteCM.Edit" xml:space="preserve">编辑...</x:String>
   <x:String x:Key="Text.RemoteCM.EnableAutoFetch" xml:space="preserve">启用自动拉取</x:String>
   <x:String x:Key="Text.RemoteCM.Fetch" xml:space="preserve">拉取(fetch)更新</x:String>
   <x:String x:Key="Text.RemoteCM.OpenInBrowser" xml:space="preserve">在浏览器中打开</x:String>
@@ -940,7 +940,7 @@
   <x:String x:Key="Text.Sure" xml:space="preserve">确    定</x:String>
   <x:String x:Key="Text.Tag.Tagger" xml:space="preserve">创建者</x:String>
   <x:String x:Key="Text.Tag.Time" xml:space="preserve">创建时间</x:String>
-  <x:String x:Key="Text.TagCM.Checkout" xml:space="preserve">检出标签</x:String>
+  <x:String x:Key="Text.TagCM.Checkout" xml:space="preserve">检出标签...</x:String>
   <x:String x:Key="Text.TagCM.CompareTwo" xml:space="preserve">比较 2 个标签</x:String>
   <x:String x:Key="Text.TagCM.CompareWith" xml:space="preserve">与其他分支或标签比较...</x:String>
   <x:String x:Key="Text.TagCM.CompareWithHead" xml:space="preserve">与当前 HEAD 比较</x:String>
