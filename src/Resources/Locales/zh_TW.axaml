@@ -129,6 +129,9 @@
   <x:String x:Key="Text.CheckoutBranchFromStash" xml:space="preserve">從所選擱置簽出分支</x:String>
   <x:String x:Key="Text.CheckoutBranchFromStash.Branch" xml:space="preserve">新分支:</x:String>
   <x:String x:Key="Text.CheckoutBranchFromStash.Stash" xml:space="preserve">所選擱置:</x:String>
+  <x:String x:Key="Text.CheckoutDetached" xml:space="preserve">簽出提交或標籤</x:String>
+  <x:String x:Key="Text.CheckoutDetached.Target" xml:space="preserve">目標:</x:String>
+  <x:String x:Key="Text.CheckoutDetached.Warning" xml:space="preserve">注意：執行該操作後，目前 HEAD 會變為分離 (detached) 狀態!</x:String>
   <x:String x:Key="Text.CherryPick" xml:space="preserve">揀選提交</x:String>
   <x:String x:Key="Text.CherryPick.AppendSourceToMessage" xml:space="preserve">提交資訊中追加來源資訊</x:String>
   <x:String x:Key="Text.CherryPick.Commit" xml:space="preserve">提交列表:</x:String>

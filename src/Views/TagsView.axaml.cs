@@ -252,13 +252,10 @@ namespace SourceGit.Views
                     var checkoutCommit = new MenuItem();
                     checkoutCommit.Header = App.Text("TagCM.Checkout");
                     checkoutCommit.Icon = this.CreateMenuIcon("Icons.Detached");
-                    checkoutCommit.Click += async (_, e) =>
+                    checkoutCommit.Click += (_, e) =>
                     {
-                        var commit = await new Commands.QuerySingleCommit(repo.FullPath, tag.SHA)
-                            .GetResultAsync();
-
-                        if (commit != null && repo.CanCreatePopup())
-                            repo.ShowPopup(new ViewModels.CheckoutCommit(repo, commit));
+                        if (repo.CanCreatePopup())
+                            repo.ShowPopup(new ViewModels.CheckoutDetached(repo, tag));
 
                         e.Handled = true;
                     };

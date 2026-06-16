@@ -1030,7 +1030,7 @@ namespace SourceGit.Views
                     checkoutCommit.Click += (_, e) =>
                     {
                         if (repo.CanCreatePopup())
-                            repo.ShowPopup(new ViewModels.CheckoutCommit(repo, commit));
+                            repo.ShowPopup(new ViewModels.CheckoutDetached(repo, commit));
                         e.Handled = true;
                     };
                     menu.Items.Add(checkoutCommit);
