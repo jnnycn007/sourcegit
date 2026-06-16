@@ -107,9 +107,6 @@
   <x:String x:Key="Text.ChangeSubmoduleUrl.Submodule" xml:space="preserve">サブモジュール:</x:String>
   <x:String x:Key="Text.ChangeSubmoduleUrl.URL" xml:space="preserve">URL:</x:String>
   <x:String x:Key="Text.Checkout" xml:space="preserve">ブランチをチェックアウト</x:String>
-  <x:String x:Key="Text.Checkout.Commit" xml:space="preserve">コミットをチェックアウト</x:String>
-  <x:String x:Key="Text.Checkout.Commit.Target" xml:space="preserve">コミット:</x:String>
-  <x:String x:Key="Text.Checkout.Commit.Warning" xml:space="preserve">警告: コミットをチェックアウトすると、HEAD が切断されます</x:String>
   <x:String x:Key="Text.Checkout.LocalChanges" xml:space="preserve">ローカルの変更:</x:String>
   <x:String x:Key="Text.Checkout.Target" xml:space="preserve">ブランチ:</x:String>
   <x:String x:Key="Text.Checkout.WarnLostCommits" xml:space="preserve">現在の HEAD には、どのブランチやタグにも繋がっていないコミットが含まれています！それでも続行しますか？</x:String>

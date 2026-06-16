@@ -94,9 +94,6 @@
   <x:String x:Key="Text.ChangeSubmoduleUrl.Submodule" xml:space="preserve">Submodule:</x:String>
   <x:String x:Key="Text.ChangeSubmoduleUrl.URL" xml:space="preserve">URL:</x:String>
   <x:String x:Key="Text.Checkout" xml:space="preserve">Checkout Branch</x:String>
-  <x:String x:Key="Text.Checkout.Commit" xml:space="preserve">Checkout Commit</x:String>
-  <x:String x:Key="Text.Checkout.Commit.Target" xml:space="preserve">Commit:</x:String>
-  <x:String x:Key="Text.Checkout.Commit.Warning" xml:space="preserve">Peringatan: Dengan melakukan checkout commit, Head akan terlepas</x:String>
   <x:String x:Key="Text.Checkout.LocalChanges" xml:space="preserve">Perubahan Lokal:</x:String>
   <x:String x:Key="Text.Checkout.Target" xml:space="preserve">Branch:</x:String>
   <x:String x:Key="Text.Checkout.WarnLostCommits" xml:space="preserve">HEAD saat ini mengandung commit yang tidak terhubung ke branch/tag manapun! Lanjutkan?</x:String>

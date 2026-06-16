@@ -112,9 +112,6 @@
   <x:String x:Key="Text.ChangeSubmoduleUrl.Submodule" xml:space="preserve">Submodule:</x:String>
   <x:String x:Key="Text.ChangeSubmoduleUrl.URL" xml:space="preserve">URL:</x:String>
   <x:String x:Key="Text.Checkout" xml:space="preserve">Checkout של Branch</x:String>
-  <x:String x:Key="Text.Checkout.Commit" xml:space="preserve">Checkout של Commit</x:String>
-  <x:String x:Key="Text.Checkout.Commit.Target" xml:space="preserve">Commit:</x:String>
-  <x:String x:Key="Text.Checkout.Commit.Warning" xml:space="preserve">אזהרה: ביצוע checkout ל־commit יגרום ל־HEAD להפוך ל־detached</x:String>
   <x:String x:Key="Text.Checkout.LocalChanges" xml:space="preserve">שינויים מקומיים:</x:String>
   <x:String x:Key="Text.Checkout.Target" xml:space="preserve">Branch:</x:String>
   <x:String x:Key="Text.Checkout.WarnLostCommits" xml:space="preserve">ה־HEAD הנוכחי מכיל commits שאינם מקושרים לאף branch או tag! האם להמשיך?</x:String>

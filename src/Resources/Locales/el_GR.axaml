@@ -112,9 +112,6 @@
   <x:String x:Key="Text.ChangeSubmoduleUrl.Submodule" xml:space="preserve">Υπομονάδα:</x:String>
   <x:String x:Key="Text.ChangeSubmoduleUrl.URL" xml:space="preserve">URL:</x:String>
   <x:String x:Key="Text.Checkout" xml:space="preserve">Checkout κλάδου</x:String>
-  <x:String x:Key="Text.Checkout.Commit" xml:space="preserve">Checkout commit</x:String>
-  <x:String x:Key="Text.Checkout.Commit.Target" xml:space="preserve">Commit:</x:String>
-  <x:String x:Key="Text.Checkout.Commit.Warning" xml:space="preserve">Προειδοποίηση: Με το checkout σε commit, το HEAD θα αποσυνδεθεί (detached)</x:String>
   <x:String x:Key="Text.Checkout.LocalChanges" xml:space="preserve">Τοπικές αλλαγές:</x:String>
   <x:String x:Key="Text.Checkout.Target" xml:space="preserve">Κλάδος:</x:String>
   <x:String x:Key="Text.Checkout.WarnLostCommits" xml:space="preserve">Το τρέχον HEAD περιέχει commit που δεν συνδέονται με κανέναν κλάδο/ετικέτα! Θέλετε να συνεχίσετε;</x:String>

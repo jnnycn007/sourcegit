@@ -112,9 +112,6 @@
   <x:String x:Key="Text.ChangeSubmoduleUrl.Submodule" xml:space="preserve">Submódulo:</x:String>
   <x:String x:Key="Text.ChangeSubmoduleUrl.URL" xml:space="preserve">URL:</x:String>
   <x:String x:Key="Text.Checkout" xml:space="preserve">Checkout Rama</x:String>
-  <x:String x:Key="Text.Checkout.Commit" xml:space="preserve">Checkout Commit</x:String>
-  <x:String x:Key="Text.Checkout.Commit.Target" xml:space="preserve">Commit:</x:String>
-  <x:String x:Key="Text.Checkout.Commit.Warning" xml:space="preserve">Advertencia: Al hacer un checkout de commit, tu Head se separará</x:String>
   <x:String x:Key="Text.Checkout.LocalChanges" xml:space="preserve">Cambios Locales:</x:String>
   <x:String x:Key="Text.Checkout.Target" xml:space="preserve">Rama:</x:String>
   <x:String x:Key="Text.Checkout.WarnLostCommits" xml:space="preserve">¡Tu HEAD actual contiene commit(s) que no están conectados a ningunas ramas/etiquetas! ¿Quieres continuar?</x:String>

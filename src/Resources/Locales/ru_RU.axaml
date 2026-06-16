@@ -115,9 +115,6 @@
   <x:String x:Key="Text.ChangeSubmoduleUrl.Submodule" xml:space="preserve">Подмодуль:</x:String>
   <x:String x:Key="Text.ChangeSubmoduleUrl.URL" xml:space="preserve">URL-адрес:</x:String>
   <x:String x:Key="Text.Checkout" xml:space="preserve">Переключить ветку</x:String>
-  <x:String x:Key="Text.Checkout.Commit" xml:space="preserve">Переключение ревизии</x:String>
-  <x:String x:Key="Text.Checkout.Commit.Target" xml:space="preserve">Ревизия:</x:String>
-  <x:String x:Key="Text.Checkout.Commit.Warning" xml:space="preserve">Предупреждение: После переключения ревизии ваша Голова (HEAD) будет отсоединена</x:String>
   <x:String x:Key="Text.Checkout.LocalChanges" xml:space="preserve">Локальные изменения:</x:String>
   <x:String x:Key="Text.Checkout.Target" xml:space="preserve">Ветка:</x:String>
   <x:String x:Key="Text.Checkout.WarnLostCommits" xml:space="preserve">Ваша текущая ГОЛОВА содержит ревизию(и), не связанные ни с к какими ветками или метками! Вы хотите продолжить?</x:String>
