@@ -11,7 +11,7 @@
     <StackPanel Orientation="Horizontal">
       <Path Width="16" Height="16"
             Margin="0,0,8,0"
-            Data="{StaticResource Icons.GitFlow}"/>
+            Data="{StaticResource Icons.GitFlow.Finish}"/>
 
       <TextBlock FontSize="18"
                  Classes="bold"

@@ -234,7 +234,6 @@ namespace SourceGit.Views
                 {
                     var startFeature = new MenuItem();
                     startFeature.Header = App.Text("GitFlow.StartFeature");
-                    startFeature.Icon = this.CreateMenuIcon("Icons.GitFlow.Feature");
                     startFeature.Click += (_, e) =>
                     {
                         if (repo.CanCreatePopup())
@@ -244,7 +243,6 @@ namespace SourceGit.Views
 
                     var startRelease = new MenuItem();
                     startRelease.Header = App.Text("GitFlow.StartRelease");
-                    startRelease.Icon = this.CreateMenuIcon("Icons.GitFlow.Release");
                     startRelease.Click += (_, e) =>
                     {
                         if (repo.CanCreatePopup())
@@ -254,7 +252,6 @@ namespace SourceGit.Views
 
                     var startHotfix = new MenuItem();
                     startHotfix.Header = App.Text("GitFlow.StartHotfix");
-                    startHotfix.Icon = this.CreateMenuIcon("Icons.GitFlow.Hotfix");
                     startHotfix.Click += (_, e) =>
                     {
                         if (repo.CanCreatePopup())
@@ -271,7 +268,7 @@ namespace SourceGit.Views
                     {
                         var finish = new MenuItem();
                         finish.Header = App.Text("GitFlow.Finish", repo.CurrentBranch.Name);
-                        finish.Icon = this.CreateMenuIcon("Icons.GitFlow");
+                        finish.Icon = this.CreateMenuIcon("Icons.GitFlow.Finish");
                         finish.Click += (_, e) =>
                         {
                             if (repo.CanCreatePopup())
