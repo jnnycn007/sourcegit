@@ -53,6 +53,9 @@ namespace SourceGit.Models
 
             Task.Run(async () =>
             {
+                using var client = new HttpClient();
+                client.Timeout = TimeSpan.FromSeconds(2);
+
                 while (true)
                 {
                     string email = null;
@@ -88,8 +91,6 @@ namespace SourceGit.Models
                     Bitmap img = null;
                     try
                     {
-                        using var client = new HttpClient();
-                        client.Timeout = TimeSpan.FromSeconds(2);
                         var rsp = await client.GetAsync(url);
                         if (rsp.IsSuccessStatusCode)
                         {
