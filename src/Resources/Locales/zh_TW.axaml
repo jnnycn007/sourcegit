@@ -76,17 +76,17 @@
   <x:String x:Key="Text.BranchCM.CreatePRForUpstream" xml:space="preserve">為上游分支 ${0}$ 建立拉取請求...</x:String>
   <x:String x:Key="Text.BranchCM.CustomAction" xml:space="preserve">自訂動作</x:String>
   <x:String x:Key="Text.BranchCM.Delete" xml:space="preserve">刪除 ${0}$...</x:String>
-  <x:String x:Key="Text.BranchCM.DeleteMultiBranches" xml:space="preserve">刪除所選的 {0} 個分支</x:String>
+  <x:String x:Key="Text.BranchCM.DeleteMultiBranches" xml:space="preserve">刪除所選的 {0} 個分支...</x:String>
   <x:String x:Key="Text.BranchCM.EditDescription" xml:space="preserve">編輯 ${0}$ 的描述...</x:String>
   <x:String x:Key="Text.BranchCM.FastForward" xml:space="preserve">快轉 (fast-forward) 到 ${0}$</x:String>
   <x:String x:Key="Text.BranchCM.FetchInto" xml:space="preserve">提取 (fetch) ${0}$ 到 ${1}$...</x:String>
-  <x:String x:Key="Text.BranchCM.Finish" xml:space="preserve">Git 工作流 - 完成 ${0}$</x:String>
+  <x:String x:Key="Text.BranchCM.Finish" xml:space="preserve">Git 工作流 - 完成 ${0}$...</x:String>
   <x:String x:Key="Text.BranchCM.InteractiveRebase.Manually" xml:space="preserve">互動式重定基底 ${0}$ 至 ${1}$</x:String>
   <x:String x:Key="Text.BranchCM.Merge" xml:space="preserve">合併 ${0}$ 到 ${1}$...</x:String>
-  <x:String x:Key="Text.BranchCM.MergeMultiBranches" xml:space="preserve">合併 {0} 個分支到目前分支</x:String>
-  <x:String x:Key="Text.BranchCM.Pull" xml:space="preserve">拉取 (pull) ${0}$</x:String>
+  <x:String x:Key="Text.BranchCM.MergeMultiBranches" xml:space="preserve">合併 {0} 個分支到目前分支...</x:String>
+  <x:String x:Key="Text.BranchCM.Pull" xml:space="preserve">拉取 (pull) ${0}$...</x:String>
   <x:String x:Key="Text.BranchCM.PullInto" xml:space="preserve">拉取 (pull) ${0}$ 內容至 ${1}$...</x:String>
-  <x:String x:Key="Text.BranchCM.Push" xml:space="preserve">推送 (push) ${0}$</x:String>
+  <x:String x:Key="Text.BranchCM.Push" xml:space="preserve">推送 (push) ${0}$...</x:String>
   <x:String x:Key="Text.BranchCM.Rebase" xml:space="preserve">重定基底 (rebase) ${0}$ 分支至 ${1}$...</x:String>
   <x:String x:Key="Text.BranchCM.Rename" xml:space="preserve">重新命名 ${0}$...</x:String>
   <x:String x:Key="Text.BranchCM.ResetToSelectedCommit" xml:space="preserve">重設 ${0}$ 至 ${1}$...</x:String>
@@ -152,8 +152,8 @@
   <x:String x:Key="Text.CommandPalette.BranchesAndTags" xml:space="preserve">分支 &amp; 標籤</x:String>
   <x:String x:Key="Text.CommandPalette.RepositoryActions" xml:space="preserve">自訂動作</x:String>
   <x:String x:Key="Text.CommandPalette.RevisionFiles" xml:space="preserve">檔案列表</x:String>
-  <x:String x:Key="Text.CommitCM.Checkout" xml:space="preserve">簽出 (checkout) 此提交</x:String>
-  <x:String x:Key="Text.CommitCM.CherryPick" xml:space="preserve">揀選 (cherry-pick) 此提交</x:String>
+  <x:String x:Key="Text.CommitCM.Checkout" xml:space="preserve">簽出 (checkout) 此提交...</x:String>
+  <x:String x:Key="Text.CommitCM.CherryPick" xml:space="preserve">揀選 (cherry-pick) 此提交...</x:String>
   <x:String x:Key="Text.CommitCM.CherryPickMultiple" xml:space="preserve">揀選 (cherry-pick)...</x:String>
   <x:String x:Key="Text.CommitCM.CompareWithHead" xml:space="preserve">與目前 HEAD 比較</x:String>
   <x:String x:Key="Text.CommitCM.CompareWithWorktree" xml:space="preserve">與本機工作區比較</x:String>
@@ -173,10 +173,10 @@
   <x:String x:Key="Text.CommitCM.InteractiveRebase.Reword" xml:space="preserve">編輯提交訊息...</x:String>
   <x:String x:Key="Text.CommitCM.InteractiveRebase.Squash" xml:space="preserve">合併至父提交...</x:String>
   <x:String x:Key="Text.CommitCM.MergeMultiple" xml:space="preserve">合併 (merge)...</x:String>
-  <x:String x:Key="Text.CommitCM.PushRevision" xml:space="preserve">推送 (push) ${0}$ 至 ${1}$</x:String>
-  <x:String x:Key="Text.CommitCM.Rebase" xml:space="preserve">重定基底 (rebase) ${0}$ 至 ${1}$</x:String>
-  <x:String x:Key="Text.CommitCM.Reset" xml:space="preserve">重設 (reset) ${0}$ 至 ${1}$</x:String>
-  <x:String x:Key="Text.CommitCM.Revert" xml:space="preserve">復原此提交</x:String>
+  <x:String x:Key="Text.CommitCM.PushRevision" xml:space="preserve">推送 (push) ${0}$ 至 ${1}$...</x:String>
+  <x:String x:Key="Text.CommitCM.Rebase" xml:space="preserve">重定基底 (rebase) ${0}$ 至 ${1}$...</x:String>
+  <x:String x:Key="Text.CommitCM.Reset" xml:space="preserve">重設 (reset) ${0}$ 至 ${1}$...</x:String>
+  <x:String x:Key="Text.CommitCM.Revert" xml:space="preserve">復原此提交...</x:String>
   <x:String x:Key="Text.CommitCM.SaveAsPatch" xml:space="preserve">另存為修補檔 (patch)...</x:String>
   <x:String x:Key="Text.CommitDetail.Changes" xml:space="preserve">變更對比</x:String>
   <x:String x:Key="Text.CommitDetail.Changes.Count" xml:space="preserve">個檔案已變更</x:String>

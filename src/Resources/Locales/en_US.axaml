@@ -72,17 +72,17 @@
   <x:String x:Key="Text.BranchCM.CreatePRForUpstream" xml:space="preserve">Create PR for upstream ${0}$...</x:String>
   <x:String x:Key="Text.BranchCM.CustomAction" xml:space="preserve">Custom Action</x:String>
   <x:String x:Key="Text.BranchCM.Delete" xml:space="preserve">Delete ${0}$...</x:String>
-  <x:String x:Key="Text.BranchCM.DeleteMultiBranches" xml:space="preserve">Delete selected {0} branches</x:String>
+  <x:String x:Key="Text.BranchCM.DeleteMultiBranches" xml:space="preserve">Delete selected {0} branches...</x:String>
   <x:String x:Key="Text.BranchCM.EditDescription" xml:space="preserve">Edit description for ${0}$...</x:String>
   <x:String x:Key="Text.BranchCM.FastForward" xml:space="preserve">Fast-Forward to ${0}$</x:String>
-  <x:String x:Key="Text.BranchCM.FetchInto" xml:space="preserve">Fetch ${0}$ into ${1}$...</x:String>
-  <x:String x:Key="Text.BranchCM.Finish" xml:space="preserve">Git Flow - Finish ${0}$</x:String>
+  <x:String x:Key="Text.BranchCM.FetchInto" xml:space="preserve">Fetch ${0}$ into ${1}$</x:String>
+  <x:String x:Key="Text.BranchCM.Finish" xml:space="preserve">Git Flow - Finish ${0}$...</x:String>
   <x:String x:Key="Text.BranchCM.InteractiveRebase.Manually" xml:space="preserve">Interactively Rebase ${0}$ on ${1}$</x:String>
   <x:String x:Key="Text.BranchCM.Merge" xml:space="preserve">Merge ${0}$ into ${1}$...</x:String>
-  <x:String x:Key="Text.BranchCM.MergeMultiBranches" xml:space="preserve">Merge selected {0} branches into current</x:String>
-  <x:String x:Key="Text.BranchCM.Pull" xml:space="preserve">Pull ${0}$</x:String>
+  <x:String x:Key="Text.BranchCM.MergeMultiBranches" xml:space="preserve">Merge selected {0} branches into current...</x:String>
+  <x:String x:Key="Text.BranchCM.Pull" xml:space="preserve">Pull ${0}$...</x:String>
   <x:String x:Key="Text.BranchCM.PullInto" xml:space="preserve">Pull ${0}$ into ${1}$...</x:String>
-  <x:String x:Key="Text.BranchCM.Push" xml:space="preserve">Push ${0}$</x:String>
+  <x:String x:Key="Text.BranchCM.Push" xml:space="preserve">Push ${0}$...</x:String>
   <x:String x:Key="Text.BranchCM.Rebase" xml:space="preserve">Rebase ${0}$ on ${1}$...</x:String>
   <x:String x:Key="Text.BranchCM.Rename" xml:space="preserve">Rename ${0}$...</x:String>
   <x:String x:Key="Text.BranchCM.ResetToSelectedCommit" xml:space="preserve">Reset ${0}$ to ${1}$...</x:String>
@@ -148,8 +148,8 @@
   <x:String x:Key="Text.CommandPalette.BranchesAndTags" xml:space="preserve">Branches &amp; Tags</x:String>
   <x:String x:Key="Text.CommandPalette.RepositoryActions" xml:space="preserve">Repository Custom Actions</x:String>
   <x:String x:Key="Text.CommandPalette.RevisionFiles" xml:space="preserve">Revision Files</x:String>
-  <x:String x:Key="Text.CommitCM.Checkout" xml:space="preserve">Checkout Commit</x:String>
-  <x:String x:Key="Text.CommitCM.CherryPick" xml:space="preserve">Cherry-Pick Commit</x:String>
+  <x:String x:Key="Text.CommitCM.Checkout" xml:space="preserve">Checkout Commit...</x:String>
+  <x:String x:Key="Text.CommitCM.CherryPick" xml:space="preserve">Cherry-Pick Commit...</x:String>
   <x:String x:Key="Text.CommitCM.CherryPickMultiple" xml:space="preserve">Cherry-Pick...</x:String>
   <x:String x:Key="Text.CommitCM.CompareWithHead" xml:space="preserve">Compare with HEAD</x:String>
   <x:String x:Key="Text.CommitCM.CompareWithWorktree" xml:space="preserve">Compare with Worktree</x:String>
@@ -169,10 +169,10 @@
   <x:String x:Key="Text.CommitCM.InteractiveRebase.Reword" xml:space="preserve">Reword...</x:String>
   <x:String x:Key="Text.CommitCM.InteractiveRebase.Squash" xml:space="preserve">Squash into Parent...</x:String>
   <x:String x:Key="Text.CommitCM.MergeMultiple" xml:space="preserve">Merge...</x:String>
-  <x:String x:Key="Text.CommitCM.PushRevision" xml:space="preserve">Push ${0}$ to ${1}$</x:String>
-  <x:String x:Key="Text.CommitCM.Rebase" xml:space="preserve">Rebase ${0}$ on ${1}$</x:String>
-  <x:String x:Key="Text.CommitCM.Reset" xml:space="preserve">Reset ${0}$ to ${1}$</x:String>
-  <x:String x:Key="Text.CommitCM.Revert" xml:space="preserve">Revert Commit</x:String>
+  <x:String x:Key="Text.CommitCM.PushRevision" xml:space="preserve">Push ${0}$ to ${1}$...</x:String>
+  <x:String x:Key="Text.CommitCM.Rebase" xml:space="preserve">Rebase ${0}$ on ${1}$...</x:String>
+  <x:String x:Key="Text.CommitCM.Reset" xml:space="preserve">Reset ${0}$ to ${1}$...</x:String>
+  <x:String x:Key="Text.CommitCM.Revert" xml:space="preserve">Revert Commit...</x:String>
   <x:String x:Key="Text.CommitCM.SaveAsPatch" xml:space="preserve">Save as Patch...</x:String>
   <x:String x:Key="Text.CommitDetail.Changes" xml:space="preserve">CHANGES</x:String>
   <x:String x:Key="Text.CommitDetail.Changes.Count" xml:space="preserve">changed file(s)</x:String>
