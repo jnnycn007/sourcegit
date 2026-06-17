@@ -806,7 +806,6 @@
   <x:String x:Key="Text.Repository.Resolve" xml:space="preserve">РАЗРЕШИТЬ</x:String>
   <x:String x:Key="Text.Repository.Search" xml:space="preserve">Поиск ревизии</x:String>
   <x:String x:Key="Text.Repository.Search.ByAuthor" xml:space="preserve">Автор</x:String>
-  <x:String x:Key="Text.Repository.Search.ByCommitter" xml:space="preserve">Ревизор</x:String>
   <x:String x:Key="Text.Repository.Search.ByContent" xml:space="preserve">Содержимое</x:String>
   <x:String x:Key="Text.Repository.Search.ByMessage" xml:space="preserve">Сообщение</x:String>
   <x:String x:Key="Text.Repository.Search.ByPath" xml:space="preserve">Путь</x:String>

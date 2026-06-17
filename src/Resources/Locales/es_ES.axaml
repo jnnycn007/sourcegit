@@ -802,7 +802,6 @@
   <x:String x:Key="Text.Repository.Resolve" xml:space="preserve">RESOLVER</x:String>
   <x:String x:Key="Text.Repository.Search" xml:space="preserve">Buscar Commit</x:String>
   <x:String x:Key="Text.Repository.Search.ByAuthor" xml:space="preserve">Autor</x:String>
-  <x:String x:Key="Text.Repository.Search.ByCommitter" xml:space="preserve">Committer</x:String>
   <x:String x:Key="Text.Repository.Search.ByContent" xml:space="preserve">Contenido</x:String>
   <x:String x:Key="Text.Repository.Search.ByMessage" xml:space="preserve">Mensaje</x:String>
   <x:String x:Key="Text.Repository.Search.ByPath" xml:space="preserve">Ruta</x:String>
