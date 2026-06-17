@@ -42,7 +42,7 @@ namespace SourceGit.ViewModels
             }
         }
 
-        public List<string> Suggestions
+        public List<object> Suggestions
         {
             get => _suggestions;
             private set => SetProperty(ref _suggestions, value);
@@ -173,6 +173,8 @@ namespace SourceGit.ViewModels
                 _cancellation.Cancel();
 
             _worktreeFiles = null;
+            _users = null;
+
             IsQuerying = false;
             Suggestions = null;
             Results = null;
@@ -181,55 +183,103 @@ namespace SourceGit.ViewModels
 
         private void UpdateSuggestions()
         {
-            if (_method != (int)Models.CommitSearchMethod.ByPath || _requestingWorktreeFiles)
+            if (_method == (int)Models.CommitSearchMethod.ByAuthor ||
+                _method == (int)Models.CommitSearchMethod.ByCommitter)
             {
-                Suggestions = null;
-                return;
-            }
-
-            if (_worktreeFiles == null)
-            {
-                _requestingWorktreeFiles = true;
-
-                Task.Run(async () =>
+                if (_users == null)
                 {
-                    var files = await new Commands.QueryRevisionFileNames(_repo.FullPath, "HEAD")
-                        .GetResultAsync()
-                        .ConfigureAwait(false);
+                    if (_requestingUsers)
+                        return;
 
-                    Dispatcher.UIThread.Post(() =>
+                    _requestingUsers = true;
+
+                    Task.Run(async () =>
                     {
-                        _requestingWorktreeFiles = false;
+                        var users = await new Commands.QueryUsers(_repo.FullPath)
+                            .GetResultAsync()
+                            .ConfigureAwait(false);
 
-                        if (_repo.IsSearchingCommits)
+                        Dispatcher.UIThread.Post(() =>
                         {
-                            _worktreeFiles = files;
-                            UpdateSuggestions();
-                        }
+                            _requestingUsers = false;
+
+                            if (_repo.IsSearchingCommits)
+                            {
+                                _users = users;
+                                UpdateSuggestions();
+                            }
+                        });
                     });
-                });
 
-                return;
+                    return;
+                }
+
+                if (_users.Count == 0 || _filter.Length < 2)
+                {
+                    Suggestions = null;
+                    return;
+                }
+
+                var matched = new List<object>();
+                foreach (var user in _users)
+                {
+                    if (user.Name.Contains(_filter, StringComparison.OrdinalIgnoreCase) ||
+                        user.Email.Contains(_filter, StringComparison.OrdinalIgnoreCase))
+                        matched.Add(user);
+                }
+
+                Suggestions = matched;
             }
+            else if (_method == (int)Models.CommitSearchMethod.ByPath)
+            {
+                if (_worktreeFiles == null)
+                {
+                    if (_requestingWorktreeFiles)
+                        return;
 
-            if (_worktreeFiles.Count == 0 || _filter.Length < 3)
+                    _requestingWorktreeFiles = true;
+
+                    Task.Run(async () =>
+                    {
+                        var files = await new Commands.QueryRevisionFileNames(_repo.FullPath, "HEAD")
+                            .GetResultAsync()
+                            .ConfigureAwait(false);
+
+                        Dispatcher.UIThread.Post(() =>
+                        {
+                            _requestingWorktreeFiles = false;
+
+                            if (_repo.IsSearchingCommits)
+                            {
+                                _worktreeFiles = files;
+                                UpdateSuggestions();
+                            }
+                        });
+                    });
+
+                    return;
+                }
+
+                if (_worktreeFiles.Count == 0 || _filter.Length < 3)
+                {
+                    Suggestions = null;
+                    return;
+                }
+
+                var matched = new List<object>();
+                foreach (var file in _worktreeFiles)
+                {
+                    if (file.Contains(_filter, StringComparison.OrdinalIgnoreCase) && file.Length != _filter.Length)
+                        matched.Add(file);
+                }
+
+                Suggestions = matched;
+            }
+            else
             {
                 Suggestions = null;
                 return;
             }
-
-            var matched = new List<string>();
-            foreach (var file in _worktreeFiles)
-            {
-                if (file.Contains(_filter, StringComparison.OrdinalIgnoreCase) && file.Length != _filter.Length)
-                {
-                    matched.Add(file);
-                    if (matched.Count > 100)
-                        break;
-                }
-            }
-
-            Suggestions = matched;
         }
 
         private Repository _repo = null;
@@ -237,11 +287,13 @@ namespace SourceGit.ViewModels
         private int _method = (int)Models.CommitSearchMethod.ByMessage;
         private string _filter = string.Empty;
         private bool _onlySearchCurrentBranch = false;
-        private List<string> _suggestions = null;
         private bool _isQuerying = false;
         private List<Models.Commit> _results = null;
         private Models.Commit _selected = null;
         private bool _requestingWorktreeFiles = false;
         private List<string> _worktreeFiles = null;
+        private bool _requestingUsers = false;
+        private List<Models.User> _users = null;
+        private List<object> _suggestions = null;
     }
 }
