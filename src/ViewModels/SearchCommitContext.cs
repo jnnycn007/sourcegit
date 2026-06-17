@@ -177,7 +177,7 @@ namespace SourceGit.ViewModels
                 _cancellation.Cancel();
 
             _worktreeFiles = null;
-            _users = null;
+            _authors = null;
 
             IsQuerying = false;
             Suggestions = null;
@@ -187,29 +187,28 @@ namespace SourceGit.ViewModels
 
         private void UpdateSuggestions()
         {
-            if (_method == (int)Models.CommitSearchMethod.ByAuthor ||
-                _method == (int)Models.CommitSearchMethod.ByCommitter)
+            if (_method == (int)Models.CommitSearchMethod.ByAuthor)
             {
-                if (_users == null)
+                if (_authors == null)
                 {
-                    if (_requestingUsers)
+                    if (_requestingAuthors)
                         return;
 
-                    _requestingUsers = true;
+                    _requestingAuthors = true;
 
                     Task.Run(async () =>
                     {
-                        var users = await new Commands.QueryUsers(_repo.FullPath)
+                        var authors = await new Commands.QueryAuthors(_repo.FullPath)
                             .GetResultAsync()
                             .ConfigureAwait(false);
 
                         Dispatcher.UIThread.Post(() =>
                         {
-                            _requestingUsers = false;
+                            _requestingAuthors = false;
 
                             if (_repo.IsSearchingCommits)
                             {
-                                _users = users;
+                                _authors = authors;
                                 UpdateSuggestions();
                             }
                         });
@@ -218,18 +217,18 @@ namespace SourceGit.ViewModels
                     return;
                 }
 
-                if (_users.Count == 0 || _filter.Length < 2)
+                if (_authors.Count == 0 || _filter.Length < 2)
                 {
                     Suggestions = null;
                     return;
                 }
 
                 var matched = new List<object>();
-                foreach (var user in _users)
+                foreach (var author in _authors)
                 {
-                    if (user.Name.Contains(_filter, StringComparison.OrdinalIgnoreCase) ||
-                        user.Email.Contains(_filter, StringComparison.OrdinalIgnoreCase))
-                        matched.Add(user);
+                    if (author.Name.Contains(_filter, StringComparison.OrdinalIgnoreCase) ||
+                        author.Email.Contains(_filter, StringComparison.OrdinalIgnoreCase))
+                        matched.Add(author);
                 }
 
                 Suggestions = matched;
@@ -296,8 +295,8 @@ namespace SourceGit.ViewModels
         private Models.Commit _selected = null;
         private bool _requestingWorktreeFiles = false;
         private List<string> _worktreeFiles = null;
-        private bool _requestingUsers = false;
-        private List<Models.User> _users = null;
+        private bool _requestingAuthors = false;
+        private List<Models.User> _authors = null;
         private List<object> _suggestions = null;
     }
 }

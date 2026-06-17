@@ -3,14 +3,14 @@ using System.Threading.Tasks;
 
 namespace SourceGit.Commands
 {
-    public class QueryUsers : Command
+    public class QueryAuthors : Command
     {
-        public QueryUsers(string repo)
+        public QueryAuthors(string repo)
         {
             WorkingDirectory = repo;
             Context = repo;
             RaiseError = false;
-            Args = "log -100000 --all --format=%aN±%aE%n%cN±%cE";
+            Args = "log -100000 --all --format=%aN±%aE";
         }
 
         public async Task<List<Models.User>> GetResultAsync()
