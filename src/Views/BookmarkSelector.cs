@@ -31,36 +31,34 @@ namespace SourceGit.Views
                 _icon.Transform = new MatrixTransform(transform);
             else
                 _icon.Transform = new MatrixTransform(_icon.Transform.Value * transform);
+
+            var x = 2.0;
+            for (var i = 0; i < Models.Bookmarks.Brushes.Length; i++)
+            {
+                var hitBox = new Rect(x - 2.5, 2.5, 18, 20);
+                _hitBoxes.Add(hitBox);
+                x += 26;
+            }
         }
 
         public override void Render(DrawingContext context)
         {
-            _hitBoxes.Clear();
-
-            var w = Bounds.Width;
-            var h = Bounds.Height;
-
             // Just enable clicking anywhere in the control.
-            context.FillRectangle(Brushes.Transparent, new Rect(0, 0, w, h));
+            context.FillRectangle(Brushes.Transparent, new Rect(0, 0, Bounds.Width, Bounds.Height));
 
-            var brushes = Models.Bookmarks.Brushes;
             var defaultBrush = this.FindResource("Brush.FG1") as IBrush;
-            var accentColor = (Color)this.FindResource("SystemAccentColor");
-            var selectedBorder = new Pen(new SolidColorBrush(accentColor), 1);
+            var selectedBorder = new Pen(new SolidColorBrush((Color)this.FindResource("SystemAccentColor")), 1);
             var active = Bookmark;
-            var x = 2.0;
-            for (var i = 0; i < brushes.Length; i++)
+
+            for (var i = 0; i < _hitBoxes.Count; i++)
             {
-                var hitBox = new Rect(x - 2.5, 2.5, 18, 20);
+                var hitBox = _hitBoxes[i];
                 if (i == active)
                     context.DrawRectangle(selectedBorder, hitBox, 3);
 
-                var bursh = brushes[i] ?? defaultBrush;
-                using (context.PushTransform(Matrix.CreateTranslation(x + 0.5, 5)))
+                var bursh = Models.Bookmarks.Get(i) ?? defaultBrush;
+                using (context.PushTransform(Matrix.CreateTranslation(hitBox.X + 3, 5)))
                     context.DrawGeometry(bursh, null, _icon);
-
-                _hitBoxes.Add(hitBox);
-                x += 26;
             }
         }
 
