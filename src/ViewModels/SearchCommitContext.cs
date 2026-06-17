@@ -162,7 +162,11 @@ namespace SourceGit.ViewModels
 
                     IsQuerying = false;
                     if (_repo.IsSearchingCommits)
+                    {
                         Results = result;
+                        if (method == Models.CommitSearchMethod.BySHA && result.Count == 1)
+                            Selected = result[0];
+                    }
                 });
             }, token);
         }
