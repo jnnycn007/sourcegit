@@ -50,7 +50,9 @@ namespace SourceGit.ViewModels
 
             var prefix = _repo.GitFlow.GetPrefix(Type);
             var name = Branch.Name.StartsWith(prefix) ? Branch.Name.Substring(prefix.Length) : Branch.Name;
-            var succ = await Commands.GitFlow.FinishAsync(_repo.FullPath, Type, name, RebaseBeforeMerging, Squash, KeepBranch, log);
+            var succ = await new Commands.GitFlow(_repo.FullPath)
+                .Use(log)
+                .FinishAsync(Type, name, RebaseBeforeMerging, Squash, KeepBranch);
 
             log.Complete();
             return succ;

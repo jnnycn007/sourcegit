@@ -137,15 +137,9 @@ namespace SourceGit.ViewModels
                 }
             }
 
-            succ = await Commands.GitFlow.InitAsync(
-                _repo.FullPath,
-                _production,
-                _develop,
-                _featurePrefix,
-                _releasePrefix,
-                _hotfixPrefix,
-                _tagPrefix,
-                log);
+            succ = await new Commands.GitFlow(_repo.FullPath)
+                .Use(log)
+                .InitAsync(_production, _develop, _featurePrefix, _releasePrefix, _hotfixPrefix, _tagPrefix);
 
             log.Complete();
 
