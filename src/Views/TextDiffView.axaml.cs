@@ -221,6 +221,9 @@ namespace SourceGit.Views
                 var lines = _presenter.GetLines();
                 var width = textView.Bounds.Width;
                 var pixelHeight = PixelSnapHelpers.GetPixelSize(textView).Height;
+                var typeface = textView.CreateTypeface();
+                var lineEndingBrush = new SolidColorBrush(Colors.Gray, 0.8);
+
                 foreach (var line in textView.VisualLines)
                 {
                     if (line.IsDisposed || line.FirstDocumentLine == null || line.FirstDocumentLine.IsDeleted)
@@ -232,8 +235,9 @@ namespace SourceGit.Views
 
                     var info = lines[index - 1];
 
+                    var lastTextLine = line.TextLines[^1];
                     var startY = line.GetTextLineVisualYPosition(line.TextLines[0], VisualYPosition.LineTop) - textView.VerticalOffset;
-                    var endY = line.GetTextLineVisualYPosition(line.TextLines[^1], VisualYPosition.LineBottom) - textView.VerticalOffset;
+                    var endY = line.GetTextLineVisualYPosition(lastTextLine, VisualYPosition.LineBottom) - textView.VerticalOffset;
 
                     var bg = GetBrushByLineType(info.Type);
                     if (bg != null)
@@ -281,13 +285,29 @@ namespace SourceGit.Views
 
                     if (info.NoNewLineEndOfFile)
                     {
-                        var lastTextLine = line.TextLines[^1];
                         var radius = Math.Min(6, (lastTextLine.Height - 4) * 0.5);
                         var pen = new Pen(Brushes.Red, 1.5);
                         var indicatorX = lastTextLine.WidthIncludingTrailingWhitespace - textView.HorizontalOffset + radius + 4;
                         var indicatorY = line.GetTextLineVisualYPosition(lastTextLine, VisualYPosition.TextMiddle) - textView.VerticalOffset + 0.5;
                         drawingContext.DrawEllipse(null, pen, new Point(indicatorX, indicatorY), radius, radius);
                         drawingContext.DrawLine(pen, new Point(indicatorX - radius + 3, indicatorY), new Point(indicatorX + radius - 3, indicatorY));
+                    }
+                    else if (_presenter.ShowHiddenSymbols &&
+                        (info.Type == Models.TextDiffLineType.Normal ||
+                        info.Type == Models.TextDiffLineType.Added ||
+                        info.Type == Models.TextDiffLineType.Deleted))
+                    {
+                        var indicatorX = lastTextLine.WidthIncludingTrailingWhitespace - textView.HorizontalOffset + 2;
+                        var indicatorY = line.GetTextLineVisualYPosition(lastTextLine, VisualYPosition.TextMiddle) - textView.VerticalOffset;
+                        var lineEnding = info.RawContent.Length != 0 && info.RawContent[^1] == '\r' ? "\\r\\n" : "\\n";
+                        var indicator = new FormattedText(
+                            lineEnding,
+                            CultureInfo.CurrentCulture,
+                            FlowDirection.LeftToRight,
+                            typeface,
+                            _presenter.FontSize,
+                            lineEndingBrush);
+                        drawingContext.DrawText(indicator, new Point(indicatorX, indicatorY - (indicator.Height * 0.5)));
                     }
 
                     if (changeBlock == null)
