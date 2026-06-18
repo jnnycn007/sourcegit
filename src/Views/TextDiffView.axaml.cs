@@ -283,7 +283,7 @@ namespace SourceGit.Views
                     {
                         var lastTextLine = line.TextLines[^1];
                         var radius = Math.Min(6, (lastTextLine.Height - 4) * 0.5);
-                        var pen = new Pen(Brushes.Red, 2);
+                        var pen = new Pen(Brushes.Red, 1.5);
                         var indicatorX = lastTextLine.WidthIncludingTrailingWhitespace - textView.HorizontalOffset + radius + 4;
                         var indicatorY = line.GetTextLineVisualYPosition(lastTextLine, VisualYPosition.TextMiddle) - textView.VerticalOffset + 0.5;
                         drawingContext.DrawEllipse(null, pen, new Point(indicatorX, indicatorY), radius, radius);
