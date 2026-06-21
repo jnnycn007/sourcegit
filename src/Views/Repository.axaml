@@ -529,7 +529,7 @@
 
           <Popup PlacementTarget="{Binding #TxtSearchCommitsBox}"
                  Placement="BottomEdgeAlignedLeft"
-                 HorizontalOffset="-8" VerticalAlignment="-8">
+                 HorizontalOffset="-8" VerticalOffset="-8">
             <Popup.IsOpen>
               <MultiBinding Converter="{x:Static BoolConverters.And}">
                 <Binding Path="SearchCommitContext.Suggestions" Converter="{x:Static c:ListConverters.IsNotNullOrEmpty}"/>
@@ -570,7 +570,7 @@
 
                   <ListBox.ItemTemplate>
                     <DataTemplate>
-                      <Border Padding="8,4" Height="42" Background="Transparent" DoubleTapped="OnSearchSuggestionDoubleTapped">
+                      <Border Padding="8,4" Height="42" Background="Transparent">
                         <ContentControl Content="{Binding}" IsHitTestVisible="False">
                           <ContentControl.DataTemplates>
                             <DataTemplate DataType="x:String">
