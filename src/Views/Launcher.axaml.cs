@@ -10,22 +10,26 @@ namespace SourceGit.Views
 {
     public partial class Launcher : ChromelessWindow
     {
-        public static readonly StyledProperty<GridLength> CaptionHeightProperty =
-            AvaloniaProperty.Register<Launcher, GridLength>(nameof(CaptionHeight));
+        public static readonly DirectProperty<Launcher, GridLength> CaptionHeightProperty =
+            AvaloniaProperty.RegisterDirect<Launcher, GridLength>(
+                nameof(CaptionHeight),
+                o => o.CaptionHeight);
 
         public GridLength CaptionHeight
         {
-            get => GetValue(CaptionHeightProperty);
-            set => SetValue(CaptionHeightProperty, value);
+            get => _captionHeight;
+            set => SetAndRaise(CaptionHeightProperty, ref _captionHeight, value);
         }
 
-        public static readonly StyledProperty<bool> HasLeftCaptionButtonProperty =
-            AvaloniaProperty.Register<Launcher, bool>(nameof(HasLeftCaptionButton));
+        public static readonly DirectProperty<Launcher, bool> HasLeftCaptionButtonProperty =
+            AvaloniaProperty.RegisterDirect<Launcher, bool>(
+                nameof(HasLeftCaptionButton),
+                o => o.HasLeftCaptionButton);
 
         public bool HasLeftCaptionButton
         {
-            get => GetValue(HasLeftCaptionButtonProperty);
-            set => SetValue(HasLeftCaptionButtonProperty, value);
+            get => _hasLeftCaptionButton;
+            set => SetAndRaise(HasLeftCaptionButtonProperty, ref _hasLeftCaptionButton, value);
         }
 
         public bool HasRightCaptionButton
@@ -439,6 +443,8 @@ namespace SourceGit.Views
             e.Handled = true;
         }
 
+        private GridLength _captionHeight = new(32);
+        private bool _hasLeftCaptionButton = false;
         private WindowState _lastWindowState = WindowState.Normal;
     }
 }

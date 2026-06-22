@@ -8,40 +8,52 @@ namespace SourceGit.Views
 {
     public class DateTimePresenter : TextBlock
     {
-        public static readonly StyledProperty<bool> ShowDateOnlyProperty =
-            AvaloniaProperty.Register<DateTimePresenter, bool>(nameof(ShowDateOnly), false);
+        public static readonly DirectProperty<DateTimePresenter, bool> ShowDateOnlyProperty =
+            AvaloniaProperty.RegisterDirect<DateTimePresenter, bool>(
+                nameof(ShowDateOnly),
+                o => o.ShowDateOnly,
+                (o, v) => o.ShowDateOnly = v);
 
         public bool ShowDateOnly
         {
-            get => GetValue(ShowDateOnlyProperty);
-            set => SetValue(ShowDateOnlyProperty, value);
+            get => _showDateOnly;
+            set => SetAndRaise(ShowDateOnlyProperty, ref _showDateOnly, value);
         }
 
-        public static readonly StyledProperty<bool> Use24HoursProperty =
-            AvaloniaProperty.Register<DateTimePresenter, bool>(nameof(Use24Hours), true);
+        public static readonly DirectProperty<DateTimePresenter, bool> Use24HoursProperty =
+            AvaloniaProperty.RegisterDirect<DateTimePresenter, bool>(
+                nameof(Use24Hours),
+                o => o.Use24Hours,
+                (o, v) => o.Use24Hours = v);
 
         public bool Use24Hours
         {
-            get => GetValue(Use24HoursProperty);
-            set => SetValue(Use24HoursProperty, value);
+            get => _use24Hours;
+            set => SetAndRaise(Use24HoursProperty, ref _use24Hours, value);
         }
 
-        public static readonly StyledProperty<int> DateTimeFormatProperty =
-            AvaloniaProperty.Register<DateTimePresenter, int>(nameof(DateTimeFormat));
+        public static readonly DirectProperty<DateTimePresenter, int> DateTimeFormatProperty =
+            AvaloniaProperty.RegisterDirect<DateTimePresenter, int>(
+                nameof(DateTimeFormat),
+                o => o.DateTimeFormat,
+                (o, v) => o.DateTimeFormat = v);
 
         public int DateTimeFormat
         {
-            get => GetValue(DateTimeFormatProperty);
-            set => SetValue(DateTimeFormatProperty, value);
+            get => _dateTimeFormat;
+            set => SetAndRaise(DateTimeFormatProperty, ref _dateTimeFormat, value);
         }
 
-        public static readonly StyledProperty<ulong> TimestampProperty =
-            AvaloniaProperty.Register<DateTimePresenter, ulong>(nameof(Timestamp), 0);
+        public static readonly DirectProperty<DateTimePresenter, ulong> TimestampProperty =
+            AvaloniaProperty.RegisterDirect<DateTimePresenter, ulong>(
+                nameof(Timestamp),
+                o => o.Timestamp,
+                (o, v) => o.Timestamp = v);
 
         public ulong Timestamp
         {
-            get => GetValue(TimestampProperty);
-            set => SetValue(TimestampProperty, value);
+            get => _timestamp;
+            set => SetAndRaise(TimestampProperty, ref _timestamp, value);
         }
 
         protected override Type StyleKeyOverride => typeof(TextBlock);
@@ -70,5 +82,10 @@ namespace SourceGit.Views
                 SetCurrentValue(TextProperty, text);
             }
         }
+
+        private bool _showDateOnly = false;
+        private bool _use24Hours = true;
+        private int _dateTimeFormat = 0;
+        private ulong _timestamp = 0;
     }
 }

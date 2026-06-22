@@ -270,20 +270,22 @@ namespace SourceGit.Views
 
     public partial class BranchTree : UserControl
     {
-        public static readonly StyledProperty<List<ViewModels.BranchTreeNode>> NodesProperty =
-            AvaloniaProperty.Register<BranchTree, List<ViewModels.BranchTreeNode>>(nameof(Nodes));
+        public static readonly DirectProperty<BranchTree, List<ViewModels.BranchTreeNode>> NodesProperty =
+            AvaloniaProperty.RegisterDirect<BranchTree, List<ViewModels.BranchTreeNode>>(
+                nameof(Nodes),
+                o => o.Nodes,
+                (o, v) => o.Nodes = v);
 
         public List<ViewModels.BranchTreeNode> Nodes
         {
-            get => GetValue(NodesProperty);
-            set => SetValue(NodesProperty, value);
+            get => _nodes;
+            set => SetAndRaise(NodesProperty, ref _nodes, value);
         }
 
         public AvaloniaList<ViewModels.BranchTreeNode> Rows
         {
             get;
-            private set;
-        } = new AvaloniaList<ViewModels.BranchTreeNode>();
+        } = [];
 
         public static readonly RoutedEvent<RoutedEventArgs> SelectionChangedEvent =
             RoutedEvent.Register<BranchTree, RoutedEventArgs>(nameof(SelectionChanged), RoutingStrategies.Tunnel | RoutingStrategies.Bubble);
@@ -323,7 +325,7 @@ namespace SourceGit.Views
                 return;
 
             var treePath = new List<ViewModels.BranchTreeNode>();
-            FindTreePath(treePath, Nodes, branch.Name, 0);
+            FindTreePath(treePath, _nodes, branch.Name, 0);
 
             if (treePath.Count == 0)
                 return;
@@ -412,10 +414,10 @@ namespace SourceGit.Views
             {
                 Rows.Clear();
 
-                if (Nodes is { Count: > 0 })
+                if (_nodes is { Count: > 0 })
                 {
                     var rows = new List<ViewModels.BranchTreeNode>();
-                    MakeRows(rows, Nodes, 0);
+                    MakeRows(rows, _nodes, 0);
                     Rows.AddRange(rows);
                 }
 
@@ -1397,6 +1399,7 @@ namespace SourceGit.Views
             menu.Items.Add(new MenuItem() { Header = "-" });
         }
 
+        private List<ViewModels.BranchTreeNode> _nodes = null;
         private bool _disableSelectionChangingEvent = false;
     }
 }

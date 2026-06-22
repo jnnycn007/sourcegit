@@ -11,58 +11,75 @@ namespace SourceGit.Views
 {
     public partial class CommitBaseInfo : UserControl
     {
-        public static readonly StyledProperty<Models.CommitFullMessage> FullMessageProperty =
-            AvaloniaProperty.Register<CommitBaseInfo, Models.CommitFullMessage>(nameof(FullMessage));
+        public static readonly DirectProperty<CommitBaseInfo, Models.CommitFullMessage> FullMessageProperty =
+            AvaloniaProperty.RegisterDirect<CommitBaseInfo, Models.CommitFullMessage>(
+                nameof(FullMessage),
+                o => o.FullMessage,
+                (o, v) => o.FullMessage = v);
 
         public Models.CommitFullMessage FullMessage
         {
-            get => GetValue(FullMessageProperty);
-            set => SetValue(FullMessageProperty, value);
+            get => _fullMessage;
+            set => SetAndRaise(FullMessageProperty, ref _fullMessage, value);
         }
 
-        public static readonly StyledProperty<Models.CommitSignInfo> SignInfoProperty =
-            AvaloniaProperty.Register<CommitBaseInfo, Models.CommitSignInfo>(nameof(SignInfo));
+        public static readonly DirectProperty<CommitBaseInfo, Models.CommitSignInfo> SignInfoProperty =
+            AvaloniaProperty.RegisterDirect<CommitBaseInfo, Models.CommitSignInfo>(
+                nameof(SignInfo),
+                o => o.SignInfo,
+                (o, v) => o.SignInfo = v);
 
         public Models.CommitSignInfo SignInfo
         {
-            get => GetValue(SignInfoProperty);
-            set => SetValue(SignInfoProperty, value);
+            get => _signInfo;
+            set => SetAndRaise(SignInfoProperty, ref _signInfo, value);
         }
 
-        public static readonly StyledProperty<bool> SupportsContainsInProperty =
-            AvaloniaProperty.Register<CommitBaseInfo, bool>(nameof(SupportsContainsIn));
+        public static readonly DirectProperty<CommitBaseInfo, bool> SupportsContainsInProperty =
+            AvaloniaProperty.RegisterDirect<CommitBaseInfo, bool>(
+                nameof(SupportsContainsIn),
+                o => o.SupportsContainsIn,
+                (o, v) => o.SupportsContainsIn = v);
 
         public bool SupportsContainsIn
         {
-            get => GetValue(SupportsContainsInProperty);
-            set => SetValue(SupportsContainsInProperty, value);
+            get => _supportsContainsIn;
+            set => SetAndRaise(SupportsContainsInProperty, ref _supportsContainsIn, value);
         }
 
-        public static readonly StyledProperty<List<Models.CommitLink>> WebLinksProperty =
-            AvaloniaProperty.Register<CommitBaseInfo, List<Models.CommitLink>>(nameof(WebLinks));
+        public static readonly DirectProperty<CommitBaseInfo, List<Models.CommitLink>> WebLinksProperty =
+            AvaloniaProperty.RegisterDirect<CommitBaseInfo, List<Models.CommitLink>>(
+                nameof(WebLinks),
+                o => o.WebLinks,
+                (o, v) => o.WebLinks = v);
 
         public List<Models.CommitLink> WebLinks
         {
-            get => GetValue(WebLinksProperty);
-            set => SetValue(WebLinksProperty, value);
+            get => _webLinks;
+            set => SetAndRaise(WebLinksProperty, ref _webLinks, value);
         }
 
-        public static readonly StyledProperty<List<string>> ChildrenProperty =
-            AvaloniaProperty.Register<CommitBaseInfo, List<string>>(nameof(Children));
+        public static readonly DirectProperty<CommitBaseInfo, List<string>> ChildrenProperty =
+            AvaloniaProperty.RegisterDirect<CommitBaseInfo, List<string>>(
+                nameof(Children),
+                o => o.Children,
+                (o, v) => o.Children = v);
 
         public List<string> Children
         {
-            get => GetValue(ChildrenProperty);
-            set => SetValue(ChildrenProperty, value);
+            get => _children;
+            set => SetAndRaise(ChildrenProperty, ref _children, value);
         }
 
-        public static readonly StyledProperty<bool> IsSHACopiedProperty =
-            AvaloniaProperty.Register<CommitBaseInfo, bool>(nameof(IsSHACopied));
+        public static readonly DirectProperty<CommitBaseInfo, bool> IsSHACopiedProperty =
+            AvaloniaProperty.RegisterDirect<CommitBaseInfo, bool>(
+                nameof(IsSHACopied),
+                o => o.IsSHACopied);
 
         public bool IsSHACopied
         {
-            get => GetValue(IsSHACopiedProperty);
-            set => SetValue(IsSHACopiedProperty, value);
+            get => _isSHACopied;
+            set => SetAndRaise(IsSHACopiedProperty, ref _isSHACopied, value);
         }
 
         public CommitBaseInfo()
@@ -77,7 +94,7 @@ namespace SourceGit.Views
             if (change.Property == ContentProperty)
             {
                 _iconResetTimer?.Dispose();
-                SetCurrentValue(IsSHACopiedProperty, false);
+                IsSHACopied = false;
             }
         }
 
@@ -251,7 +268,7 @@ namespace SourceGit.Views
         {
             e.Handled = true;
 
-            if (DataContext is ViewModels.CommitDetail detail &&
+            if (DataContext is ViewModels.CommitDetail &&
                 sender is CommitRefsPresenter presenter &&
                 e.Properties.PointerUpdateKind == PointerUpdateKind.RightButtonReleased)
             {
@@ -274,6 +291,12 @@ namespace SourceGit.Views
             }
         }
 
+        private Models.CommitFullMessage _fullMessage = null;
+        private Models.CommitSignInfo _signInfo = null;
+        private bool _supportsContainsIn = false;
+        private List<Models.CommitLink> _webLinks = null;
+        private List<string> _children = null;
+        private bool _isSHACopied = false;
         private IDisposable _iconResetTimer;
     }
 }

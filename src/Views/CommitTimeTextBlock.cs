@@ -10,40 +10,52 @@ namespace SourceGit.Views
 {
     public class CommitTimeTextBlock : TextBlock
     {
-        public static readonly StyledProperty<bool> ShowAsDateTimeProperty =
-            AvaloniaProperty.Register<CommitTimeTextBlock, bool>(nameof(ShowAsDateTime), true);
+        public static readonly DirectProperty<CommitTimeTextBlock, bool> ShowAsDateTimeProperty =
+            AvaloniaProperty.RegisterDirect<CommitTimeTextBlock, bool>(
+                nameof(ShowAsDateTime),
+                o => o.ShowAsDateTime,
+                (o, v) => o.ShowAsDateTime = v);
 
         public bool ShowAsDateTime
         {
-            get => GetValue(ShowAsDateTimeProperty);
-            set => SetValue(ShowAsDateTimeProperty, value);
+            get => _showAsDateTime;
+            set => SetAndRaise(ShowAsDateTimeProperty, ref _showAsDateTime, value);
         }
 
-        public static readonly StyledProperty<bool> Use24HoursProperty =
-            AvaloniaProperty.Register<CommitTimeTextBlock, bool>(nameof(Use24Hours), true);
+        public static readonly DirectProperty<CommitTimeTextBlock, bool> Use24HoursProperty =
+            AvaloniaProperty.RegisterDirect<CommitTimeTextBlock, bool>(
+                nameof(Use24Hours),
+                o => o.Use24Hours,
+                (o, v) => o.Use24Hours = v);
 
         public bool Use24Hours
         {
-            get => GetValue(Use24HoursProperty);
-            set => SetValue(Use24HoursProperty, value);
+            get => _use24Hours;
+            set => SetAndRaise(Use24HoursProperty, ref _use24Hours, value);
         }
 
-        public static readonly StyledProperty<int> DateTimeFormatProperty =
-            AvaloniaProperty.Register<CommitTimeTextBlock, int>(nameof(DateTimeFormat));
+        public static readonly DirectProperty<CommitTimeTextBlock, int> DateTimeFormatProperty =
+            AvaloniaProperty.RegisterDirect<CommitTimeTextBlock, int>(
+                nameof(DateTimeFormat),
+                o => o.DateTimeFormat,
+                (o, v) => o.DateTimeFormat = v);
 
         public int DateTimeFormat
         {
-            get => GetValue(DateTimeFormatProperty);
-            set => SetValue(DateTimeFormatProperty, value);
+            get => _dateTimeFormat;
+            set => SetAndRaise(DateTimeFormatProperty, ref _dateTimeFormat, value);
         }
 
-        public static readonly StyledProperty<ulong> TimestampProperty =
-            AvaloniaProperty.Register<CommitTimeTextBlock, ulong>(nameof(Timestamp));
+        public static readonly DirectProperty<CommitTimeTextBlock, ulong> TimestampProperty =
+            AvaloniaProperty.RegisterDirect<CommitTimeTextBlock, ulong>(
+                nameof(Timestamp),
+                o => o.Timestamp,
+                (o, v) => o.Timestamp = v);
 
         public ulong Timestamp
         {
-            get => GetValue(TimestampProperty);
-            set => SetValue(TimestampProperty, value);
+            get => _timestamp;
+            set => SetAndRaise(TimestampProperty, ref _timestamp, value);
         }
 
         protected override Type StyleKeyOverride => typeof(TextBlock);
@@ -123,9 +135,6 @@ namespace SourceGit.Views
 
         private string GetDisplayText()
         {
-            if (DataContext is not Models.Commit commit)
-                return string.Empty;
-
             var timestamp = Timestamp;
             if (ShowAsDateTime)
                 return Models.DateTimeFormat.Format(timestamp);
@@ -172,6 +181,10 @@ namespace SourceGit.Views
             return App.Text("Period.YearsAgo", diffYear);
         }
 
+        private bool _showAsDateTime = true;
+        private bool _use24Hours = true;
+        private int _dateTimeFormat = 0;
+        private ulong _timestamp = 0;
         private IDisposable _refreshTimer = null;
     }
 }
