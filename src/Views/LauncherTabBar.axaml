@@ -29,12 +29,30 @@
                   PointerWheelChanged="ScrollTabs">
       <StackPanel Orientation="Horizontal">
         <ListBox x:Name="LauncherTabsList"
-                 Classes="launcher_page_tabbar"
+                 Background="Transparent"
                  ItemsSource="{Binding Pages}"
                  SelectionMode="AlwaysSelected"
                  SelectedItem="{Binding ActivePage, Mode=TwoWay}"
                  SelectionChanged="OnTabsSelectionChanged"
                  LayoutUpdated="OnTabsLayoutUpdated">
+          <ListBox.Styles>
+            <Style Selector="ListBoxItem">
+              <Setter Property="Padding" Value="0"/>
+            </Style>
+            <Style Selector="ListBoxItem /template/ ContentPresenter#PART_ContentPresenter">
+              <Setter Property="Background" Value="Transparent"/>
+              <Setter Property="Opacity" Value=".5"/>
+            </Style>
+            <Style Selector="ListBoxItem:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+              <Setter Property="Background" Value="Transparent"/>
+              <Setter Property="Opacity" Value=".85"/>
+            </Style>
+            <Style Selector="ListBoxItem:selected /template/ ContentPresenter#PART_ContentPresenter">
+              <Setter Property="Background" Value="Transparent"/>
+              <Setter Property="Opacity" Value="1"/>
+            </Style>
+          </ListBox.Styles>
+          
           <ListBox.ItemsPanel>
             <ItemsPanelTemplate>
               <StackPanel Orientation="Horizontal" Height="30"/>

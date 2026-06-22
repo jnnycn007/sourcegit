@@ -702,25 +702,6 @@
     <Setter Property="Foreground" Value="{DynamicResource Brush.FG1}"/>
   </Style>
 
-  <Style Selector="ListBox.launcher_page_tabbar">
-    <Setter Property="Background" Value="Transparent"/>
-  </Style>
-  <Style Selector="ListBox.launcher_page_tabbar ListBoxItem">
-    <Setter Property="Padding" Value="0"/>
-  </Style>
-  <Style Selector="ListBox.launcher_page_tabbar ListBoxItem /template/ ContentPresenter#PART_ContentPresenter">
-    <Setter Property="Background" Value="Transparent"/>
-    <Setter Property="Opacity" Value=".5"/>
-  </Style>
-  <Style Selector="ListBox.launcher_page_tabbar ListBoxItem:pointerover /template/ ContentPresenter#PART_ContentPresenter">
-    <Setter Property="Background" Value="Transparent"/>
-    <Setter Property="Opacity" Value=".85"/>
-  </Style>
-  <Style Selector="ListBox.launcher_page_tabbar ListBoxItem:selected /template/ ContentPresenter#PART_ContentPresenter">
-    <Setter Property="Background" Value="Transparent"/>
-    <Setter Property="Opacity" Value="1"/>
-  </Style>
-
   <Style Selector="ListBox.repo_left_content_list">
     <Setter Property="Background" Value="Transparent"/>
     <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled"/>
