@@ -164,25 +164,25 @@ namespace SourceGit.Views
 
         private void ScrollTabs(object _, PointerWheelEventArgs e)
         {
-            if (!e.KeyModifiers.HasFlag(KeyModifiers.Shift))
+            if (e.KeyModifiers.HasFlag(KeyModifiers.Shift))
             {
                 if (e.Delta.Y < 0)
-                    LauncherTabsScroller.LineRight();
+                    LauncherTabsScroller.Offset += _scrollStep;
                 else if (e.Delta.Y > 0)
-                    LauncherTabsScroller.LineLeft();
+                    LauncherTabsScroller.Offset -= _scrollStep;
                 e.Handled = true;
             }
         }
 
         private void ScrollTabsLeft(object _, RoutedEventArgs e)
         {
-            LauncherTabsScroller.LineLeft();
+            LauncherTabsScroller.Offset -= _scrollStep;
             e.Handled = true;
         }
 
         private void ScrollTabsRight(object _, RoutedEventArgs e)
         {
-            LauncherTabsScroller.LineRight();
+            LauncherTabsScroller.Offset += _scrollStep;
             e.Handled = true;
         }
 
@@ -392,6 +392,7 @@ namespace SourceGit.Views
             e.Handled = true;
         }
 
+        private readonly Vector _scrollStep = new(64, 0);
         private PointerPressedEventArgs _pressedTabEvent = null;
         private bool _startDragTab = false;
         private readonly DataFormat<string> _dndMainTabFormat = DataFormat.CreateStringApplicationFormat("sourcegit-dnd-main-tab");
