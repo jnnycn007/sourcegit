@@ -123,12 +123,12 @@ namespace SourceGit.Views
                 var drawLeftX = activeStartX - startX + LauncherTabsScroller.Bounds.X;
                 if (drawLeftX < LauncherTabsScroller.Bounds.X)
                 {
-                    ctx.BeginFigure(new Point(LauncherTabsScroller.Bounds.X - 0.5, bottom), true);
+                    ctx.BeginFigure(new Point(LauncherTabsScroller.Bounds.X - 0.5, bottom));
                     ctx.LineTo(new Point(LauncherTabsScroller.Bounds.X - 0.5, 0.5));
                 }
                 else
                 {
-                    ctx.BeginFigure(new Point(drawLeftX - 5.5, bottom), true);
+                    ctx.BeginFigure(new Point(drawLeftX - 5.5, bottom));
                     ctx.ArcTo(new Point(drawLeftX - 0.5, bottom - 5), cornerSize, angle, false, SweepDirection.CounterClockwise);
                     ctx.LineTo(new Point(drawLeftX - 0.5, 5.5));
                     ctx.ArcTo(new Point(drawLeftX + 4.5, 0.5), cornerSize, angle, false, SweepDirection.Clockwise);
@@ -308,10 +308,10 @@ namespace SourceGit.Views
                     var edit = new MenuItem();
                     edit.Header = App.Text("PageTabBar.Tab.Edit");
                     edit.Icon = this.CreateMenuIcon("Icons.Edit");
-                    edit.Click += (_, e) =>
+                    edit.Click += (_, ev) =>
                     {
                         page.Node.Edit();
-                        e.Handled = true;
+                        ev.Handled = true;
                     };
                     menu.Items.Add(edit);
 
