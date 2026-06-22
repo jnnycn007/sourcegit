@@ -1424,15 +1424,6 @@ namespace SourceGit.Views
             set => SetAndRaise(DisplayRangeProperty, ref _displayRange, value);
         }
 
-        static TextDiffViewMinimap()
-        {
-            AffectsRender<TextDiffViewMinimap>(
-                AddedLineBrushProperty,
-                DeletedLineBrushProperty,
-                DisplayRangeProperty,
-                DisplayRangeColorProperty);
-        }
-
         public override void Render(DrawingContext context)
         {
             context.DrawRectangle(Brushes.Transparent, null, new Rect(0, 0, Bounds.Width, Bounds.Height));
@@ -1466,6 +1457,17 @@ namespace SourceGit.Views
             context.DrawRectangle(brush, null, rect);
             context.DrawLine(pen, rect.TopLeft, rect.TopRight);
             context.DrawLine(pen, rect.BottomLeft, rect.BottomRight);
+        }
+
+        protected override void OnPropertyChanged(AvaloniaPropertyChangedEventArgs change)
+        {
+            base.OnPropertyChanged(change);
+
+            if (change.Property == AddedLineBrushProperty ||
+                change.Property == DeletedLineBrushProperty ||
+                change.Property == DisplayRangeColorProperty ||
+                change.Property == DisplayRangeProperty)
+                InvalidateVisual();
         }
 
         protected override void OnDataContextChanged(EventArgs e)

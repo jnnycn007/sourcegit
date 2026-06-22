@@ -147,18 +147,6 @@ namespace SourceGit.Views
             set => SetValue(BackgroundProperty, value);
         }
 
-        static BranchTreeNodeTrackStatusPresenter()
-        {
-            AffectsMeasure<BranchTreeNodeTrackStatusPresenter>(
-                FontSizeProperty,
-                FontFamilyProperty,
-                ForegroundProperty);
-
-            AffectsRender<BranchTreeNodeTrackStatusPresenter>(
-                ForegroundProperty,
-                BackgroundProperty);
-        }
-
         public override void Render(DrawingContext context)
         {
             base.Render(context);
@@ -168,6 +156,18 @@ namespace SourceGit.Views
                 context.DrawRectangle(Background, null, new RoundedRect(new Rect(8, 0, _label.Width + 18, 18), new CornerRadius(9)));
                 context.DrawText(_label, new Point(17, 9 - _label.Height * 0.5));
             }
+        }
+
+        protected override void OnPropertyChanged(AvaloniaPropertyChangedEventArgs change)
+        {
+            base.OnPropertyChanged(change);
+
+            if (change.Property == FontSizeProperty ||
+                change.Property == FontFamilyProperty ||
+                change.Property == ForegroundProperty)
+                InvalidateMeasure();
+            else if (change.Property == BackgroundProperty)
+                InvalidateVisual();
         }
 
         protected override void OnDataContextChanged(EventArgs e)
