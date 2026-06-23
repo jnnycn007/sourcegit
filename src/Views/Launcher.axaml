@@ -30,7 +30,7 @@
       <!-- Caption Buttons (macOS) -->
       <v:MacOSTrafficLightsSpacer Grid.Column="0"
                                   Zoom="{Binding Source={x:Static vm:Preferences.Instance}, Path=Zoom, Mode=OneWay}"
-                                  IsVisible="{Binding #ThisControl.HasLeftCaptionButton}"/>
+                                  IsFullScreen="{Binding !#ThisControl.HasLeftCaptionButton, Mode=OneWay}"/>
 
       <!-- Menu (Windows/Linux) -->
       <Button Grid.Column="0" Classes="icon_button" VerticalAlignment="Bottom" Margin="6,0,0,3" IsVisible="{OnPlatform True, macOS=False}">

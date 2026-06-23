@@ -18,6 +18,18 @@ namespace SourceGit.Views
             set => SetAndRaise(ZoomProperty, ref _zoom, value);
         }
 
+        public static readonly DirectProperty<MacOSTrafficLightsSpacer, bool> IsFullScreenProperty =
+            AvaloniaProperty.RegisterDirect<MacOSTrafficLightsSpacer, bool>(
+                nameof(IsFullScreen),
+                o => o.IsFullScreen,
+                (o, v) => o.IsFullScreen = v);
+
+        public bool IsFullScreen
+        {
+            get => _isFullScreen;
+            set => SetAndRaise(IsFullScreenProperty, ref _isFullScreen, value);
+        }
+
         public MacOSTrafficLightsSpacer()
         {
             IsHitTestVisible = false;
@@ -27,15 +39,19 @@ namespace SourceGit.Views
         {
             base.OnPropertyChanged(change);
 
-            if (change.Property == ZoomProperty)
+            if (change.Property == ZoomProperty || change.Property == IsFullScreenProperty)
                 InvalidateMeasure();
         }
 
         protected override Size MeasureOverride(Size availableSize)
         {
-            return new Size(76.0 / Math.Max(_zoom, 1.0), 24.0);
+            if (!OperatingSystem.IsMacOS())
+                return new Size(0, 0);
+
+            return _isFullScreen ? new Size(4, 24) : new Size(76.0 / Math.Max(_zoom, 1.0), 24.0);
         }
 
         private double _zoom = 1.0;
+        private bool _isFullScreen = false;
     }
 }
