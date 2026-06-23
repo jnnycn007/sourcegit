@@ -171,12 +171,20 @@ namespace SourceGit.Views
 
         private void ScrollTabs(object _, PointerWheelEventArgs e)
         {
-            if (e.KeyModifiers.HasFlag(KeyModifiers.Shift))
+            if (Math.Abs(e.Delta.X) < Math.Abs(e.Delta.Y))
             {
-                if (e.Delta.Y < 0)
-                    LauncherTabsScroller.Offset += _scrollStep;
-                else if (e.Delta.Y > 0)
-                    LauncherTabsScroller.Offset -= _scrollStep;
+                var x = LauncherTabsScroller.Offset.X;
+                var extent = LauncherTabsScroller.Extent.Width;
+                var viewport = LauncherTabsScroller.Viewport.Width;
+                var delta = e.Delta.Y;
+
+                if (extent > viewport)
+                {
+                    x += -delta * 64; // Use the same logic with vertical scrolling in `ScrollContentPresenter`
+                    x = Math.Min(Math.Max(x, 0), extent - viewport);
+                }
+
+                LauncherTabsScroller.Offset = new Vector(x, 0);
                 e.Handled = true;
             }
         }
