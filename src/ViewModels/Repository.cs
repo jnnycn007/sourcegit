@@ -761,7 +761,7 @@ namespace SourceGit.ViewModels
             _watcher?.MarkBranchUpdated();
             _watcher?.MarkWorkingCopyUpdated();
 
-            _branches.RemoveAll(b => b.IsLocal && b.FriendlyName.Equals(created.FriendlyName, StringComparison.Ordinal));
+            _branches.RemoveAll(b => b.IsLocal && b.Name.Equals(created.Name, StringComparison.Ordinal));
             _branches.Add(created);
 
             if (checkout)
@@ -789,23 +789,21 @@ namespace SourceGit.ViewModels
                 CurrentBranch = created;
             }
 
-            List<Models.Branch> locals = [];
+            var locals = new List<Models.Branch>();
+            var count = 0;
             foreach (var b in _branches)
             {
                 if (b.IsLocal)
+                {
                     locals.Add(b);
+                    if (!b.IsDetachedHead)
+                        count++;
+                }
             }
 
             var builder = BuildBranchTree(locals, [], false);
             LocalBranchTrees = builder.Locals;
-
-            var localBranchesCount = 0;
-            foreach (var b in locals)
-            {
-                if (!b.IsDetachedHead)
-                    localBranchesCount++;
-            }
-            LocalBranchesCount = localBranchesCount;
+            LocalBranchesCount = count;
 
             RefreshCommits();
             RefreshWorkingCopyChanges();
