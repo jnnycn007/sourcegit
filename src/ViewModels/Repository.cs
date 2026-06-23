@@ -864,9 +864,8 @@ namespace SourceGit.ViewModels
                 WorktreePath = b.WorktreePath,
             };
 
-            var idx = _branches.IndexOf(b);
-            if (idx >= 0)
-                _branches[idx] = renamed;
+            _branches.Remove(b);
+            _branches.Add(renamed);
 
             if (b.IsCurrent)
                 CurrentBranch = renamed;
