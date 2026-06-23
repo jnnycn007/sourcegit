@@ -93,15 +93,37 @@ namespace SourceGit.Views
 
             if (change.Property == ContentProperty)
             {
-                _iconResetTimer?.Dispose();
                 IsSHACopied = false;
+                _iconResetTimer?.Stop();
             }
+        }
+
+        protected override void OnLoaded(RoutedEventArgs e)
+        {
+            base.OnLoaded(e);
+
+            _iconResetTimer = new DispatcherTimer();
+            _iconResetTimer.Interval = TimeSpan.FromSeconds(1.5);
+            _iconResetTimer.Tag = this;
+            _iconResetTimer.Tick += (o, _) =>
+            {
+                if (o is DispatcherTimer { Tag: CommitBaseInfo view } timer)
+                {
+                    if (view.IsSHACopied)
+                        view.IsSHACopied = false;
+
+                    timer.IsEnabled = false;
+                }
+            };
+            _iconResetTimer.IsEnabled = false;
         }
 
         protected override void OnUnloaded(RoutedEventArgs e)
         {
+            _iconResetTimer.Tag = null;
+            _iconResetTimer.IsEnabled = false;
+
             base.OnUnloaded(e);
-            _iconResetTimer?.Dispose();
         }
 
         private void OnDateTimeContextMenuRequested(object sender, ContextRequestedEventArgs e)
@@ -129,15 +151,8 @@ namespace SourceGit.Views
             if (sender is Button { DataContext: Models.Commit commit })
                 await this.CopyTextAsync(commit.SHA);
 
-            _iconResetTimer = DispatcherTimer.RunOnce(() =>
-            {
-                if (IsSHACopied)
-                    IsSHACopied = false;
-
-                _iconResetTimer = null;
-            }, TimeSpan.FromSeconds(2));
-
             IsSHACopied = true;
+            _iconResetTimer?.Start();
             e.Handled = true;
         }
 
@@ -297,6 +312,6 @@ namespace SourceGit.Views
         private List<Models.CommitLink> _webLinks = null;
         private List<string> _children = null;
         private bool _isSHACopied = false;
-        private IDisposable _iconResetTimer;
+        private DispatcherTimer _iconResetTimer = null;
     }
 }

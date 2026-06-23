@@ -74,12 +74,12 @@ namespace SourceGit.Views
 
                 if (ShowAsDateTime)
                 {
-                    StopTimer();
+                    _refreshTimer?.Stop();
                     HorizontalAlignment = HorizontalAlignment.Left;
                 }
                 else
                 {
-                    StartTimer();
+                    _refreshTimer?.Start();
                     HorizontalAlignment = HorizontalAlignment.Center;
                 }
             }
@@ -94,43 +94,33 @@ namespace SourceGit.Views
         {
             base.OnLoaded(e);
 
-            if (!ShowAsDateTime)
-                StartTimer();
+            _refreshTimer = new DispatcherTimer();
+            _refreshTimer.Interval = TimeSpan.FromSeconds(10);
+            _refreshTimer.Tag = this;
+            _refreshTimer.Tick += (o, _) =>
+            {
+                if (o is DispatcherTimer { Tag: CommitTimeTextBlock textBlock })
+                {
+                    var text = textBlock.GetDisplayText();
+                    if (!text.Equals(textBlock.Text, StringComparison.Ordinal))
+                        textBlock.Text = text;
+                }
+            };
+            _refreshTimer.IsEnabled = !ShowAsDateTime;
         }
 
         protected override void OnUnloaded(RoutedEventArgs e)
         {
+            _refreshTimer.Tag = null;
+            _refreshTimer.IsEnabled = false;
+
             base.OnUnloaded(e);
-            StopTimer();
         }
 
         protected override void OnDataContextChanged(EventArgs e)
         {
             base.OnDataContextChanged(e);
             SetCurrentValue(TextProperty, GetDisplayText());
-        }
-
-        private void StartTimer()
-        {
-            if (_refreshTimer != null)
-                return;
-
-            _refreshTimer = DispatcherTimer.Run(() =>
-            {
-                var text = GetDisplayText();
-                if (!text.Equals(Text, StringComparison.Ordinal))
-                    Text = text;
-                return true;
-            }, TimeSpan.FromSeconds(10));
-        }
-
-        private void StopTimer()
-        {
-            if (_refreshTimer != null)
-            {
-                _refreshTimer.Dispose();
-                _refreshTimer = null;
-            }
         }
 
         private string GetDisplayText()
@@ -185,6 +175,6 @@ namespace SourceGit.Views
         private bool _use24Hours = true;
         private int _dateTimeFormat = 0;
         private ulong _timestamp = 0;
-        private IDisposable _refreshTimer = null;
+        private DispatcherTimer _refreshTimer = null;
     }
 }
