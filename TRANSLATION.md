@@ -993,27 +993,7 @@ This document shows the translation status of each locale file in the repository
 
 </details>
 
-### ![ru__RU](https://img.shields.io/badge/ru__RU-98.61%25-yellow)
-
-<details>
-<summary>Missing keys in ru_RU.axaml</summary>
-
-- Text.Bisect.WaitingForCheckoutAnother
-- Text.Bisect.WaitingForFirstBad
-- Text.CheckoutDetached
-- Text.CheckoutDetached.Target
-- Text.CheckoutDetached.Warning
-- Text.Configure.Git.EnableRecursiveWhenAutoUpdatingSubmodules
-- Text.Diff.EmptyFile
-- Text.GitFlow.Finish
-- Text.GitFlow.FinishWithRebase
-- Text.GitFlow.StartAt
-- Text.GitFlow.StartName
-- Text.TagCM.Checkout
-- Text.TagCM.Merge
-- Text.UpdateSubmodules.Recursive
-
-</details>
+### ![ru__RU](https://img.shields.io/badge/ru__RU-%E2%88%9A-brightgreen)
 
 ### ![ta__IN](https://img.shields.io/badge/ta__IN-65.67%25-red)
 
