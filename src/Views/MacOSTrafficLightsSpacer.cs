@@ -45,9 +45,6 @@ namespace SourceGit.Views
 
         protected override Size MeasureOverride(Size availableSize)
         {
-            if (!OperatingSystem.IsMacOS())
-                return new Size(0, 0);
-
             return _isFullScreen ? new Size(4, 24) : new Size(76.0 / Math.Max(_zoom, 1.0), 24.0);
         }
 

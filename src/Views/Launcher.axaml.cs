@@ -21,17 +21,6 @@ namespace SourceGit.Views
             set => SetAndRaise(CaptionHeightProperty, ref _captionHeight, value);
         }
 
-        public static readonly DirectProperty<Launcher, bool> HasLeftCaptionButtonProperty =
-            AvaloniaProperty.RegisterDirect<Launcher, bool>(
-                nameof(HasLeftCaptionButton),
-                o => o.HasLeftCaptionButton);
-
-        public bool HasLeftCaptionButton
-        {
-            get => _hasLeftCaptionButton;
-            set => SetAndRaise(HasLeftCaptionButtonProperty, ref _hasLeftCaptionButton, value);
-        }
-
         public bool HasRightCaptionButton
         {
             get
@@ -46,18 +35,11 @@ namespace SourceGit.Views
         public Launcher()
         {
             if (OperatingSystem.IsMacOS())
-            {
-                HasLeftCaptionButton = true;
                 CaptionHeight = new GridLength(34);
-            }
             else if (UseSystemWindowFrame)
-            {
                 CaptionHeight = new GridLength(30);
-            }
             else
-            {
                 CaptionHeight = new GridLength(38);
-            }
 
             InitializeComponent();
             PositionChanged += OnPositionChanged;
@@ -112,9 +94,7 @@ namespace SourceGit.Views
                 var state = (WindowState)change.NewValue!;
                 _lastWindowState = (WindowState)change.OldValue!;
 
-                if (OperatingSystem.IsMacOS())
-                    HasLeftCaptionButton = state != WindowState.FullScreen;
-                else if (!UseSystemWindowFrame)
+                if (!OperatingSystem.IsMacOS() && !UseSystemWindowFrame)
                     CaptionHeight = new GridLength(state == WindowState.Maximized ? 30 : 38);
 
                 ViewModels.Preferences.Instance.Layout.LauncherWindowState = state;
@@ -125,7 +105,7 @@ namespace SourceGit.Views
                     vm.CommandPalette = null;
             }
 
-            if (HasLeftCaptionButton && OperatingSystem.IsMacOS())
+            if (OperatingSystem.IsMacOS() && WindowState != WindowState.FullScreen)
             {
                 if (change.Property == WindowStateProperty ||
                     change.Property == BoundsProperty ||
@@ -444,7 +424,6 @@ namespace SourceGit.Views
         }
 
         private GridLength _captionHeight = new(32);
-        private bool _hasLeftCaptionButton = false;
         private WindowState _lastWindowState = WindowState.Normal;
     }
 }
