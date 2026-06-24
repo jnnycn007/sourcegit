@@ -356,7 +356,6 @@
   <x:String x:Key="Text.DeleteTag.Tag" xml:space="preserve">Tag:</x:String>
   <x:String x:Key="Text.DeleteTag.WithRemote" xml:space="preserve">מחק גם ממאגרים מרוחקים</x:String>
   <x:String x:Key="Text.Diff.Binary" xml:space="preserve">DIFF בינארי</x:String>
-  <x:String x:Key="Text.Diff.FileModeChanged" xml:space="preserve">הרשאות הקובץ שונו</x:String>
   <x:String x:Key="Text.Diff.First" xml:space="preserve">ההבדל הראשון</x:String>
   <x:String x:Key="Text.Diff.IgnoreWhitespace" xml:space="preserve">התעלמות משינויי Whitespace</x:String>
   <x:String x:Key="Text.Diff.Image.Blend" xml:space="preserve">מיזוג</x:String>
