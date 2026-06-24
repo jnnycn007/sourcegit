@@ -369,7 +369,6 @@
   <x:String x:Key="Text.DeleteTag.WithRemote" xml:space="preserve">同時刪除遠端存放庫中的此標籤</x:String>
   <x:String x:Key="Text.Diff.Binary" xml:space="preserve">二進位檔案</x:String>
   <x:String x:Key="Text.Diff.EmptyFile" xml:space="preserve">空檔案</x:String>
-  <x:String x:Key="Text.Diff.FileModeChanged" xml:space="preserve">檔案權限已變更</x:String>
   <x:String x:Key="Text.Diff.First" xml:space="preserve">第一個差異</x:String>
   <x:String x:Key="Text.Diff.IgnoreWhitespace" xml:space="preserve">忽略空白符號變化</x:String>
   <x:String x:Key="Text.Diff.Image.Blend" xml:space="preserve">混合對比</x:String>
@@ -442,6 +441,15 @@
   <x:String x:Key="Text.FileHistory" xml:space="preserve">檔案歷史</x:String>
   <x:String x:Key="Text.FileHistory.FileChange" xml:space="preserve">檔案變更</x:String>
   <x:String x:Key="Text.FileHistory.FileContent" xml:space="preserve">檔案內容</x:String>
+  <x:String x:Key="Text.FileModeChange" xml:space="preserve">檔案類型變更：</x:String>
+  <x:String x:Key="Text.FileModeChange.Deleted" xml:space="preserve">刪除檔案類型：</x:String>
+  <x:String x:Key="Text.FileModeChange.Directory" xml:space="preserve">目錄</x:String>
+  <x:String x:Key="Text.FileModeChange.Executable" xml:space="preserve">可執行檔案</x:String>
+  <x:String x:Key="Text.FileModeChange.New" xml:space="preserve">新增檔案類型：</x:String>
+  <x:String x:Key="Text.FileModeChange.Normal" xml:space="preserve">普通檔案</x:String>
+  <x:String x:Key="Text.FileModeChange.Submodule" xml:space="preserve">子模組</x:String>
+  <x:String x:Key="Text.FileModeChange.Symlink" xml:space="preserve">符號連結</x:String>
+  <x:String x:Key="Text.FileModeChange.Unknown" xml:space="preserve">未知</x:String>
   <x:String x:Key="Text.GitFlow" xml:space="preserve">Git 工作流</x:String>
   <x:String x:Key="Text.GitFlow.DevelopBranch" xml:space="preserve">開發分支:</x:String>
   <x:String x:Key="Text.GitFlow.Feature" xml:space="preserve">功能分支:</x:String>

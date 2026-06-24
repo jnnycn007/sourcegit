@@ -187,29 +187,36 @@ namespace SourceGit.Commands
         {
             if (line.StartsWith("old mode ", StringComparison.Ordinal))
             {
-                _result.OldMode = line.Substring(9);
+                _result.OldMode = ParseFileMode(line.Substring(9));
                 return true;
             }
 
             if (line.StartsWith("new mode ", StringComparison.Ordinal))
             {
-                _result.NewMode = line.Substring(9);
+                _result.NewMode = ParseFileMode(line.Substring(9));
                 return true;
             }
 
             if (line.StartsWith("deleted file mode ", StringComparison.Ordinal))
             {
-                _result.OldMode = line.Substring(18);
+                _result.OldMode = ParseFileMode(line.Substring(18));
                 return true;
             }
 
             if (line.StartsWith("new file mode ", StringComparison.Ordinal))
             {
-                _result.NewMode = line.Substring(14);
+                _result.NewMode = ParseFileMode(line.Substring(14));
                 return true;
             }
 
             return false;
+        }
+
+        private int ParseFileMode(string content)
+        {
+            int mode = 0;
+            int.TryParse(content, out mode);
+            return mode;
         }
 
         private bool ParseLFSChange(string line)
