@@ -16,18 +16,23 @@ namespace SourceGit.Commands
         [GeneratedRegex(@"^index\s([0-9a-f]{6,64})\.\.([0-9a-f]{6,64})(\s[1-9]{6})?")]
         private static partial Regex REG_HASH_CHANGE();
 
+        private const char PREFIX_CONTEXT = ' ';
+        private const char PREFIX_DELETED = '-';
+        private const char PREFIX_ADDED = '+';
+        private const char PREFIX_COMMAND = '\\';
+
+        private const string FILE_MODE_OLD = "old mode ";
+        private const string FILE_MODE_NEW = "new mode ";
+        private const string FILE_MODE_DELETED = "deleted file mode ";
+        private const string FILE_MODE_ADDED = "new file mode ";
+
         private const string LFS_SPECIFIER = "version https://git-lfs.github.com/spec/";
         private const string LFS_OID_PREFIX = "oid sha256:";
         private const string LFS_SIZE_PREFIX = "size ";
 
-        private enum Indicator
-        {
-            ChunkHeader = '@',
-            Context = ' ',
-            Old = '-',
-            New = '+',
-            Special = '\\',
-        }
+        private const string SPECIAL_DIFF_START = "diff ";
+        private const string SPECIAL_BINARY = "Binary files ";
+        private const string SPECIAL_NO_NEWLINE = " No newline at end of file";
 
         public Diff(string repo, Models.DiffOption opt, int numContextLines, bool ignoreWhitespace, bool ignoreCRAtEOL)
         {
@@ -59,22 +64,25 @@ namespace SourceGit.Commands
                 using var ms = new MemoryStream();
                 await proc.StandardOutput.BaseStream.CopyToAsync(ms, CancellationToken).ConfigureAwait(false);
 
-                var bytes = ms.ToArray();
-                var start = 0;
-                while (start < bytes.Length)
+                if (ms.TryGetBuffer(out var buffer))
                 {
-                    var end = Array.IndexOf(bytes, (byte)'\n', start);
-                    if (end < 0)
+                    var start = buffer.Offset;
+                    var end = buffer.Offset + buffer.Count;
+                    while (start < end)
                     {
-                        ParseLine(bytes[start..]);
-                        break;
+                        var lineEnd = Array.IndexOf(buffer.Array, (byte)'\n', start);
+                        if (lineEnd < 0)
+                        {
+                            ParseLine(buffer[start..]);
+                            break;
+                        }
+
+                        ParseLine(buffer[start..lineEnd]);
+                        if (_result.IsBinary)
+                            break;
+
+                        start = lineEnd + 1;
                     }
-
-                    ParseLine(bytes[start..end]);
-                    if (_result.IsBinary)
-                        break;
-
-                    start = end + 1;
                 }
 
                 await proc.WaitForExitAsync(CancellationToken).ConfigureAwait(false);
@@ -106,199 +114,175 @@ namespace SourceGit.Commands
             return _result;
         }
 
-        private void ParseLine(byte[] lineBytes)
+        private void ParseLine(ArraySegment<byte> lineBytes)
         {
-            var line = Encoding.UTF8.GetString(lineBytes);
+            // Decode line bytes to UTF-8 string
+            var line = Encoding.UTF8.GetString(lineBytes.Array, lineBytes.Offset, lineBytes.Count);
             if (line.Length == 0)
                 return;
 
-            if (ParseChunkStartLine(line, lineBytes))
+            // If we are reading a chunk body, try to read the current line as body first (because
+            // the number of chunk body is greater than the number of chunk indicator in most time.
+            if (_isInChunk)
+            {
+                if (ParseChunkBodyLine(line, lineBytes[1..]))
+                    return;
+
+                ProcessInlineHighlights();
+                _isInChunk = false;
+            }
+
+            // If the current line is not a chunk body, try to parse it as chunk indicator
+            if (ParseChunkStartLine(line))
                 return;
 
-            if (ParseChunkBodyLine(line[0], line.Substring(1), lineBytes[1..]))
-                return;
-
+            // Fallback to diff headers to support type-changed diff (multiple headers).
             ParseDiffHeaderLine(line);
         }
 
         private void ParseDiffHeaderLine(string line)
         {
-            if (line.StartsWith("diff"))
+            if (line.StartsWith(SPECIAL_DIFF_START, StringComparison.Ordinal))
                 return;
+
+            if (line.StartsWith(SPECIAL_BINARY, StringComparison.Ordinal))
+                _result.IsBinary = true;
 
             if (ParseFileModeChange(line))
                 return;
 
-            if (line.StartsWith("index"))
+            var match = REG_HASH_CHANGE().Match(line);
+            if (match.Success)
             {
-                var match = REG_HASH_CHANGE().Match(line);
-                if (match.Success)
-                {
-                    // NOTE: For a TypeChanged file we receive two full sets of diff-lines within
-                    // the same diff output, indicating a 'deleted file' followed by a 'new file' .
-                    // We then keep the oldest Old hash and the newest New hash.
-                    if (string.IsNullOrEmpty(_result.OldHash))
-                        _result.OldHash = match.Groups[1].Value;
-                    _result.NewHash = match.Groups[2].Value;
-                }
+                if (string.IsNullOrEmpty(_result.OldHash))
+                    _result.OldHash = match.Groups[1].Value;
+                _result.NewHash = match.Groups[2].Value;
                 return;
             }
-
-            if (line.StartsWith("Binary", StringComparison.Ordinal))
-                _result.IsBinary = true;
         }
 
-        private bool ParseChunkStartLine(System.String line, byte[] lineBytes)
+        private bool ParseChunkStartLine(string line)
         {
-            if (line[0] == (char)Indicator.ChunkHeader)
+            var match = REG_INDICATOR().Match(line);
+            if (match.Success)
             {
-                if (_isInChunk)
-                {
-                    ProcessInlineHighlights();
-                    _isInChunk = false;
-                }
-
-                var match = REG_INDICATOR().Match(line);
-                if (match.Success)
-                {
-                    _oldLine = int.Parse(match.Groups[1].Value);
-                    _newLine = int.Parse(match.Groups[2].Value);
-                    _last = new Models.TextDiffLine(Models.TextDiffLineType.Indicator, line, lineBytes, 0, 0);
-                    _result.TextDiff.Lines.Add(_last);
-
-                    _isInChunk = true;
-                    return true;
-                }
+                _oldLine = int.Parse(match.Groups[1].Value);
+                _newLine = int.Parse(match.Groups[2].Value);
+                _last = new Models.TextDiffLine(Models.TextDiffLineType.Indicator, line, null, 0, 0);
+                _result.TextDiff.Lines.Add(_last);
+                _isInChunk = true;
+                return true;
             }
+
             return false;
         }
 
-        private bool ParseChunkBodyLine(char ch, string line, byte[] rawContent)
+        private bool ParseChunkBodyLine(string line, ArraySegment<byte> lineBytes)
         {
-            if (_isInChunk)
+            var prefix = line[0];
+            var content = line.Substring(1);
+            if (ParseLFSChange(prefix, content))
+                return true;
+
+            if (prefix == PREFIX_DELETED)
             {
-                if (ParseLFSChange(ch, line))
-                    return true;
-
-                if (ch == (char)Indicator.Old)
-                {
-                    _result.TextDiff.DeletedLines++;
-                    _last = new Models.TextDiffLine(Models.TextDiffLineType.Deleted, line, rawContent, _oldLine, 0);
-                    _deleted.Add(_last);
-                    _oldLine++;
-                    return true;
-                }
-
-                if (ch == (char)Indicator.New)
-                {
-                    _result.TextDiff.AddedLines++;
-                    _last = new Models.TextDiffLine(Models.TextDiffLineType.Added, line, rawContent, 0, _newLine);
-                    _added.Add(_last);
-                    _newLine++;
-                    return true;
-                }
-
-                if (ch == (char)Indicator.Context)
-                {
-                    ProcessInlineHighlights();
-
-                    _last = new Models.TextDiffLine(Models.TextDiffLineType.Normal, line, rawContent, _oldLine, _newLine);
-                    _result.TextDiff.Lines.Add(_last);
-                    _oldLine++;
-                    _newLine++;
-                    return true;
-                }
-
-                if (ch == (char)Indicator.Special)
-                {
-                    if (line.Equals(" No newline at end of file", StringComparison.Ordinal))
-                        _last.NoNewLineEndOfFile = true;
-                    return true;
-                }
+                _result.TextDiff.DeletedLines++;
+                _last = new Models.TextDiffLine(Models.TextDiffLineType.Deleted, content, lineBytes.ToArray(), _oldLine, 0);
+                _deleted.Add(_last);
+                _oldLine++;
+                return true;
             }
 
-            ProcessInlineHighlights();
-            _isInChunk = false;
-            return false;
-        }
+            if (prefix == PREFIX_ADDED)
+            {
+                _result.TextDiff.AddedLines++;
+                _last = new Models.TextDiffLine(Models.TextDiffLineType.Added, content, lineBytes.ToArray(), 0, _newLine);
+                _added.Add(_last);
+                _newLine++;
+                return true;
+            }
 
-        private int ParseFileModeNumber(string fileModeStr)
-        {
-            int fileMode = 0;
-            Int32.TryParse(fileModeStr, out fileMode);
-            return fileMode;
+            if (prefix == PREFIX_CONTEXT)
+            {
+                ProcessInlineHighlights();
+
+                _last = new Models.TextDiffLine(Models.TextDiffLineType.Normal, content, lineBytes.ToArray(), _oldLine, _newLine);
+                _result.TextDiff.Lines.Add(_last);
+                _oldLine++;
+                _newLine++;
+                return true;
+            }
+
+            if (prefix == PREFIX_COMMAND)
+            {
+                if (content.Equals(SPECIAL_NO_NEWLINE, StringComparison.Ordinal))
+                    _last.NoNewLineEndOfFile = true;
+                return true;
+            }
+
+            return false;
         }
 
         private bool ParseFileModeChange(string line)
         {
-            if (line.StartsWith("old mode ", StringComparison.Ordinal))
+            if (line.StartsWith(FILE_MODE_OLD, StringComparison.Ordinal))
             {
-                _result.OldMode = ParseFileMode(line.Substring(9));
+                _result.OldMode = int.Parse(line.AsSpan(9));
                 return true;
             }
 
-            if (line.StartsWith("new mode ", StringComparison.Ordinal))
+            if (line.StartsWith(FILE_MODE_NEW, StringComparison.Ordinal))
             {
-                _result.NewMode = ParseFileMode(line.Substring(9));
+                _result.NewMode = int.Parse(line.AsSpan(9));
                 return true;
             }
 
-            if (line.StartsWith("deleted file mode ", StringComparison.Ordinal))
+            if (line.StartsWith(FILE_MODE_DELETED, StringComparison.Ordinal))
             {
-                _result.OldMode = ParseFileMode(line.Substring(18));
+                _result.OldMode = int.Parse(line.AsSpan(18));
                 return true;
             }
 
-            if (line.StartsWith("new file mode ", StringComparison.Ordinal))
+            if (line.StartsWith(FILE_MODE_ADDED, StringComparison.Ordinal))
             {
-                _result.NewMode = ParseFileMode(line.Substring(14));
+                _result.NewMode = int.Parse(line.AsSpan(14));
                 return true;
             }
 
             return false;
         }
 
-        private int ParseFileMode(string content)
-        {
-            int mode = 0;
-            int.TryParse(content, out mode);
-            return mode;
-        }
-
-        private bool ParseLFSChange(char ch, string line)
+        private bool ParseLFSChange(char prefix, string content)
         {
             if (_result.IsLFS)
             {
-                if (ch == (char)Indicator.Old)
+                if (prefix == PREFIX_DELETED)
                 {
-                    if (line.StartsWith(LFS_OID_PREFIX, StringComparison.Ordinal))
-                        _result.LFSDiff.Old.Oid = line.Substring(11);
-                    else if (line.StartsWith(LFS_SIZE_PREFIX, StringComparison.Ordinal))
-                        _result.LFSDiff.Old.Size = long.Parse(line.AsSpan(5));
+                    if (content.StartsWith(LFS_OID_PREFIX, StringComparison.Ordinal))
+                        _result.LFSDiff.Old.Oid = content.Substring(11);
+                    else if (content.StartsWith(LFS_SIZE_PREFIX, StringComparison.Ordinal))
+                        _result.LFSDiff.Old.Size = long.Parse(content.AsSpan(5));
                 }
-                else if (ch == (char)Indicator.New)
+                else if (prefix == PREFIX_ADDED)
                 {
-                    if (line.StartsWith(LFS_OID_PREFIX, StringComparison.Ordinal))
-                        _result.LFSDiff.New.Oid = line.Substring(11);
-                    else if (line.StartsWith(LFS_SIZE_PREFIX, StringComparison.Ordinal))
-                        _result.LFSDiff.New.Size = long.Parse(line.AsSpan(5));
+                    if (content.StartsWith(LFS_OID_PREFIX, StringComparison.Ordinal))
+                        _result.LFSDiff.New.Oid = content.Substring(11);
+                    else if (content.StartsWith(LFS_SIZE_PREFIX, StringComparison.Ordinal))
+                        _result.LFSDiff.New.Size = long.Parse(content.AsSpan(5));
                 }
-                else if (ch == (char)Indicator.Context)
+                else if (prefix == PREFIX_CONTEXT)
                 {
-                    if (line.StartsWith(LFS_SIZE_PREFIX, StringComparison.Ordinal))
-                        _result.LFSDiff.New.Size = _result.LFSDiff.Old.Size = long.Parse(line.AsSpan(5));
+                    if (content.StartsWith(LFS_SIZE_PREFIX, StringComparison.Ordinal))
+                        _result.LFSDiff.New.Size = _result.LFSDiff.Old.Size = long.Parse(content.AsSpan(5));
                 }
                 return true;
             }
 
-            if (_result.TextDiff.Lines.Count != 1)
-                return false;
-
-            if ((_oldLine == 1 && _newLine == 1 && ch == (char)Indicator.Context) ||
-                (_oldLine == 1 && _newLine == 0 && ch == (char)Indicator.Old) ||
-                (_oldLine == 0 && _newLine == 1 && ch == (char)Indicator.New))
+            if ((_oldLine == 1 && _newLine == 1 && prefix == PREFIX_CONTEXT) ||
+                (_oldLine == 1 && _newLine == 0 && prefix == PREFIX_DELETED) ||
+                (_oldLine == 0 && _newLine == 1 && prefix == PREFIX_ADDED))
             {
-                if (line.StartsWith(LFS_SPECIFIER, StringComparison.Ordinal))
+                if (content.StartsWith(LFS_SPECIFIER, StringComparison.Ordinal))
                 {
                     _result.IsLFS = true;
                     _result.LFSDiff = new Models.LFSDiff();

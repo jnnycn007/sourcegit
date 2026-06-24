@@ -33,10 +33,10 @@ namespace SourceGit.Models
         public string NewLine => NewLineNumber == 0 ? string.Empty : NewLineNumber.ToString();
 
         public TextDiffLine() { }
-        public TextDiffLine(TextDiffLineType type, string line, byte[] rawContent, int oldLine, int newLine)
+        public TextDiffLine(TextDiffLineType type, string content, byte[] rawContent, int oldLine, int newLine)
         {
             Type = type;
-            Content = line;
+            Content = content;
             RawContent = rawContent;
             OldLineNumber = oldLine;
             NewLineNumber = newLine;
