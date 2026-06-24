@@ -27,7 +27,7 @@
                BorderBrush="{DynamicResource Brush.Border0}"
                BorderThickness="1"
                Background="{DynamicResource Brush.Contents}"
-               PlaceholderText="{DynamicResource Text.Welcome.Search}"
+               Watermark="{DynamicResource Text.Welcome.Search}"
                VerticalContentAlignment="Center"
                Text="{Binding SearchFilter, Mode=TwoWay}">
         <TextBox.Styles>

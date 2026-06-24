@@ -292,7 +292,7 @@ namespace SourceGit.Views
             }
         }
 
-        protected override void OnLostFocus(FocusChangedEventArgs e)
+        protected override void OnLostFocus(RoutedEventArgs e)
         {
             base.OnLostFocus(e);
             Suggestions = null;
