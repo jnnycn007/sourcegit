@@ -145,9 +145,6 @@ namespace SourceGit.Commands
             if (line.StartsWith(SPECIAL_DIFF_START, StringComparison.Ordinal))
                 return;
 
-            if (line.StartsWith(SPECIAL_BINARY, StringComparison.Ordinal))
-                _result.IsBinary = true;
-
             if (ParseFileModeChange(line))
                 return;
 
@@ -159,6 +156,9 @@ namespace SourceGit.Commands
                 _result.NewHash = match.Groups[2].Value;
                 return;
             }
+
+            if (line.StartsWith(SPECIAL_BINARY, StringComparison.Ordinal))
+                _result.IsBinary = true;
         }
 
         private bool ParseChunkStartLine(string line)
