@@ -130,31 +130,7 @@ This document shows the translation status of each locale file in the repository
 
 </details>
 
-### ![es__ES](https://img.shields.io/badge/es__ES-98.21%25-yellow)
-
-<details>
-<summary>Missing keys in es_ES.axaml</summary>
-
-- Text.Apply.Source
-- Text.Apply.Source.File
-- Text.Apply.Source.Clipboard
-- Text.Bisect.WaitingForCheckoutAnother
-- Text.Bisect.WaitingForFirstBad
-- Text.CheckoutDetached
-- Text.CheckoutDetached.Target
-- Text.CheckoutDetached.Warning
-- Text.Configure.Git.EnableRecursiveWhenAutoUpdatingSubmodules
-- Text.CopyAsPatch
-- Text.Diff.EmptyFile
-- Text.GitFlow.Finish
-- Text.GitFlow.FinishWithRebase
-- Text.GitFlow.StartAt
-- Text.GitFlow.StartName
-- Text.TagCM.Checkout
-- Text.TagCM.Merge
-- Text.UpdateSubmodules.Recursive
-
-</details>
+### ![es__ES](https://img.shields.io/badge/es__ES-%E2%88%9A-brightgreen)
 
 ### ![fr__FR](https://img.shields.io/badge/fr__FR-97.12%25-yellow)
 
