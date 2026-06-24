@@ -290,6 +290,13 @@ namespace SourceGit.Views
                     Suggestions = null;
                 }
             }
+            else if (change.Property == BoundsProperty)
+            {
+                // Sync the actual width to TextPresenter. Otherwise, `TextWrapping` will not work well without
+                // a fixed width. See https://github.com/AvaloniaUI/Avalonia/issues/5819
+                if (_textPresenter != null)
+                    _textPresenter.Width = Bounds.Width;
+            }
         }
 
         protected override void OnLostFocus(RoutedEventArgs e)
