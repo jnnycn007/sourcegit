@@ -103,6 +103,7 @@
                                                VerticalAlignment="Center"
                                                UseGraphColor="False"/>
                         <TextBlock Margin="4,0,0,0"
+                                   FontFamily="{DynamicResource Fonts.Monospace}"
                                    Text="{Binding SHA, Converter={x:Static c:StringConverters.ToShortSHA}}"
                                    Foreground="DarkOrange"
                                    TextDecorations="Underline"
@@ -169,6 +170,7 @@
                                                VerticalAlignment="Center"
                                                UseGraphColor="False"/>
                         <TextBlock Margin="4,0,0,0"
+                                   FontFamily="{DynamicResource Fonts.Monospace}"
                                    Text="{Binding SHA, Converter={x:Static c:StringConverters.ToShortSHA}}"
                                    Foreground="DarkOrange"
                                    TextDecorations="Underline"
