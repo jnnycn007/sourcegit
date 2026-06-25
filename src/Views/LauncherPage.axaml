@@ -64,11 +64,13 @@
                 Background="Transparent"
                 Effect="drop-shadow(0 0 8 #8F000000)"
                 IsVisible="{Binding Popup, Converter={x:Static ObjectConverters.IsNotNull}}">
-          <Border CornerRadius="0,0,8,8" ClipToBounds="True">
-            <ContentControl x:Name="PopupPanel" Content="{Binding Popup}" Background="{DynamicResource Brush.Popup}">
+          <Border Background="{DynamicResource Brush.Popup}"
+                  BorderThickness="1,0,1,1" BorderBrush="{DynamicResource Brush.PopupBorder}"
+                  CornerRadius="0,0,8,8">
+            <ContentControl x:Name="PopupPanel" Content="{Binding Popup}">
               <ContentControl.DataTemplates>
                 <DataTemplate DataType="vm:Popup">
-                  <StackPanel Orientation="Vertical" Background="{DynamicResource Brush.Popup}">
+                  <StackPanel Orientation="Vertical">
                     <!-- Popup Widget -->
                     <ContentControl Margin="8,16,8,8"
                                     Content="{Binding}"

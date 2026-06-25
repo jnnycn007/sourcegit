@@ -761,12 +761,13 @@
 
   <Style Selector="ContextMenu">
     <Setter Property="MaxWidth" Value="1024"/>
-    <Setter Property="HorizontalOffset" Value="-4"/>
-    <Setter Property="VerticalOffset" Value="-4"/>
+    <Setter Property="HorizontalOffset" Value="-6"/>
+    <Setter Property="VerticalOffset" Value="-6"/>
     <Setter Property="Template">
       <ControlTemplate>
-        <Grid Margin="4" Effect="drop-shadow(0 0 4 #A0000000)">
-          <Border BorderThickness="0"
+        <Grid Margin="6" Effect="drop-shadow(0 0 6 #B0000000)">
+          <Border BorderThickness="1"
+                  BorderBrush="{DynamicResource Brush.PopupBorder}"
                   Background="{DynamicResource Brush.Popup}"
                   CornerRadius="{TemplateBinding CornerRadius}"
                   Padding="8,4"
@@ -792,8 +793,8 @@
         <Grid Margin="4" Effect="drop-shadow(0 0 4 #A0000000)">
           <Border Name="LayoutRoot"
                   Background="{DynamicResource Brush.Popup}"
-                  BorderBrush="{TemplateBinding BorderBrush}"
-                  BorderThickness="0"
+                  BorderBrush="{DynamicResource Brush.PopupBorder}"
+                  BorderThickness="1"
                   Padding="4,2"
                   CornerRadius="{TemplateBinding CornerRadius}">
             <ScrollViewer HorizontalScrollBarVisibility="{TemplateBinding ScrollViewer.HorizontalScrollBarVisibility}"
@@ -902,8 +903,12 @@
                  HorizontalOffset="-4"
                  VerticalOffset="-4"
                  IsOpen="{TemplateBinding IsSubMenuOpen, Mode=TwoWay}">
-            <Grid Margin="4" Effect="drop-shadow(0 0 4 #A0000000)">
-              <Border BorderThickness="0" Padding="8,4" MaxHeight="400" Background="{DynamicResource Brush.Popup}" CornerRadius="{DynamicResource OverlayCornerRadius}">
+            <Grid Margin="6" Effect="drop-shadow(0 0 6 #B0000000)">
+              <Border Padding="8,4"
+                      MaxHeight="400"
+                      BorderThickness="1" BorderBrush="{DynamicResource Brush.PopupBorder}"
+                      Background="{DynamicResource Brush.Popup}"
+                      CornerRadius="{DynamicResource OverlayCornerRadius}">
                 <ScrollViewer>
                   <ItemsPresenter Name="PART_ItemsPresenter"
                                   Margin="{DynamicResource MenuFlyoutScrollerMargin}"

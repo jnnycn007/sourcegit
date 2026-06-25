@@ -40,7 +40,10 @@
           </Popup.IsOpen>
 
           <Border Margin="8" VerticalAlignment="Top" Effect="drop-shadow(0 0 8 #80000000)">
-            <Border Background="{DynamicResource Brush.Popup}" CornerRadius="4" Padding="4" BorderThickness="0.65" BorderBrush="{DynamicResource Brush.Border0}">
+            <Border Padding="4"
+                    BorderThickness="1" BorderBrush="{DynamicResource Brush.PopupBorder}"
+                    Background="{DynamicResource Brush.Popup}"
+                    CornerRadius="4">
               <v:ListBoxEx x:Name="SuggestionBox"
                            Background="Transparent"
                            SelectionMode="Single"
