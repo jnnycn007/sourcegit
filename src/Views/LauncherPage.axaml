@@ -141,8 +141,8 @@
           <ItemsControl ItemsSource="{Binding Notifications}">
             <ItemsControl.ItemTemplate>
               <DataTemplate DataType="m:Notification">
-                <Border Margin="6" HorizontalAlignment="Stretch" VerticalAlignment="Top" Effect="drop-shadow(0 0 8 #8F000000)">
-                  <Border Padding="8" CornerRadius="6" Background="{DynamicResource Brush.Popup}">
+                <Border Margin="6" HorizontalAlignment="Stretch" VerticalAlignment="Top" Effect="drop-shadow(0 0 8 #80000000)">
+                  <Border Padding="8" CornerRadius="6" Background="{DynamicResource Brush.Popup}" BorderThickness="1" BorderBrush="{DynamicResource Brush.PopupBorder}">
                     <Grid RowDefinitions="26,Auto">
                       <Grid Grid.Row="0" ColumnDefinitions="Auto,*,Auto,Auto" Margin="8,0">
                         <Path Grid.Column="0" Width="14" Height="14" Data="{StaticResource Icons.Error}" Fill="Red" IsVisible="{Binding IsError}"/>

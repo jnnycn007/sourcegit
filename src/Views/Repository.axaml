@@ -529,7 +529,7 @@
 
           <Popup PlacementTarget="{Binding #TxtSearchCommitsBox}"
                  Placement="BottomEdgeAlignedLeft"
-                 HorizontalOffset="-8" VerticalOffset="-8">
+                 HorizontalOffset="-8" VerticalOffset="-6">
             <Popup.IsOpen>
               <MultiBinding Converter="{x:Static BoolConverters.And}">
                 <Binding Path="SearchCommitContext.Suggestions" Converter="{x:Static c:ListConverters.IsNotNullOrEmpty}"/>
@@ -538,7 +538,10 @@
             </Popup.IsOpen>
 
             <Border Margin="8" VerticalAlignment="Top" Effect="drop-shadow(0 0 8 #80000000)">
-              <Border Background="{DynamicResource Brush.Popup}" CornerRadius="4" Padding="4" BorderThickness="0.65" BorderBrush="{DynamicResource Brush.Accent}">
+              <Border Padding="4"
+                      CornerRadius="4"
+                      Background="{DynamicResource Brush.Popup}"
+                      BorderThickness="1" BorderBrush="{DynamicResource Brush.PopupBorder}">
                 <v:ListBoxEx x:Name="SearchSuggestionBox"
                              Background="Transparent"
                              SelectionMode="Single"
@@ -978,7 +981,7 @@
 
     <!-- Right (Auto-Fetch) -->
     <Border Grid.Column="2" Margin="12" HorizontalAlignment="Center" VerticalAlignment="Center" Effect="drop-shadow(0 0 12 #A0000000)" IsVisible="{Binding IsAutoFetching}">
-      <Border Background="{DynamicResource Brush.Popup}" CornerRadius="6">
+      <Border Background="{DynamicResource Brush.Popup}" CornerRadius="6" BorderThickness="1" BorderBrush="{DynamicResource Brush.PopupBorder}">
         <StackPanel Orientation="Vertical" Margin="16,8">
           <TextBlock Text="{DynamicResource Text.Repository.AutoFetching}"/>
           <ProgressBar Margin="0,8,0,0"

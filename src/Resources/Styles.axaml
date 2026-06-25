@@ -192,15 +192,16 @@
     <Setter Property="Foreground" Value="{DynamicResource Brush.FG1}"/>
     <Setter Property="Background" Value="{DynamicResource Brush.Popup}"/>
     <Setter Property="MaxWidth" Value="800"/>
+    <Setter Property="HorizontalOffset" Value="-8"/>
     <Setter Property="VerticalOffset" Value="-8"/>
     <Setter Property="TextBlock.TextDecorations" Value=""/>
     <Setter Property="Template">
       <ControlTemplate>
-        <Grid Margin="8" Effect="drop-shadow(0 0 8 #30000000)">
+        <Grid Margin="8" Effect="drop-shadow(0 0 8 #60000000)">
           <Border Padding="8,6"
                   CornerRadius="4"
                   Background="{DynamicResource Brush.Popup}"
-                  BorderBrush="{DynamicResource Brush.Border2}"
+                  BorderBrush="{DynamicResource Brush.PopupBorder}"
                   BorderThickness="1"
                   MaxWidth="{TemplateBinding MaxWidth}"
                   MinHeight="{TemplateBinding MinHeight}"
@@ -224,11 +225,12 @@
 
     <Setter Property="Template">
       <ControlTemplate>
-        <Grid Margin="4" Effect="drop-shadow(0 0 4 #A0000000)">
+        <Grid Margin="4" Effect="drop-shadow(0 0 4 #80000000)">
           <Border Name="LayoutRoot"
                   Padding="12"
                   Background="{DynamicResource Brush.Popup}"
-                  BorderThickness="0"
+                  BorderThickness="1"
+                  BorderBrush="{DynamicResource Brush.PopupBorder}"
                   CornerRadius="{TemplateBinding CornerRadius}">
             <ScrollViewer HorizontalScrollBarVisibility="{TemplateBinding ScrollViewer.HorizontalScrollBarVisibility}"
                           VerticalScrollBarVisibility="{TemplateBinding ScrollViewer.VerticalScrollBarVisibility}">
@@ -765,7 +767,7 @@
     <Setter Property="VerticalOffset" Value="-6"/>
     <Setter Property="Template">
       <ControlTemplate>
-        <Grid Margin="6" Effect="drop-shadow(0 0 6 #B0000000)">
+        <Grid Margin="6" Effect="drop-shadow(0 0 6 #80000000)">
           <Border BorderThickness="1"
                   BorderBrush="{DynamicResource Brush.PopupBorder}"
                   Background="{DynamicResource Brush.Popup}"
@@ -790,7 +792,7 @@
   <Style Selector="MenuFlyoutPresenter">
     <Setter Property="Template">
       <ControlTemplate>
-        <Grid Margin="4" Effect="drop-shadow(0 0 4 #A0000000)">
+        <Grid Margin="4" Effect="drop-shadow(0 0 4 #80000000)">
           <Border Name="LayoutRoot"
                   Background="{DynamicResource Brush.Popup}"
                   BorderBrush="{DynamicResource Brush.PopupBorder}"
@@ -903,7 +905,7 @@
                  HorizontalOffset="-4"
                  VerticalOffset="-4"
                  IsOpen="{TemplateBinding IsSubMenuOpen, Mode=TwoWay}">
-            <Grid Margin="6" Effect="drop-shadow(0 0 6 #B0000000)">
+            <Grid Margin="6" Effect="drop-shadow(0 0 6 #80000000)">
               <Border Padding="8,4"
                       MaxHeight="400"
                       BorderThickness="1" BorderBrush="{DynamicResource Brush.PopupBorder}"
