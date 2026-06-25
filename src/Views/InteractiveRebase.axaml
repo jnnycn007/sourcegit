@@ -195,6 +195,7 @@
                 <!-- Commit Time -->
                 <Border Grid.Column="7">
                   <v:DateTimePresenter Margin="16,0,8,0"
+                                       FontFeatures="+tnum"
                                        Timestamp="{Binding Commit.CommitterTime}"
                                        Opacity="{Binding Action, Mode=OneWay, Converter={x:Static c:InteractiveRebaseActionConverters.ToOpacity}}"
                                        Classes.dropped="{Binding Action, Mode=OneWay, Converter={x:Static c:InteractiveRebaseActionConverters.IsDrop}}"/>
