@@ -39,7 +39,7 @@ namespace SourceGit.Views
         public static readonly DirectProperty<CommitMessageTextBox, int> ColumnProperty =
             AvaloniaProperty.RegisterDirect<CommitMessageTextBox, int>(
                 nameof(Column),
-                o => o.Column);
+                static o => o.Column);
 
         public int Column
         {
@@ -50,7 +50,7 @@ namespace SourceGit.Views
         public static readonly DirectProperty<CommitMessageTextBox, int> SubjectLengthProperty =
             AvaloniaProperty.RegisterDirect<CommitMessageTextBox, int>(
                 nameof(SubjectLength),
-                o => o.SubjectLength);
+                static o => o.SubjectLength);
 
         public int SubjectLength
         {
@@ -61,8 +61,8 @@ namespace SourceGit.Views
         public static readonly DirectProperty<CommitMessageTextBox, int> SubjectGuideLengthProperty =
             AvaloniaProperty.RegisterDirect<CommitMessageTextBox, int>(
                 nameof(SubjectGuideLength),
-                o => o.SubjectGuideLength,
-                (o, v) => o.SubjectGuideLength = v);
+                static o => o.SubjectGuideLength,
+                static (o, v) => o.SubjectGuideLength = v);
 
         public int SubjectGuideLength
         {
@@ -73,7 +73,7 @@ namespace SourceGit.Views
         public static readonly DirectProperty<CommitMessageTextBox, double> SubjectEndYProperty =
             AvaloniaProperty.RegisterDirect<CommitMessageTextBox, double>(
                 nameof(SubjectEndY),
-                o => o.SubjectEndY);
+                static o => o.SubjectEndY);
 
         public double SubjectEndY
         {
@@ -84,7 +84,7 @@ namespace SourceGit.Views
         public static readonly DirectProperty<CommitMessageTextBox, bool> WarnSubjectLengthProperty =
             AvaloniaProperty.RegisterDirect<CommitMessageTextBox, bool>(
                 nameof(WarnSubjectLength),
-                o => o.WarnSubjectLength);
+                static o => o.WarnSubjectLength);
 
         public bool WarnSubjectLength
         {
@@ -95,7 +95,7 @@ namespace SourceGit.Views
         public static readonly DirectProperty<CommitMessageTextBox, List<CommitMessageTextBoxSuggestion>> SuggestionsProperty =
             AvaloniaProperty.RegisterDirect<CommitMessageTextBox, List<CommitMessageTextBoxSuggestion>>(
                 nameof(Suggestions),
-                o => o.Suggestions);
+                static o => o.Suggestions);
 
         public List<CommitMessageTextBoxSuggestion> Suggestions
         {
@@ -106,8 +106,8 @@ namespace SourceGit.Views
         public static readonly DirectProperty<CommitMessageTextBox, int> SelectedSuggestionIndexProperty =
             AvaloniaProperty.RegisterDirect<CommitMessageTextBox, int>(
                 nameof(SelectedSuggestionIndex),
-                o => o.SelectedSuggestionIndex,
-                (o, v) => o.SelectedSuggestionIndex = v);
+                static o => o.SelectedSuggestionIndex,
+                static (o, v) => o.SelectedSuggestionIndex = v);
 
         public int SelectedSuggestionIndex
         {
@@ -118,7 +118,7 @@ namespace SourceGit.Views
         public static readonly DirectProperty<CommitMessageTextBox, double> SuggestionPopupYProperty =
             AvaloniaProperty.RegisterDirect<CommitMessageTextBox, double>(
                 nameof(SuggestionPopupY),
-                o => o.SuggestionPopupY);
+                static o => o.SuggestionPopupY);
 
         public double SuggestionPopupY
         {
@@ -429,8 +429,8 @@ namespace SourceGit.Views
         public static readonly DirectProperty<CommitMessageSubjectEndIndicator, double> SubjectEndYProperty =
             AvaloniaProperty.RegisterDirect<CommitMessageSubjectEndIndicator, double>(
                 nameof(SubjectEndY),
-                o => o.SubjectEndY,
-                (o, v) => o.SubjectEndY = v);
+                static o => o.SubjectEndY,
+                static (o, v) => o.SubjectEndY = v);
 
         public double SubjectEndY
         {
@@ -480,8 +480,8 @@ namespace SourceGit.Views
         public static readonly DirectProperty<CommitMessageToolBox, bool> ShowAdvancedOptionsProperty =
             AvaloniaProperty.RegisterDirect<CommitMessageToolBox, bool>(
                 nameof(ShowAdvancedOptions),
-                o => o.ShowAdvancedOptions,
-                (o, v) => o.ShowAdvancedOptions = v);
+                static o => o.ShowAdvancedOptions,
+                static (o, v) => o.ShowAdvancedOptions = v);
 
         public bool ShowAdvancedOptions
         {
@@ -492,8 +492,8 @@ namespace SourceGit.Views
         public static readonly DirectProperty<CommitMessageToolBox, string> CommitMessageProperty =
             AvaloniaProperty.RegisterDirect<CommitMessageToolBox, string>(
                 nameof(CommitMessage),
-                o => o.CommitMessage,
-                (o, v) => o.CommitMessage = v);
+                static o => o.CommitMessage,
+                static (o, v) => o.CommitMessage = v);
 
         public string CommitMessage
         {

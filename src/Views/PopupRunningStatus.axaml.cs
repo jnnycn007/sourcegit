@@ -10,8 +10,8 @@ namespace SourceGit.Views
         public static readonly DirectProperty<PopupRunningStatus, string> DescriptionProperty =
             AvaloniaProperty.RegisterDirect<PopupRunningStatus, string>(
                 nameof(Description),
-                o => o.Description,
-                (o, v) => o.Description = v);
+                static o => o.Description,
+                static (o, v) => o.Description = v);
 
         public string Description
         {

@@ -33,8 +33,8 @@ namespace SourceGit.Views
         public static readonly DirectProperty<SubmoduleTreeNodeIcon, bool> IsExpandedProperty =
             AvaloniaProperty.RegisterDirect<SubmoduleTreeNodeIcon, bool>(
                 nameof(IsExpanded),
-                o => o.IsExpanded,
-                (o, v) => o.IsExpanded = v);
+                static o => o.IsExpanded,
+                static (o, v) => o.IsExpanded = v);
 
         public bool IsExpanded
         {

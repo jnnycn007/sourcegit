@@ -15,8 +15,8 @@ namespace SourceGit.Views
         public static readonly DirectProperty<BranchSelectorChoice, Models.Branch> BranchProperty =
             AvaloniaProperty.RegisterDirect<BranchSelectorChoice, Models.Branch>(
                 nameof(Branch),
-                o => o.Branch,
-                (o, v) => o.Branch = v);
+                static o => o.Branch,
+                static (o, v) => o.Branch = v);
 
         public Models.Branch Branch
         {
@@ -27,8 +27,8 @@ namespace SourceGit.Views
         public static readonly DirectProperty<BranchSelectorChoice, bool> UsePureNameProperty =
             AvaloniaProperty.RegisterDirect<BranchSelectorChoice, bool>(
                 nameof(UsePureName),
-                o => o.UsePureName,
-                (o, v) => o.UsePureName = v);
+                static o => o.UsePureName,
+                static (o, v) => o.UsePureName = v);
 
         public bool UsePureName
         {
@@ -60,8 +60,8 @@ namespace SourceGit.Views
         public static readonly DirectProperty<BranchSelector, List<Models.Branch>> BranchesProperty =
             AvaloniaProperty.RegisterDirect<BranchSelector, List<Models.Branch>>(
                 nameof(Branches),
-                o => o.Branches,
-                (o, v) => o.Branches = v);
+                static o => o.Branches,
+                static (o, v) => o.Branches = v);
 
         public List<Models.Branch> Branches
         {
@@ -72,7 +72,7 @@ namespace SourceGit.Views
         public static readonly DirectProperty<BranchSelector, List<Models.Branch>> VisibleBranchesProperty =
             AvaloniaProperty.RegisterDirect<BranchSelector, List<Models.Branch>>(
                 nameof(VisibleBranches),
-                o => o.VisibleBranches);
+                static o => o.VisibleBranches);
 
         public List<Models.Branch> VisibleBranches
         {
@@ -83,8 +83,8 @@ namespace SourceGit.Views
         public static readonly DirectProperty<BranchSelector, Models.Branch> SelectedBranchProperty =
             AvaloniaProperty.RegisterDirect<BranchSelector, Models.Branch>(
                 nameof(SelectedBranch),
-                o => o.SelectedBranch,
-                (o, v) => o.SelectedBranch = v);
+                static o => o.SelectedBranch,
+                static (o, v) => o.SelectedBranch = v);
 
         public Models.Branch SelectedBranch
         {
@@ -95,8 +95,8 @@ namespace SourceGit.Views
         public static readonly DirectProperty<BranchSelector, bool> IsDropDownOpenedProperty =
             AvaloniaProperty.RegisterDirect<BranchSelector, bool>(
                 nameof(IsDropDownOpened),
-                o => o.IsDropDownOpened,
-                (o, v) => o.IsDropDownOpened = v);
+                static o => o.IsDropDownOpened,
+                static (o, v) => o.IsDropDownOpened = v);
 
         public bool IsDropDownOpened
         {
@@ -107,8 +107,8 @@ namespace SourceGit.Views
         public static readonly DirectProperty<BranchSelector, string> SearchFilterProperty =
             AvaloniaProperty.RegisterDirect<BranchSelector, string>(
                 nameof(SearchFilter),
-                o => o.SearchFilter,
-                (o, v) => o.SearchFilter = v);
+                static o => o.SearchFilter,
+                static (o, v) => o.SearchFilter = v);
 
         public string SearchFilter
         {
@@ -119,8 +119,8 @@ namespace SourceGit.Views
         public static readonly DirectProperty<BranchSelector, bool> UsePureNameProperty =
             AvaloniaProperty.RegisterDirect<BranchSelector, bool>(
                 nameof(UsePureName),
-                o => o.UsePureName,
-                (o, v) => o.UsePureName = v);
+                static o => o.UsePureName,
+                static (o, v) => o.UsePureName = v);
 
         public bool UsePureName
         {

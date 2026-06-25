@@ -17,8 +17,8 @@ namespace SourceGit.Views
         public static readonly DirectProperty<CommitDetail, bool> IsDetailsPanelExpandedProperty =
             AvaloniaProperty.RegisterDirect<CommitDetail, bool>(
                 nameof(IsDetailsPanelExpanded),
-                o => o.IsDetailsPanelExpanded,
-                (o, v) => o.IsDetailsPanelExpanded = v);
+                static o => o.IsDetailsPanelExpanded,
+                static (o, v) => o.IsDetailsPanelExpanded = v);
 
         public bool IsDetailsPanelExpanded
         {

@@ -15,8 +15,8 @@ namespace SourceGit.Views
         public static readonly DirectProperty<LauncherTabSizeBox, bool> UseFixedWidthProperty =
             AvaloniaProperty.RegisterDirect<LauncherTabSizeBox, bool>(
                 nameof(UseFixedWidth),
-                o => o.UseFixedWidth,
-                (o, v) => o.UseFixedWidth = v);
+                static o => o.UseFixedWidth,
+                static (o, v) => o.UseFixedWidth = v);
 
         public bool UseFixedWidth
         {
@@ -52,7 +52,7 @@ namespace SourceGit.Views
         public static readonly DirectProperty<LauncherTabBar, bool> IsScrollButtonVisibleProperty =
             AvaloniaProperty.RegisterDirect<LauncherTabBar, bool>(
                 nameof(IsScrollButtonVisible),
-                o => o.IsScrollButtonVisible);
+                static o => o.IsScrollButtonVisible);
 
         public bool IsScrollButtonVisible
         {

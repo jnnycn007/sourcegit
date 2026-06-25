@@ -11,8 +11,8 @@ namespace SourceGit.Views
         public static readonly DirectProperty<FileModeChange, int> OldModeProperty =
             AvaloniaProperty.RegisterDirect<FileModeChange, int>(
                 nameof(OldMode),
-                o => o.OldMode,
-                (o, v) => o.OldMode = v);
+                static o => o.OldMode,
+                static (o, v) => o.OldMode = v);
 
         public int OldMode
         {
@@ -23,8 +23,8 @@ namespace SourceGit.Views
         public static readonly DirectProperty<FileModeChange, int> NewModeProperty =
             AvaloniaProperty.RegisterDirect<FileModeChange, int>(
                 nameof(NewMode),
-                o => o.NewMode,
-                (o, v) => o.NewMode = v);
+                static o => o.NewMode,
+                static (o, v) => o.NewMode = v);
 
         public int NewMode
         {

@@ -9,8 +9,8 @@ namespace SourceGit.Views
         public static readonly DirectProperty<MacOSTrafficLightsSpacer, double> ZoomProperty =
             AvaloniaProperty.RegisterDirect<MacOSTrafficLightsSpacer, double>(
                 nameof(Zoom),
-                o => o.Zoom,
-                (o, v) => o.Zoom = v);
+                static o => o.Zoom,
+                static (o, v) => o.Zoom = v);
 
         public double Zoom
         {
@@ -21,8 +21,8 @@ namespace SourceGit.Views
         public static readonly DirectProperty<MacOSTrafficLightsSpacer, bool> IsFullScreenProperty =
             AvaloniaProperty.RegisterDirect<MacOSTrafficLightsSpacer, bool>(
                 nameof(IsFullScreen),
-                o => o.IsFullScreen,
-                (o, v) => o.IsFullScreen = v);
+                static o => o.IsFullScreen,
+                static (o, v) => o.IsFullScreen = v);
 
         public bool IsFullScreen
         {

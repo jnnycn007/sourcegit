@@ -20,8 +20,8 @@ namespace SourceGit.Views
         public static readonly DirectProperty<Avatar, Models.User> UserProperty =
             AvaloniaProperty.RegisterDirect<Avatar, Models.User>(
                 nameof(User),
-                o => o.User,
-                (o, v) => o.User = v);
+                static o => o.User,
+                static (o, v) => o.User = v);
 
         public Models.User User
         {
@@ -32,8 +32,8 @@ namespace SourceGit.Views
         public static readonly DirectProperty<Avatar, bool> UseGitHubStyleAvatarProperty =
             AvaloniaProperty.RegisterDirect<Avatar, bool>(
                 nameof(UseGitHubStyleAvatar),
-                o => o.UseGitHubStyleAvatar,
-                (o, v) => o.UseGitHubStyleAvatar = v);
+                static o => o.UseGitHubStyleAvatar,
+                static (o, v) => o.UseGitHubStyleAvatar = v);
 
         public bool UseGitHubStyleAvatar
         {

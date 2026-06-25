@@ -39,8 +39,8 @@ namespace SourceGit.Views
         public static readonly DirectProperty<RevisionTreeNodeIcon, ViewModels.RevisionFileTreeNode> NodeProperty =
             AvaloniaProperty.RegisterDirect<RevisionTreeNodeIcon, ViewModels.RevisionFileTreeNode>(
                 nameof(Node),
-                o => o.Node,
-                (o, v) => o.Node = v);
+                static o => o.Node,
+                static (o, v) => o.Node = v);
 
         public ViewModels.RevisionFileTreeNode Node
         {
@@ -51,8 +51,8 @@ namespace SourceGit.Views
         public static readonly DirectProperty<RevisionTreeNodeIcon, bool> IsExpandedProperty =
             AvaloniaProperty.RegisterDirect<RevisionTreeNodeIcon, bool>(
                 nameof(IsExpanded),
-                o => o.IsExpanded,
-                (o, v) => o.IsExpanded = v);
+                static o => o.IsExpanded,
+                static (o, v) => o.IsExpanded = v);
 
         public bool IsExpanded
         {
@@ -241,8 +241,8 @@ namespace SourceGit.Views
         public static readonly DirectProperty<RevisionFileTreeView, string> RevisionProperty =
             AvaloniaProperty.RegisterDirect<RevisionFileTreeView, string>(
                 nameof(Revision),
-                o => o.Revision,
-                (o, v) => o.Revision = v);
+                static o => o.Revision,
+                static (o, v) => o.Revision = v);
 
         public string Revision
         {

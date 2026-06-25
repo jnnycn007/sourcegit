@@ -99,8 +99,8 @@ namespace SourceGit.Views
         public static readonly DirectProperty<InteractiveRebaseIndicator, Models.InteractiveRebasePendingType> PendingTypeProperty =
             AvaloniaProperty.RegisterDirect<InteractiveRebaseIndicator, Models.InteractiveRebasePendingType>(
                 nameof(PendingType),
-                o => o.PendingType,
-                (o, v) => o.PendingType = v);
+                static o => o.PendingType,
+                static (o, v) => o.PendingType = v);
 
         public Models.InteractiveRebasePendingType PendingType
         {

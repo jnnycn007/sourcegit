@@ -9,8 +9,8 @@ namespace SourceGit.Views
         public static readonly DirectProperty<DealWithLocalChangesMethod, Models.DealWithLocalChanges> MethodProperty =
             AvaloniaProperty.RegisterDirect<DealWithLocalChangesMethod, Models.DealWithLocalChanges>(
                 nameof(Method),
-                o => o.Method,
-                (o, v) => o.Method = v);
+                static o => o.Method,
+                static (o, v) => o.Method = v);
 
         public Models.DealWithLocalChanges Method
         {

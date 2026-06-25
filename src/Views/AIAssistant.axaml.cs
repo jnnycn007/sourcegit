@@ -34,8 +34,8 @@ namespace SourceGit.Views
         public static readonly DirectProperty<AIResponseView, string> ContentProperty =
             AvaloniaProperty.RegisterDirect<AIResponseView, string>(
                 nameof(Content),
-                o => o.Content,
-                (o, v) => o.Content = v);
+                static o => o.Content,
+                static (o, v) => o.Content = v);
 
         public string Content
         {

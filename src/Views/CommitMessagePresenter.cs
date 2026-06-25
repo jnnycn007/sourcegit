@@ -16,8 +16,8 @@ namespace SourceGit.Views
         public static readonly DirectProperty<CommitMessagePresenter, Models.CommitFullMessage> FullMessageProperty =
             AvaloniaProperty.RegisterDirect<CommitMessagePresenter, Models.CommitFullMessage>(
                 nameof(FullMessage),
-                o => o.FullMessage,
-                (o, v) => o.FullMessage = v);
+                static o => o.FullMessage,
+                static (o, v) => o.FullMessage = v);
 
         public Models.CommitFullMessage FullMessage
         {

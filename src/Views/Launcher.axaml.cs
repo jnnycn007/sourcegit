@@ -13,7 +13,7 @@ namespace SourceGit.Views
         public static readonly DirectProperty<Launcher, GridLength> CaptionHeightProperty =
             AvaloniaProperty.RegisterDirect<Launcher, GridLength>(
                 nameof(CaptionHeight),
-                o => o.CaptionHeight);
+                static o => o.CaptionHeight);
 
         public GridLength CaptionHeight
         {

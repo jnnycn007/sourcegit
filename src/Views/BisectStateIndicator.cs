@@ -29,8 +29,8 @@ namespace SourceGit.Views
         public static readonly DirectProperty<BisectStateIndicator, Models.Bisect> BisectProperty =
             AvaloniaProperty.RegisterDirect<BisectStateIndicator, Models.Bisect>(
                 nameof(Bisect),
-                o => o.Bisect,
-                (o, v) => o.Bisect = v);
+                static o => o.Bisect,
+                static (o, v) => o.Bisect = v);
 
         public Models.Bisect Bisect
         {

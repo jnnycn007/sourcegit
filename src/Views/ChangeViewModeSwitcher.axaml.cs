@@ -9,8 +9,8 @@ namespace SourceGit.Views
         public static readonly DirectProperty<ChangeViewModeSwitcher, Models.ChangeViewMode> ViewModeProperty =
             AvaloniaProperty.RegisterDirect<ChangeViewModeSwitcher, Models.ChangeViewMode>(
                 nameof(ViewMode),
-                o => o.ViewMode,
-                (o, v) => o.ViewMode = v);
+                static o => o.ViewMode,
+                static (o, v) => o.ViewMode = v);
 
         public Models.ChangeViewMode ViewMode
         {

@@ -57,8 +57,8 @@ namespace SourceGit.Views
         public static readonly DirectProperty<ImageView, Bitmap> ImageProperty =
             AvaloniaProperty.RegisterDirect<ImageView, Bitmap>(
                 nameof(Image),
-                o => o.Image,
-                (o, v) => o.Image = v);
+                static o => o.Image,
+                static (o, v) => o.Image = v);
 
         public Bitmap Image
         {
@@ -104,8 +104,8 @@ namespace SourceGit.Views
         public static readonly DirectProperty<ImageSwipeControl, double> AlphaProperty =
             AvaloniaProperty.RegisterDirect<ImageSwipeControl, double>(
                 nameof(Alpha),
-                o => o.Alpha,
-                (o, v) => o.Alpha = v);
+                static o => o.Alpha,
+                static (o, v) => o.Alpha = v);
 
         public double Alpha
         {
@@ -116,8 +116,8 @@ namespace SourceGit.Views
         public static readonly DirectProperty<ImageSwipeControl, Bitmap> OldImageProperty =
             AvaloniaProperty.RegisterDirect<ImageSwipeControl, Bitmap>(
                 nameof(OldImage),
-                o => o.OldImage,
-                (o, v) => o.OldImage = v);
+                static o => o.OldImage,
+                static (o, v) => o.OldImage = v);
 
         public Bitmap OldImage
         {
@@ -128,8 +128,8 @@ namespace SourceGit.Views
         public static readonly DirectProperty<ImageSwipeControl, Bitmap> NewImageProperty =
             AvaloniaProperty.RegisterDirect<ImageSwipeControl, Bitmap>(
                 nameof(NewImage),
-                o => o.NewImage,
-                (o, v) => o.NewImage = v);
+                static o => o.NewImage,
+                static (o, v) => o.NewImage = v);
 
         public Bitmap NewImage
         {
@@ -270,8 +270,8 @@ namespace SourceGit.Views
         public static readonly DirectProperty<ImageBlendControl, double> AlphaProperty =
             AvaloniaProperty.RegisterDirect<ImageBlendControl, double>(
                 nameof(Alpha),
-                o => o.Alpha,
-                (o, v) => o.Alpha = v);
+                static o => o.Alpha,
+                static (o, v) => o.Alpha = v);
 
         public double Alpha
         {
@@ -282,8 +282,8 @@ namespace SourceGit.Views
         public static readonly DirectProperty<ImageBlendControl, Bitmap> OldImageProperty =
             AvaloniaProperty.RegisterDirect<ImageBlendControl, Bitmap>(
                 nameof(OldImage),
-                o => o.OldImage,
-                (o, v) => o.OldImage = v);
+                static o => o.OldImage,
+                static (o, v) => o.OldImage = v);
 
         public Bitmap OldImage
         {
@@ -294,8 +294,8 @@ namespace SourceGit.Views
         public static readonly DirectProperty<ImageBlendControl, Bitmap> NewImageProperty =
             AvaloniaProperty.RegisterDirect<ImageBlendControl, Bitmap>(
                 nameof(NewImage),
-                o => o.NewImage,
-                (o, v) => o.NewImage = v);
+                static o => o.NewImage,
+                static (o, v) => o.NewImage = v);
 
         public Bitmap NewImage
         {
@@ -402,8 +402,8 @@ namespace SourceGit.Views
         public static readonly DirectProperty<ImageDifferenceControl, double> AlphaProperty =
             AvaloniaProperty.RegisterDirect<ImageDifferenceControl, double>(
                 nameof(Alpha),
-                o => o.Alpha,
-                (o, v) => o.Alpha = v);
+                static o => o.Alpha,
+                static (o, v) => o.Alpha = v);
 
         public double Alpha
         {
@@ -414,8 +414,8 @@ namespace SourceGit.Views
         public static readonly DirectProperty<ImageDifferenceControl, Bitmap> OldImageProperty =
             AvaloniaProperty.RegisterDirect<ImageDifferenceControl, Bitmap>(
                 nameof(OldImage),
-                o => o.OldImage,
-                (o, v) => o.OldImage = v);
+                static o => o.OldImage,
+                static (o, v) => o.OldImage = v);
 
         public Bitmap OldImage
         {
@@ -426,8 +426,8 @@ namespace SourceGit.Views
         public static readonly DirectProperty<ImageDifferenceControl, Bitmap> NewImageProperty =
             AvaloniaProperty.RegisterDirect<ImageDifferenceControl, Bitmap>(
                 nameof(NewImage),
-                o => o.NewImage,
-                (o, v) => o.NewImage = v);
+                static o => o.NewImage,
+                static (o, v) => o.NewImage = v);
 
         public Bitmap NewImage
         {

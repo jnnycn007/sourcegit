@@ -316,8 +316,8 @@ namespace SourceGit.Views
         public static readonly DirectProperty<BlameTextEditor, string> FileProperty =
             AvaloniaProperty.RegisterDirect<BlameTextEditor, string>(
                 nameof(File),
-                o => o.File,
-                (o, v) => o.File = v);
+                static o => o.File,
+                static (o, v) => o.File = v);
 
         public string File
         {
@@ -328,8 +328,8 @@ namespace SourceGit.Views
         public static readonly DirectProperty<BlameTextEditor, Models.BlameData> BlameDataProperty =
             AvaloniaProperty.RegisterDirect<BlameTextEditor, Models.BlameData>(
                 nameof(BlameData),
-                o => o.BlameData,
-                (o, v) => o.BlameData = v);
+                static o => o.BlameData,
+                static (o, v) => o.BlameData = v);
 
         public Models.BlameData BlameData
         {
@@ -340,8 +340,8 @@ namespace SourceGit.Views
         public static readonly DirectProperty<BlameTextEditor, int> TabWidthProperty =
             AvaloniaProperty.RegisterDirect<BlameTextEditor, int>(
                 nameof(TabWidth),
-                o => o.TabWidth,
-                (o, v) => o.TabWidth = v);
+                static o => o.TabWidth,
+                static (o, v) => o.TabWidth = v);
 
         public int TabWidth
         {

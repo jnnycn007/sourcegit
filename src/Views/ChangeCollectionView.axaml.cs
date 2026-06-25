@@ -93,8 +93,8 @@ namespace SourceGit.Views
         public static readonly DirectProperty<ChangeCollectionView, bool> IsUnstagedChangeProperty =
             AvaloniaProperty.RegisterDirect<ChangeCollectionView, bool>(
                 nameof(IsUnstagedChange),
-                o => o.IsUnstagedChange,
-                (o, v) => o.IsUnstagedChange = v);
+                static o => o.IsUnstagedChange,
+                static (o, v) => o.IsUnstagedChange = v);
 
         public bool IsUnstagedChange
         {
@@ -105,8 +105,8 @@ namespace SourceGit.Views
         public static readonly DirectProperty<ChangeCollectionView, Models.ChangeViewMode> ViewModeProperty =
             AvaloniaProperty.RegisterDirect<ChangeCollectionView, Models.ChangeViewMode>(
                 nameof(ViewMode),
-                o => o.ViewMode,
-                (o, v) => o.ViewMode = v);
+                static o => o.ViewMode,
+                static (o, v) => o.ViewMode = v);
 
         public Models.ChangeViewMode ViewMode
         {
@@ -117,8 +117,8 @@ namespace SourceGit.Views
         public static readonly DirectProperty<ChangeCollectionView, bool> EnableCompactFoldersProperty =
             AvaloniaProperty.RegisterDirect<ChangeCollectionView, bool>(
                 nameof(EnableCompactFolders),
-                o => o.EnableCompactFolders,
-                (o, v) => o.EnableCompactFolders = v);
+                static o => o.EnableCompactFolders,
+                static (o, v) => o.EnableCompactFolders = v);
 
         public bool EnableCompactFolders
         {
@@ -129,8 +129,8 @@ namespace SourceGit.Views
         public static readonly DirectProperty<ChangeCollectionView, List<Models.Change>> ChangesProperty =
             AvaloniaProperty.RegisterDirect<ChangeCollectionView, List<Models.Change>>(
                 nameof(Changes),
-                o => o.Changes,
-                (o, v) => o.Changes = v);
+                static o => o.Changes,
+                static (o, v) => o.Changes = v);
 
         public List<Models.Change> Changes
         {
@@ -141,8 +141,8 @@ namespace SourceGit.Views
         public static readonly DirectProperty<ChangeCollectionView, List<Models.Change>> SelectedChangesProperty =
             AvaloniaProperty.RegisterDirect<ChangeCollectionView, List<Models.Change>>(
                 nameof(SelectedChanges),
-                o => o.SelectedChanges,
-                (o, v) => o.SelectedChanges = v);
+                static o => o.SelectedChanges,
+                static (o, v) => o.SelectedChanges = v);
 
         public List<Models.Change> SelectedChanges
         {

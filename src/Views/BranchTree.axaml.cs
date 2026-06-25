@@ -273,8 +273,8 @@ namespace SourceGit.Views
         public static readonly DirectProperty<BranchTree, List<ViewModels.BranchTreeNode>> NodesProperty =
             AvaloniaProperty.RegisterDirect<BranchTree, List<ViewModels.BranchTreeNode>>(
                 nameof(Nodes),
-                o => o.Nodes,
-                (o, v) => o.Nodes = v);
+                static o => o.Nodes,
+                static (o, v) => o.Nodes = v);
 
         public List<ViewModels.BranchTreeNode> Nodes
         {

@@ -14,8 +14,8 @@ namespace SourceGit.Views
         public static readonly DirectProperty<CommitBaseInfo, Models.CommitFullMessage> FullMessageProperty =
             AvaloniaProperty.RegisterDirect<CommitBaseInfo, Models.CommitFullMessage>(
                 nameof(FullMessage),
-                o => o.FullMessage,
-                (o, v) => o.FullMessage = v);
+                static o => o.FullMessage,
+                static (o, v) => o.FullMessage = v);
 
         public Models.CommitFullMessage FullMessage
         {
@@ -26,8 +26,8 @@ namespace SourceGit.Views
         public static readonly DirectProperty<CommitBaseInfo, Models.CommitSignInfo> SignInfoProperty =
             AvaloniaProperty.RegisterDirect<CommitBaseInfo, Models.CommitSignInfo>(
                 nameof(SignInfo),
-                o => o.SignInfo,
-                (o, v) => o.SignInfo = v);
+                static o => o.SignInfo,
+                static (o, v) => o.SignInfo = v);
 
         public Models.CommitSignInfo SignInfo
         {
@@ -38,8 +38,8 @@ namespace SourceGit.Views
         public static readonly DirectProperty<CommitBaseInfo, bool> SupportsContainsInProperty =
             AvaloniaProperty.RegisterDirect<CommitBaseInfo, bool>(
                 nameof(SupportsContainsIn),
-                o => o.SupportsContainsIn,
-                (o, v) => o.SupportsContainsIn = v);
+                static o => o.SupportsContainsIn,
+                static (o, v) => o.SupportsContainsIn = v);
 
         public bool SupportsContainsIn
         {
@@ -50,8 +50,8 @@ namespace SourceGit.Views
         public static readonly DirectProperty<CommitBaseInfo, List<Models.CommitLink>> WebLinksProperty =
             AvaloniaProperty.RegisterDirect<CommitBaseInfo, List<Models.CommitLink>>(
                 nameof(WebLinks),
-                o => o.WebLinks,
-                (o, v) => o.WebLinks = v);
+                static o => o.WebLinks,
+                static (o, v) => o.WebLinks = v);
 
         public List<Models.CommitLink> WebLinks
         {
@@ -62,8 +62,8 @@ namespace SourceGit.Views
         public static readonly DirectProperty<CommitBaseInfo, List<string>> ChildrenProperty =
             AvaloniaProperty.RegisterDirect<CommitBaseInfo, List<string>>(
                 nameof(Children),
-                o => o.Children,
-                (o, v) => o.Children = v);
+                static o => o.Children,
+                static (o, v) => o.Children = v);
 
         public List<string> Children
         {
@@ -74,7 +74,7 @@ namespace SourceGit.Views
         public static readonly DirectProperty<CommitBaseInfo, bool> IsSHACopiedProperty =
             AvaloniaProperty.RegisterDirect<CommitBaseInfo, bool>(
                 nameof(IsSHACopied),
-                o => o.IsSHACopied);
+                static o => o.IsSHACopied);
 
         public bool IsSHACopied
         {
@@ -105,7 +105,7 @@ namespace SourceGit.Views
             _iconResetTimer = new DispatcherTimer();
             _iconResetTimer.Interval = TimeSpan.FromSeconds(1.5);
             _iconResetTimer.Tag = this;
-            _iconResetTimer.Tick += (o, _) =>
+            _iconResetTimer.Tick += static (o, _) =>
             {
                 if (o is DispatcherTimer { Tag: CommitBaseInfo view } timer)
                 {

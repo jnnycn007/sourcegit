@@ -98,8 +98,8 @@ namespace SourceGit.Views
         public static readonly DirectProperty<CommitSubjectPresenter, string> SubjectProperty =
             AvaloniaProperty.RegisterDirect<CommitSubjectPresenter, string>(
                 nameof(Subject),
-                o => o.Subject,
-                (o, v) => o.Subject = v);
+                static o => o.Subject,
+                static (o, v) => o.Subject = v);
 
         public string Subject
         {
@@ -110,8 +110,8 @@ namespace SourceGit.Views
         public static readonly DirectProperty<CommitSubjectPresenter, AvaloniaList<Models.IssueTracker>> IssueTrackersProperty =
             AvaloniaProperty.RegisterDirect<CommitSubjectPresenter, AvaloniaList<Models.IssueTracker>>(
                 nameof(IssueTrackers),
-                o => o.IssueTrackers,
-                (o, v) => o.IssueTrackers = v);
+                static o => o.IssueTrackers,
+                static (o, v) => o.IssueTrackers = v);
 
         public AvaloniaList<Models.IssueTracker> IssueTrackers
         {

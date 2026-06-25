@@ -49,8 +49,8 @@ namespace SourceGit.Views
         public static readonly DirectProperty<StashSubjectPresenter, string> SubjectProperty =
             AvaloniaProperty.RegisterDirect<StashSubjectPresenter, string>(
                 nameof(Subject),
-                o => o.Subject,
-                (o, v) => o.Subject = v);
+                static o => o.Subject,
+                static (o, v) => o.Subject = v);
 
         public string Subject
         {

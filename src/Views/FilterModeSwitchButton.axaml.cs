@@ -10,8 +10,8 @@ namespace SourceGit.Views
         public static readonly DirectProperty<FilterModeSwitchButton, Models.FilterMode> ModeProperty =
             AvaloniaProperty.RegisterDirect<FilterModeSwitchButton, Models.FilterMode>(
                 nameof(Mode),
-                o => o.Mode,
-                (o, v) => o.Mode = v);
+                static o => o.Mode,
+                static (o, v) => o.Mode = v);
 
         public Models.FilterMode Mode
         {
@@ -22,7 +22,7 @@ namespace SourceGit.Views
         public static readonly DirectProperty<FilterModeSwitchButton, bool> IsContextMenuOpeningProperty =
             AvaloniaProperty.RegisterDirect<FilterModeSwitchButton, bool>(
                 nameof(IsContextMenuOpening),
-                o => o.IsContextMenuOpening);
+                static o => o.IsContextMenuOpening);
 
         public bool IsContextMenuOpening
         {

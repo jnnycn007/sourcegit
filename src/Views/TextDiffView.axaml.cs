@@ -365,8 +365,8 @@ namespace SourceGit.Views
         public static readonly DirectProperty<ThemedTextDiffPresenter, string> FileNameProperty =
             AvaloniaProperty.RegisterDirect<ThemedTextDiffPresenter, string>(
                 nameof(FileName),
-                o => o.FileName,
-                (o, v) => o.FileName = v);
+                static o => o.FileName,
+                static (o, v) => o.FileName = v);
 
         public string FileName
         {
@@ -377,8 +377,8 @@ namespace SourceGit.Views
         public static readonly DirectProperty<ThemedTextDiffPresenter, bool> IsOldProperty =
             AvaloniaProperty.RegisterDirect<ThemedTextDiffPresenter, bool>(
                 nameof(IsOld),
-                o => o.IsOld,
-                (o, v) => o.IsOld = v);
+                static o => o.IsOld,
+                static (o, v) => o.IsOld = v);
 
         public bool IsOld
         {
@@ -389,8 +389,8 @@ namespace SourceGit.Views
         public static readonly DirectProperty<ThemedTextDiffPresenter, ViewModels.TextDiffSelectedChunk> SelectedChunkProperty =
             AvaloniaProperty.RegisterDirect<ThemedTextDiffPresenter, ViewModels.TextDiffSelectedChunk>(
                 nameof(SelectedChunk),
-                o => o.SelectedChunk,
-                (o, v) => o.SelectedChunk = v);
+                static o => o.SelectedChunk,
+                static (o, v) => o.SelectedChunk = v);
 
         public ViewModels.TextDiffSelectedChunk SelectedChunk
         {
@@ -401,8 +401,8 @@ namespace SourceGit.Views
         public static readonly DirectProperty<ThemedTextDiffPresenter, ViewModels.BlockNavigation> BlockNavigationProperty =
             AvaloniaProperty.RegisterDirect<ThemedTextDiffPresenter, ViewModels.BlockNavigation>(
                 nameof(BlockNavigation),
-                o => o.BlockNavigation,
-                (o, v) => o.BlockNavigation = v);
+                static o => o.BlockNavigation,
+                static (o, v) => o.BlockNavigation = v);
 
         public ViewModels.BlockNavigation BlockNavigation
         {
@@ -1415,8 +1415,8 @@ namespace SourceGit.Views
         public static readonly DirectProperty<TextDiffViewMinimap, ViewModels.TextLineRange> DisplayRangeProperty =
             AvaloniaProperty.RegisterDirect<TextDiffViewMinimap, ViewModels.TextLineRange>(
                 nameof(DisplayRange),
-                o => o.DisplayRange,
-                (o, v) => o.DisplayRange = v);
+                static o => o.DisplayRange,
+                static (o, v) => o.DisplayRange = v);
 
         public ViewModels.TextLineRange DisplayRange
         {
@@ -1553,8 +1553,8 @@ namespace SourceGit.Views
         public static readonly DirectProperty<TextDiffView, ViewModels.TextDiffSelectedChunk> SelectedChunkProperty =
             AvaloniaProperty.RegisterDirect<TextDiffView, ViewModels.TextDiffSelectedChunk>(
                 nameof(SelectedChunk),
-                o => o.SelectedChunk,
-                (o, v) => o.SelectedChunk = v);
+                static o => o.SelectedChunk,
+                static (o, v) => o.SelectedChunk = v);
 
         public ViewModels.TextDiffSelectedChunk SelectedChunk
         {

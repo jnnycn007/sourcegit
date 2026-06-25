@@ -14,7 +14,7 @@ namespace SourceGit.Views
         public static readonly DirectProperty<Preferences, string> GitVersionProperty =
             AvaloniaProperty.RegisterDirect<Preferences, string>(
                 nameof(GitVersion),
-                o => o.GitVersion);
+                static o => o.GitVersion);
 
         public string GitVersion
         {
@@ -25,7 +25,7 @@ namespace SourceGit.Views
         public static readonly DirectProperty<Preferences, bool> ShowGitVersionWarningProperty =
             AvaloniaProperty.RegisterDirect<Preferences, bool>(
                 nameof(ShowGitVersionWarning),
-                o => o.ShowGitVersionWarning);
+                static o => o.ShowGitVersionWarning);
 
         public bool ShowGitVersionWarning
         {
@@ -72,8 +72,8 @@ namespace SourceGit.Views
         public static readonly DirectProperty<Preferences, Models.GPGFormat> GPGFormatProperty =
             AvaloniaProperty.RegisterDirect<Preferences, Models.GPGFormat>(
                 nameof(GPGFormat),
-                o => o.GPGFormat,
-                (o, v) => o.GPGFormat = v);
+                static o => o.GPGFormat,
+                static (o, v) => o.GPGFormat = v);
 
         public Models.GPGFormat GPGFormat
         {
@@ -84,8 +84,8 @@ namespace SourceGit.Views
         public static readonly DirectProperty<Preferences, string> GPGExecutableFileProperty =
             AvaloniaProperty.RegisterDirect<Preferences, string>(
                 nameof(GPGExecutableFile),
-                o => o.GPGExecutableFile,
-                (o, v) => o.GPGExecutableFile = v);
+                static o => o.GPGExecutableFile,
+                static (o, v) => o.GPGExecutableFile = v);
 
         public string GPGExecutableFile
         {
@@ -108,8 +108,8 @@ namespace SourceGit.Views
         public static readonly DirectProperty<Preferences, AI.Service> SelectedOpenAIServiceProperty =
             AvaloniaProperty.RegisterDirect<Preferences, AI.Service>(
                 nameof(SelectedOpenAIService),
-                o => o.SelectedOpenAIService,
-                (o, v) => o.SelectedOpenAIService = v);
+                static o => o.SelectedOpenAIService,
+                static (o, v) => o.SelectedOpenAIService = v);
 
         public AI.Service SelectedOpenAIService
         {
@@ -120,8 +120,8 @@ namespace SourceGit.Views
         public static readonly DirectProperty<Preferences, Models.CustomAction> SelectedCustomActionProperty =
             AvaloniaProperty.RegisterDirect<Preferences, Models.CustomAction>(
                 nameof(SelectedCustomAction),
-                o => o.SelectedCustomAction,
-                (o, v) => o.SelectedCustomAction = v);
+                static o => o.SelectedCustomAction,
+                static (o, v) => o.SelectedCustomAction = v);
 
         public Models.CustomAction SelectedCustomAction
         {

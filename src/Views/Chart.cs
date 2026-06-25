@@ -16,8 +16,8 @@ namespace SourceGit.Views
         public static readonly DirectProperty<Chart, Models.StatisticsSamples> SamplesProperty =
             AvaloniaProperty.RegisterDirect<Chart, Models.StatisticsSamples>(
                 nameof(Samples),
-                o => o.Samples,
-                (o, v) => o.Samples = v);
+                static o => o.Samples,
+                static (o, v) => o.Samples = v);
 
         public Models.StatisticsSamples Samples
         {

@@ -9,8 +9,8 @@ namespace SourceGit.Views
         public static readonly DirectProperty<CommitGraph, Models.CommitGraph> GraphProperty =
             AvaloniaProperty.RegisterDirect<CommitGraph, Models.CommitGraph>(
                 nameof(Graph),
-                o => o.Graph,
-                (o, v) => o.Graph = v);
+                static o => o.Graph,
+                static (o, v) => o.Graph = v);
 
         public Models.CommitGraph Graph
         {
@@ -21,8 +21,8 @@ namespace SourceGit.Views
         public static readonly DirectProperty<CommitGraph, Models.CommitGraphLayout> LayoutProperty =
             AvaloniaProperty.RegisterDirect<CommitGraph, Models.CommitGraphLayout>(
                 nameof(Layout),
-                o => o.Layout,
-                (o, v) => o.Layout = v);
+                static o => o.Layout,
+                static (o, v) => o.Layout = v);
 
         public Models.CommitGraphLayout Layout
         {

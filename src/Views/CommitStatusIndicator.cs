@@ -11,8 +11,8 @@ namespace SourceGit.Views
         public static readonly DirectProperty<CommitStatusIndicator, Models.Branch> CurrentBranchProperty =
             AvaloniaProperty.RegisterDirect<CommitStatusIndicator, Models.Branch>(
                 nameof(CurrentBranch),
-                o => o.CurrentBranch,
-                (o, v) => o.CurrentBranch = v);
+                static o => o.CurrentBranch,
+                static (o, v) => o.CurrentBranch = v);
 
         public Models.Branch CurrentBranch
         {

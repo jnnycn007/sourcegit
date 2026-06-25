@@ -12,8 +12,8 @@ namespace SourceGit.Views
         public static readonly DirectProperty<ColorPicker, uint> ValueProperty =
             AvaloniaProperty.RegisterDirect<ColorPicker, uint>(
                 nameof(Value),
-                o => o.Value,
-                (o, v) => o.Value = v);
+                static o => o.Value,
+                static (o, v) => o.Value = v);
 
         public uint Value
         {

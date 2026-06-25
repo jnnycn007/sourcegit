@@ -27,8 +27,8 @@ namespace SourceGit.Views
         public static readonly DirectProperty<ChangeStatusIcon, bool> IsUnstagedChangeProperty =
             AvaloniaProperty.RegisterDirect<ChangeStatusIcon, bool>(
                 nameof(IsUnstagedChange),
-                o => o.IsUnstagedChange,
-                (o, v) => o.IsUnstagedChange = v);
+                static o => o.IsUnstagedChange,
+                static (o, v) => o.IsUnstagedChange = v);
 
         public bool IsUnstagedChange
         {
@@ -39,8 +39,8 @@ namespace SourceGit.Views
         public static readonly DirectProperty<ChangeStatusIcon, Models.Change> ChangeProperty =
             AvaloniaProperty.RegisterDirect<ChangeStatusIcon, Models.Change>(
                 nameof(Change),
-                o => o.Change,
-                (o, v) => o.Change = v);
+                static o => o.Change,
+                static (o, v) => o.Change = v);
 
         public Models.Change Change
         {

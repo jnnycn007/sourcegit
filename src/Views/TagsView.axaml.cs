@@ -34,8 +34,8 @@ namespace SourceGit.Views
         public static readonly DirectProperty<TagTreeNodeIcon, bool> IsExpandedProperty =
             AvaloniaProperty.RegisterDirect<TagTreeNodeIcon, bool>(
                 nameof(IsExpanded),
-                o => o.IsExpanded,
-                (o, v) => o.IsExpanded = v);
+                static o => o.IsExpanded,
+                static (o, v) => o.IsExpanded = v);
 
         public bool IsExpanded
         {

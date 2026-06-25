@@ -21,8 +21,8 @@ namespace SourceGit.Views
         public static readonly DirectProperty<HistoriesLayout, bool> UseHorizontalProperty =
             AvaloniaProperty.RegisterDirect<HistoriesLayout, bool>(
                 nameof(UseHorizontal),
-                o => o.UseHorizontal,
-                (o, v) => o.UseHorizontal = v);
+                static o => o.UseHorizontal,
+                static (o, v) => o.UseHorizontal = v);
 
         public bool UseHorizontal
         {
@@ -88,8 +88,8 @@ namespace SourceGit.Views
         public static readonly DirectProperty<HistoriesCommitList, int> TotalCommitsProperty =
             AvaloniaProperty.RegisterDirect<HistoriesCommitList, int>(
                 nameof(TotalCommits),
-                o => o.TotalCommits,
-                (o, v) => o.TotalCommits = v);
+                static o => o.TotalCommits,
+                static (o, v) => o.TotalCommits = v);
 
         public int TotalCommits
         {
@@ -100,8 +100,8 @@ namespace SourceGit.Views
         public static readonly DirectProperty<HistoriesCommitList, List<Models.Commit>> SelectedCommitsProperty =
             AvaloniaProperty.RegisterDirect<HistoriesCommitList, List<Models.Commit>>(
                 nameof(SelectedCommits),
-                o => o.SelectedCommits,
-                (o, v) => o.SelectedCommits = v);
+                static o => o.SelectedCommits,
+                static (o, v) => o.SelectedCommits = v);
 
         public List<Models.Commit> SelectedCommits
         {
@@ -300,8 +300,8 @@ namespace SourceGit.Views
         public static readonly DirectProperty<Histories, Models.Branch> CurrentBranchProperty =
             AvaloniaProperty.RegisterDirect<Histories, Models.Branch>(
                 nameof(CurrentBranch),
-                o => o.CurrentBranch,
-                (o, v) => o.CurrentBranch = v);
+                static o => o.CurrentBranch,
+                static (o, v) => o.CurrentBranch = v);
 
         public Models.Branch CurrentBranch
         {
@@ -312,8 +312,8 @@ namespace SourceGit.Views
         public static readonly DirectProperty<Histories, Models.Bisect> BisectProperty =
             AvaloniaProperty.RegisterDirect<Histories, Models.Bisect>(
                 nameof(Bisect),
-                o => o.Bisect,
-                (o, v) => o.Bisect = v);
+                static o => o.Bisect,
+                static (o, v) => o.Bisect = v);
 
         public Models.Bisect Bisect
         {
@@ -324,8 +324,8 @@ namespace SourceGit.Views
         public static readonly DirectProperty<Histories, AvaloniaList<Models.IssueTracker>> IssueTrackersProperty =
             AvaloniaProperty.RegisterDirect<Histories, AvaloniaList<Models.IssueTracker>>(
                 nameof(IssueTrackers),
-                o => o.IssueTrackers,
-                (o, v) => o.IssueTrackers = v);
+                static o => o.IssueTrackers,
+                static (o, v) => o.IssueTrackers = v);
 
         public AvaloniaList<Models.IssueTracker> IssueTrackers
         {
@@ -336,8 +336,8 @@ namespace SourceGit.Views
         public static readonly DirectProperty<Histories, bool> IsScrollToTopVisibleProperty =
             AvaloniaProperty.RegisterDirect<Histories, bool>(
                 nameof(IsScrollToTopVisible),
-                o => o.IsScrollToTopVisible,
-                (o, v) => o.IsScrollToTopVisible = v);
+                static o => o.IsScrollToTopVisible,
+                static (o, v) => o.IsScrollToTopVisible = v);
 
         public bool IsScrollToTopVisible
         {
@@ -348,8 +348,8 @@ namespace SourceGit.Views
         public static readonly DirectProperty<Histories, bool> IsDetailsPanelExpandedProperty =
             AvaloniaProperty.RegisterDirect<Histories, bool>(
                 nameof(IsDetailsPanelExpanded),
-                o => o.IsDetailsPanelExpanded,
-                (o, v) => o.IsDetailsPanelExpanded = v);
+                static o => o.IsDetailsPanelExpanded,
+                static (o, v) => o.IsDetailsPanelExpanded = v);
 
         public bool IsDetailsPanelExpanded
         {

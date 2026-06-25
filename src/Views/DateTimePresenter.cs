@@ -11,8 +11,8 @@ namespace SourceGit.Views
         public static readonly DirectProperty<DateTimePresenter, bool> ShowDateOnlyProperty =
             AvaloniaProperty.RegisterDirect<DateTimePresenter, bool>(
                 nameof(ShowDateOnly),
-                o => o.ShowDateOnly,
-                (o, v) => o.ShowDateOnly = v);
+                static o => o.ShowDateOnly,
+                static (o, v) => o.ShowDateOnly = v);
 
         public bool ShowDateOnly
         {
@@ -23,8 +23,8 @@ namespace SourceGit.Views
         public static readonly DirectProperty<DateTimePresenter, bool> Use24HoursProperty =
             AvaloniaProperty.RegisterDirect<DateTimePresenter, bool>(
                 nameof(Use24Hours),
-                o => o.Use24Hours,
-                (o, v) => o.Use24Hours = v);
+                static o => o.Use24Hours,
+                static (o, v) => o.Use24Hours = v);
 
         public bool Use24Hours
         {
@@ -35,8 +35,8 @@ namespace SourceGit.Views
         public static readonly DirectProperty<DateTimePresenter, int> DateTimeFormatProperty =
             AvaloniaProperty.RegisterDirect<DateTimePresenter, int>(
                 nameof(DateTimeFormat),
-                o => o.DateTimeFormat,
-                (o, v) => o.DateTimeFormat = v);
+                static o => o.DateTimeFormat,
+                static (o, v) => o.DateTimeFormat = v);
 
         public int DateTimeFormat
         {
@@ -47,8 +47,8 @@ namespace SourceGit.Views
         public static readonly DirectProperty<DateTimePresenter, ulong> TimestampProperty =
             AvaloniaProperty.RegisterDirect<DateTimePresenter, ulong>(
                 nameof(Timestamp),
-                o => o.Timestamp,
-                (o, v) => o.Timestamp = v);
+                static o => o.Timestamp,
+                static (o, v) => o.Timestamp = v);
 
         public ulong Timestamp
         {

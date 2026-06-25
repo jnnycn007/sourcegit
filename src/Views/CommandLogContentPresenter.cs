@@ -64,8 +64,8 @@ namespace SourceGit.Views
         public static readonly DirectProperty<CommandLogContentPresenter, object> LogProperty =
             AvaloniaProperty.RegisterDirect<CommandLogContentPresenter, object>(
                 nameof(Log),
-                o => o.Log,
-                (o, v) => o.Log = v);
+                static o => o.Log,
+                static (o, v) => o.Log = v);
 
         public object Log
         {

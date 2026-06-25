@@ -10,8 +10,8 @@ namespace SourceGit.Views
         public static readonly DirectProperty<Bookmark, int> ValueProperty =
             AvaloniaProperty.RegisterDirect<Bookmark, int>(
                 nameof(Value),
-                o => o.Value,
-                (o, v) => o.Value = v);
+                static o => o.Value,
+                static (o, v) => o.Value = v);
 
         public int Value
         {

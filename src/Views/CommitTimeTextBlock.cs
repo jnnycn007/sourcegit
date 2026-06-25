@@ -13,8 +13,8 @@ namespace SourceGit.Views
         public static readonly DirectProperty<CommitTimeTextBlock, bool> ShowAsDateTimeProperty =
             AvaloniaProperty.RegisterDirect<CommitTimeTextBlock, bool>(
                 nameof(ShowAsDateTime),
-                o => o.ShowAsDateTime,
-                (o, v) => o.ShowAsDateTime = v);
+                static o => o.ShowAsDateTime,
+                static (o, v) => o.ShowAsDateTime = v);
 
         public bool ShowAsDateTime
         {
@@ -25,8 +25,8 @@ namespace SourceGit.Views
         public static readonly DirectProperty<CommitTimeTextBlock, bool> Use24HoursProperty =
             AvaloniaProperty.RegisterDirect<CommitTimeTextBlock, bool>(
                 nameof(Use24Hours),
-                o => o.Use24Hours,
-                (o, v) => o.Use24Hours = v);
+                static o => o.Use24Hours,
+                static (o, v) => o.Use24Hours = v);
 
         public bool Use24Hours
         {
@@ -37,8 +37,8 @@ namespace SourceGit.Views
         public static readonly DirectProperty<CommitTimeTextBlock, int> DateTimeFormatProperty =
             AvaloniaProperty.RegisterDirect<CommitTimeTextBlock, int>(
                 nameof(DateTimeFormat),
-                o => o.DateTimeFormat,
-                (o, v) => o.DateTimeFormat = v);
+                static o => o.DateTimeFormat,
+                static (o, v) => o.DateTimeFormat = v);
 
         public int DateTimeFormat
         {
@@ -49,8 +49,8 @@ namespace SourceGit.Views
         public static readonly DirectProperty<CommitTimeTextBlock, ulong> TimestampProperty =
             AvaloniaProperty.RegisterDirect<CommitTimeTextBlock, ulong>(
                 nameof(Timestamp),
-                o => o.Timestamp,
-                (o, v) => o.Timestamp = v);
+                static o => o.Timestamp,
+                static (o, v) => o.Timestamp = v);
 
         public ulong Timestamp
         {
@@ -97,7 +97,7 @@ namespace SourceGit.Views
             _refreshTimer = new DispatcherTimer();
             _refreshTimer.Interval = TimeSpan.FromSeconds(10);
             _refreshTimer.Tag = this;
-            _refreshTimer.Tick += (o, _) =>
+            _refreshTimer.Tick += static (o, _) =>
             {
                 if (o is DispatcherTimer { Tag: CommitTimeTextBlock textBlock })
                 {

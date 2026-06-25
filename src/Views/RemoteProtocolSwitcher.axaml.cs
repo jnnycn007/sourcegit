@@ -13,8 +13,8 @@ namespace SourceGit.Views
         public static readonly DirectProperty<RemoteProtocolSwitcher, string> UrlProperty =
             AvaloniaProperty.RegisterDirect<RemoteProtocolSwitcher, string>(
                 nameof(Url),
-                o => o.Url,
-                (o, v) => o.Url = v);
+                static o => o.Url,
+                static (o, v) => o.Url = v);
 
         public string Url
         {
@@ -25,7 +25,7 @@ namespace SourceGit.Views
         public static readonly DirectProperty<RemoteProtocolSwitcher, string> ActiveProtocolProperty =
             AvaloniaProperty.RegisterDirect<RemoteProtocolSwitcher, string>(
                 nameof(ActiveProtocol),
-                o => o.ActiveProtocol);
+                static o => o.ActiveProtocol);
 
         public string ActiveProtocol
         {

@@ -204,8 +204,8 @@ namespace SourceGit.Views
         public static readonly DirectProperty<MergeConflictTextPresenter, string> FileNameProperty =
             AvaloniaProperty.RegisterDirect<MergeConflictTextPresenter, string>(
                 nameof(FileName),
-                o => o.FileName,
-                (o, v) => o.FileName = v);
+                static o => o.FileName,
+                static (o, v) => o.FileName = v);
 
         public string FileName
         {
@@ -216,8 +216,8 @@ namespace SourceGit.Views
         public static readonly DirectProperty<MergeConflictTextPresenter, Models.ConflictPanelType> PanelTypeProperty =
             AvaloniaProperty.RegisterDirect<MergeConflictTextPresenter, Models.ConflictPanelType>(
                 nameof(PanelType),
-                o => o.PanelType,
-                (o, v) => o.PanelType = v);
+                static o => o.PanelType,
+                static (o, v) => o.PanelType = v);
 
         public Models.ConflictPanelType PanelType
         {
@@ -228,8 +228,8 @@ namespace SourceGit.Views
         public static readonly DirectProperty<MergeConflictTextPresenter, List<Models.ConflictLine>> LinesProperty =
             AvaloniaProperty.RegisterDirect<MergeConflictTextPresenter, List<Models.ConflictLine>>(
                 nameof(Lines),
-                o => o.Lines,
-                (o, v) => o.Lines = v);
+                static o => o.Lines,
+                static (o, v) => o.Lines = v);
 
         public List<Models.ConflictLine> Lines
         {
@@ -240,8 +240,8 @@ namespace SourceGit.Views
         public static readonly DirectProperty<MergeConflictTextPresenter, int> MaxLineNumberProperty =
             AvaloniaProperty.RegisterDirect<MergeConflictTextPresenter, int>(
                 nameof(MaxLineNumber),
-                o => o.MaxLineNumber,
-                (o, v) => o.MaxLineNumber = v);
+                static o => o.MaxLineNumber,
+                static (o, v) => o.MaxLineNumber = v);
 
         public int MaxLineNumber
         {
@@ -252,8 +252,8 @@ namespace SourceGit.Views
         public static readonly DirectProperty<MergeConflictTextPresenter, Models.ConflictSelectedChunk> SelectedChunkProperty =
             AvaloniaProperty.RegisterDirect<MergeConflictTextPresenter, Models.ConflictSelectedChunk>(
                 nameof(SelectedChunk),
-                o => o.SelectedChunk,
-                (o, v) => o.SelectedChunk = v);
+                static o => o.SelectedChunk,
+                static (o, v) => o.SelectedChunk = v);
 
         public Models.ConflictSelectedChunk SelectedChunk
         {
@@ -264,7 +264,7 @@ namespace SourceGit.Views
         public static readonly DirectProperty<MergeConflictTextPresenter, ViewModels.TextLineRange> DisplayRangeProperty =
             AvaloniaProperty.RegisterDirect<MergeConflictTextPresenter, ViewModels.TextLineRange>(
                 nameof(DisplayRange),
-                o => o.DisplayRange);
+                static o => o.DisplayRange);
 
         public ViewModels.TextLineRange DisplayRange
         {
@@ -569,8 +569,8 @@ namespace SourceGit.Views
         public static readonly DirectProperty<MergeConflictMinimap, ViewModels.TextLineRange> DisplayRangeProperty =
             AvaloniaProperty.RegisterDirect<MergeConflictMinimap, ViewModels.TextLineRange>(
                 nameof(DisplayRange),
-                o => o.DisplayRange,
-                (o, v) => o.DisplayRange = v);
+                static o => o.DisplayRange,
+                static (o, v) => o.DisplayRange = v);
 
         public ViewModels.TextLineRange DisplayRange
         {
@@ -581,8 +581,8 @@ namespace SourceGit.Views
         public static readonly DirectProperty<MergeConflictMinimap, int> UnsolvedCountProperty =
             AvaloniaProperty.RegisterDirect<MergeConflictMinimap, int>(
                 nameof(UnsolvedCount),
-                o => o.UnsolvedCount,
-                (o, v) => o.UnsolvedCount = v);
+                static o => o.UnsolvedCount,
+                static (o, v) => o.UnsolvedCount = v);
 
         public int UnsolvedCount
         {
@@ -669,8 +669,8 @@ namespace SourceGit.Views
         public static readonly DirectProperty<MergeConflictEditor, Models.ConflictSelectedChunk> SelectedChunkProperty =
             AvaloniaProperty.RegisterDirect<MergeConflictEditor, Models.ConflictSelectedChunk>(
                 nameof(SelectedChunk),
-                o => o.SelectedChunk,
-                (o, v) => o.SelectedChunk = v);
+                static o => o.SelectedChunk,
+                static (o, v) => o.SelectedChunk = v);
 
         public Models.ConflictSelectedChunk SelectedChunk
         {
