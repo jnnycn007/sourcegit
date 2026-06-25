@@ -285,7 +285,6 @@
   <x:String x:Key="Text.DeleteBranch" xml:space="preserve">Hapus Branch</x:String>
   <x:String x:Key="Text.DeleteBranch.Branch" xml:space="preserve">Branch:</x:String>
   <x:String x:Key="Text.DeleteBranch.IsRemoteTip" xml:space="preserve">Anda akan menghapus remote branch!!!</x:String>
-  <x:String x:Key="Text.DeleteBranch.WithTrackingRemote" xml:space="preserve">Juga hapus remote branch ${0}$</x:String>
   <x:String x:Key="Text.DeleteMultiBranch" xml:space="preserve">Hapus Beberapa Branch</x:String>
   <x:String x:Key="Text.DeleteMultiBranch.Tip" xml:space="preserve">Anda akan menghapus beberapa branch sekaligus. Pastikan untuk memeriksa ulang sebelum bertindak!</x:String>
   <x:String x:Key="Text.DeleteMultiTags" xml:space="preserve">Hapus Beberapa Tag</x:String>

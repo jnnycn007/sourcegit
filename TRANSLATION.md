@@ -6,7 +6,7 @@ This document shows the translation status of each locale file in the repository
 
 ### ![en_US](https://img.shields.io/badge/en__US-%E2%88%9A-brightgreen)
 
-### ![de__DE](https://img.shields.io/badge/de__DE-90.26%25-yellow)
+### ![de__DE](https://img.shields.io/badge/de__DE-90.07%25-yellow)
 
 <details>
 <summary>Missing keys in de_DE.axaml</summary>
@@ -47,6 +47,8 @@ This document shows the translation status of each locale file in the repository
 - Text.ConfigureCustomActionControls.UseFriendlyName
 - Text.ConfirmEmptyCommit.StageSelectedThenCommit
 - Text.CopyAsPatch
+- Text.DeleteBranch.AskForRemote
+- Text.DeleteBranch.Force
 - Text.Diff.EmptyFile
 - Text.Diff.Submodule.UncommittedChanges
 - Text.Discard.IncludeModified
@@ -113,7 +115,7 @@ This document shows the translation status of each locale file in the repository
 
 </details>
 
-### ![el__GR](https://img.shields.io/badge/el__GR-97.34%25-yellow)
+### ![el__GR](https://img.shields.io/badge/el__GR-97.15%25-yellow)
 
 <details>
 <summary>Missing keys in el_GR.axaml</summary>
@@ -128,6 +130,8 @@ This document shows the translation status of each locale file in the repository
 - Text.CheckoutDetached.Warning
 - Text.Configure.Git.EnableRecursiveWhenAutoUpdatingSubmodules
 - Text.CopyAsPatch
+- Text.DeleteBranch.AskForRemote
+- Text.DeleteBranch.Force
 - Text.Diff.EmptyFile
 - Text.FileModeChange
 - Text.FileModeChange.Deleted
@@ -148,11 +152,13 @@ This document shows the translation status of each locale file in the repository
 
 </details>
 
-### ![es__ES](https://img.shields.io/badge/es__ES-99.11%25-yellow)
+### ![es__ES](https://img.shields.io/badge/es__ES-98.92%25-yellow)
 
 <details>
 <summary>Missing keys in es_ES.axaml</summary>
 
+- Text.DeleteBranch.AskForRemote
+- Text.DeleteBranch.Force
 - Text.FileModeChange
 - Text.FileModeChange.Deleted
 - Text.FileModeChange.Directory
@@ -165,7 +171,7 @@ This document shows the translation status of each locale file in the repository
 
 </details>
 
-### ![fr__FR](https://img.shields.io/badge/fr__FR-96.26%25-yellow)
+### ![fr__FR](https://img.shields.io/badge/fr__FR-96.07%25-yellow)
 
 <details>
 <summary>Missing keys in fr_FR.axaml</summary>
@@ -182,6 +188,8 @@ This document shows the translation status of each locale file in the repository
 - Text.CommitCM.CopyCommitterTime
 - Text.Configure.Git.EnableRecursiveWhenAutoUpdatingSubmodules
 - Text.CopyAsPatch
+- Text.DeleteBranch.AskForRemote
+- Text.DeleteBranch.Force
 - Text.Diff.EmptyFile
 - Text.FileModeChange
 - Text.FileModeChange.Deleted
@@ -211,7 +219,7 @@ This document shows the translation status of each locale file in the repository
 
 </details>
 
-### ![he__IL](https://img.shields.io/badge/he__IL-96.26%25-yellow)
+### ![he__IL](https://img.shields.io/badge/he__IL-96.07%25-yellow)
 
 <details>
 <summary>Missing keys in he_IL.axaml</summary>
@@ -228,6 +236,8 @@ This document shows the translation status of each locale file in the repository
 - Text.CommitCM.CopyCommitterTime
 - Text.Configure.Git.EnableRecursiveWhenAutoUpdatingSubmodules
 - Text.CopyAsPatch
+- Text.DeleteBranch.AskForRemote
+- Text.DeleteBranch.Force
 - Text.Diff.EmptyFile
 - Text.FileModeChange
 - Text.FileModeChange.Deleted
@@ -257,7 +267,7 @@ This document shows the translation status of each locale file in the repository
 
 </details>
 
-### ![id__ID](https://img.shields.io/badge/id__ID-83.17%25-yellow)
+### ![id__ID](https://img.shields.io/badge/id__ID-82.99%25-yellow)
 
 <details>
 <summary>Missing keys in id_ID.axaml</summary>
@@ -318,6 +328,8 @@ This document shows the translation status of each locale file in the repository
 - Text.ConfirmEmptyCommit.StageSelectedThenCommit
 - Text.CopyAsPatch
 - Text.DealWithLocalChanges.DoNothing
+- Text.DeleteBranch.AskForRemote
+- Text.DeleteBranch.Force
 - Text.Diff.EmptyFile
 - Text.Diff.Submodule.UncommittedChanges
 - Text.Discard.IncludeModified
@@ -436,7 +448,7 @@ This document shows the translation status of each locale file in the repository
 
 </details>
 
-### ![it__IT](https://img.shields.io/badge/it__IT-89.76%25-yellow)
+### ![it__IT](https://img.shields.io/badge/it__IT-89.58%25-yellow)
 
 <details>
 <summary>Missing keys in it_IT.axaml</summary>
@@ -478,6 +490,8 @@ This document shows the translation status of each locale file in the repository
 - Text.ConfigureCustomActionControls.UseFriendlyName
 - Text.ConfirmEmptyCommit.StageSelectedThenCommit
 - Text.CopyAsPatch
+- Text.DeleteBranch.AskForRemote
+- Text.DeleteBranch.Force
 - Text.Diff.EmptyFile
 - Text.Diff.Submodule.UncommittedChanges
 - Text.Discard.IncludeModified
@@ -548,7 +562,7 @@ This document shows the translation status of each locale file in the repository
 
 </details>
 
-### ![ja__JP](https://img.shields.io/badge/ja__JP-90.55%25-yellow)
+### ![ja__JP](https://img.shields.io/badge/ja__JP-90.36%25-yellow)
 
 <details>
 <summary>Missing keys in ja_JP.axaml</summary>
@@ -589,6 +603,8 @@ This document shows the translation status of each locale file in the repository
 - Text.ConfirmEmptyCommit.StageSelectedThenCommit
 - Text.CopyAsPatch
 - Text.DealWithLocalChanges.DoNothing
+- Text.DeleteBranch.AskForRemote
+- Text.DeleteBranch.Force
 - Text.Diff.EmptyFile
 - Text.Diff.Submodule.UncommittedChanges
 - Text.Discard.IncludeModified
@@ -652,7 +668,7 @@ This document shows the translation status of each locale file in the repository
 
 </details>
 
-### ![ko__KR](https://img.shields.io/badge/ko__KR-97.74%25-yellow)
+### ![ko__KR](https://img.shields.io/badge/ko__KR-97.54%25-yellow)
 
 <details>
 <summary>Missing keys in ko_KR.axaml</summary>
@@ -663,6 +679,8 @@ This document shows the translation status of each locale file in the repository
 - Text.CheckoutDetached.Target
 - Text.CheckoutDetached.Warning
 - Text.Configure.Git.EnableRecursiveWhenAutoUpdatingSubmodules
+- Text.DeleteBranch.AskForRemote
+- Text.DeleteBranch.Force
 - Text.Diff.EmptyFile
 - Text.FileModeChange
 - Text.FileModeChange.Deleted
@@ -683,7 +701,7 @@ This document shows the translation status of each locale file in the repository
 
 </details>
 
-### ![pt__BR](https://img.shields.io/badge/pt__BR-63.19%25-red)
+### ![pt__BR](https://img.shields.io/badge/pt__BR-63.03%25-red)
 
 <details>
 <summary>Missing keys in pt_BR.axaml</summary>
@@ -805,6 +823,8 @@ This document shows the translation status of each locale file in the repository
 - Text.DeinitSubmodule
 - Text.DeinitSubmodule.Force
 - Text.DeinitSubmodule.Path
+- Text.DeleteBranch.AskForRemote
+- Text.DeleteBranch.Force
 - Text.DeleteMultiTags
 - Text.DeleteMultiTags.DeleteFromRemotes
 - Text.DeleteMultiTags.Tip
@@ -1065,11 +1085,13 @@ This document shows the translation status of each locale file in the repository
 
 </details>
 
-### ![ru__RU](https://img.shields.io/badge/ru__RU-99.11%25-yellow)
+### ![ru__RU](https://img.shields.io/badge/ru__RU-98.92%25-yellow)
 
 <details>
 <summary>Missing keys in ru_RU.axaml</summary>
 
+- Text.DeleteBranch.AskForRemote
+- Text.DeleteBranch.Force
 - Text.FileModeChange
 - Text.FileModeChange.Deleted
 - Text.FileModeChange.Directory
@@ -1082,7 +1104,7 @@ This document shows the translation status of each locale file in the repository
 
 </details>
 
-### ![ta__IN](https://img.shields.io/badge/ta__IN-65.06%25-red)
+### ![ta__IN](https://img.shields.io/badge/ta__IN-64.90%25-red)
 
 <details>
 <summary>Missing keys in ta_IN.axaml</summary>
@@ -1225,6 +1247,8 @@ This document shows the translation status of each locale file in the repository
 - Text.DeinitSubmodule
 - Text.DeinitSubmodule.Force
 - Text.DeinitSubmodule.Path
+- Text.DeleteBranch.AskForRemote
+- Text.DeleteBranch.Force
 - Text.DeleteMultiTags
 - Text.DeleteMultiTags.DeleteFromRemotes
 - Text.DeleteMultiTags.Tip
@@ -1445,7 +1469,7 @@ This document shows the translation status of each locale file in the repository
 
 </details>
 
-### ![uk__UA](https://img.shields.io/badge/uk__UA-65.85%25-red)
+### ![uk__UA](https://img.shields.io/badge/uk__UA-65.68%25-red)
 
 <details>
 <summary>Missing keys in uk_UA.axaml</summary>
@@ -1584,6 +1608,8 @@ This document shows the translation status of each locale file in the repository
 - Text.DeinitSubmodule
 - Text.DeinitSubmodule.Force
 - Text.DeinitSubmodule.Path
+- Text.DeleteBranch.AskForRemote
+- Text.DeleteBranch.Force
 - Text.DeleteMultiTags
 - Text.DeleteMultiTags.DeleteFromRemotes
 - Text.DeleteMultiTags.Tip
@@ -1800,6 +1826,20 @@ This document shows the translation status of each locale file in the repository
 
 </details>
 
-### ![zh__CN](https://img.shields.io/badge/zh__CN-%E2%88%9A-brightgreen)
+### ![zh__CN](https://img.shields.io/badge/zh__CN-99.90%25-yellow)
 
-### ![zh__TW](https://img.shields.io/badge/zh__TW-%E2%88%9A-brightgreen)
+<details>
+<summary>Missing keys in zh_CN.axaml</summary>
+
+- Text.DeleteBranch.AskForRemote
+
+</details>
+
+### ![zh__TW](https://img.shields.io/badge/zh__TW-99.90%25-yellow)
+
+<details>
+<summary>Missing keys in zh_TW.axaml</summary>
+
+- Text.DeleteBranch.AskForRemote
+
+</details>
