@@ -341,7 +341,7 @@ namespace SourceGit.Native
                     {
                         var exec = instance.ProductPath;
                         var icon = instance.IsPrerelease ? "vs-preview" : "vs";
-                        finder.TryAdd(instance.DisplayName, icon, () => exec, GenerateVSProjectLaunchOptions);
+                        finder.TryAdd(instance.DisplayName, icon, () => exec, GenerateVSProjectLaunchOptions, false);
                     }
                 }
             }
