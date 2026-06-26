@@ -53,119 +53,117 @@
       <Grid Grid.Row="1" Margin="0,0,0,8" RowDefinitions="Auto,Auto,*" IsVisible="{Binding !IsSearchingCommits}">
         <!-- Page Switcher for Right Panel -->
         <Border Grid.Row="0" Margin="8,0,4,0" BorderThickness="1" BorderBrush="{DynamicResource Brush.Border2}" CornerRadius="6">
-          <Border CornerRadius="6" ClipToBounds="True">
-            <ListBox Background="Transparent" Padding="4" SelectedIndex="{Binding SelectedViewIndex, Mode=TwoWay}" SelectionMode="AlwaysSelected">
-              <ListBox.Styles>
-                <Style Selector="Path.icon">
-                  <Setter Property="Width" Value="12"/>
-                  <Setter Property="Height" Value="12"/>
-                  <Setter Property="Margin" Value="8,0,6,0"/>
-                  <Setter Property="Fill" Value="{DynamicResource Brush.FG2}"/>
-                </Style>
-                <Style Selector="TextBlock.header">
-                  <Setter Property="Foreground" Value="{DynamicResource Brush.FG2}"/>
-                  <Setter Property="FontWeight" Value="Bold"/>
-                </Style>
-                <Style Selector="ListBoxItem">
-                  <Setter Property="Height" Value="28"/>
-                  <Setter Property="Margin" Value="0"/>
-                  <Setter Property="Padding" Value="0"/>
-                  <Setter Property="BorderThickness" Value="0"/>
-                  <Setter Property="CornerRadius" Value="4"/>
-                </Style>
-                <Style Selector="ListBoxItem:pointerover /template/ ContentPresenter#PART_ContentPresenter">
-                  <Setter Property="Background" Value="Transparent"/>
-                </Style>
-                <Style Selector="ListBoxItem:selected /template/ ContentPresenter#PART_ContentPresenter">
-                  <Setter Property="Background" Value="{DynamicResource Brush.AccentHovered}"/>
-                </Style>
-                <Style Selector="ListBoxItem:selected TextBlock.header">
-                  <Setter Property="Foreground" Value="{DynamicResource Brush.FG1}"/>
-                </Style>
-                <Style Selector="ListBoxItem:selected Path.icon">
-                  <Setter Property="Fill" Value="{DynamicResource Brush.FG1}"/>
-                </Style>
-              </ListBox.Styles>
+          <ListBox Background="Transparent" Padding="4" SelectedIndex="{Binding SelectedViewIndex, Mode=TwoWay}" SelectionMode="AlwaysSelected">
+            <ListBox.Styles>
+              <Style Selector="Path.icon">
+                <Setter Property="Width" Value="12"/>
+                <Setter Property="Height" Value="12"/>
+                <Setter Property="Margin" Value="8,0,6,0"/>
+                <Setter Property="Fill" Value="{DynamicResource Brush.FG2}"/>
+              </Style>
+              <Style Selector="TextBlock.header">
+                <Setter Property="Foreground" Value="{DynamicResource Brush.FG2}"/>
+                <Setter Property="FontWeight" Value="Bold"/>
+              </Style>
+              <Style Selector="ListBoxItem">
+                <Setter Property="Height" Value="28"/>
+                <Setter Property="Margin" Value="0"/>
+                <Setter Property="Padding" Value="0"/>
+                <Setter Property="BorderThickness" Value="0"/>
+                <Setter Property="CornerRadius" Value="4"/>
+              </Style>
+              <Style Selector="ListBoxItem:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+                <Setter Property="Background" Value="Transparent"/>
+              </Style>
+              <Style Selector="ListBoxItem:selected /template/ ContentPresenter#PART_ContentPresenter">
+                <Setter Property="Background" Value="{DynamicResource Brush.AccentHovered}"/>
+              </Style>
+              <Style Selector="ListBoxItem:selected TextBlock.header">
+                <Setter Property="Foreground" Value="{DynamicResource Brush.FG1}"/>
+              </Style>
+              <Style Selector="ListBoxItem:selected Path.icon">
+                <Setter Property="Fill" Value="{DynamicResource Brush.FG1}"/>
+              </Style>
+            </ListBox.Styles>
 
-              <ListBox.ItemsPanel>
-                <ItemsPanelTemplate>
-                  <StackPanel Orientation="Vertical"/>
-                </ItemsPanelTemplate>
-              </ListBox.ItemsPanel>
+            <ListBox.ItemsPanel>
+              <ItemsPanelTemplate>
+                <StackPanel Orientation="Vertical"/>
+              </ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
 
-              <ListBoxItem>
-                <Grid ColumnDefinitions="Auto,*,Auto">
-                  <Path Grid.Column="0" Classes="icon" Data="{StaticResource Icons.Histories}"/>
-                  <TextBlock Grid.Column="1" Classes="header" Text="{DynamicResource Text.Histories}"/>
-                  <Button Grid.Column="2"
-                          Classes="icon_button"
-                          Width="26" Height="26"
-                          Click="OnOpenAdvancedHistoriesOption"
-                          ToolTip.Tip="{DynamicResource Text.Repository.MoreOptions}">
-                    <Path Width="12" Height="12" Data="{StaticResource Icons.More}"/>
-                  </Button>
-                </Grid>
-              </ListBoxItem>
+            <ListBoxItem>
+              <Grid ColumnDefinitions="Auto,*,Auto">
+                <Path Grid.Column="0" Classes="icon" Data="{StaticResource Icons.Histories}"/>
+                <TextBlock Grid.Column="1" Classes="header" Text="{DynamicResource Text.Histories}"/>
+                <Button Grid.Column="2"
+                        Classes="icon_button"
+                        Width="26" Height="26"
+                        Click="OnOpenAdvancedHistoriesOption"
+                        ToolTip.Tip="{DynamicResource Text.Repository.MoreOptions}">
+                  <Path Width="12" Height="12" Data="{StaticResource Icons.More}"/>
+                </Button>
+              </Grid>
+            </ListBoxItem>
 
-              <ListBoxItem IsVisible="{Binding !IsBare}">
-                <Grid ColumnDefinitions="Auto,*,Auto,Auto,Auto">
-                  <Path Grid.Column="0" Classes="icon" Data="{StaticResource Icons.Changes}"/>
-                  <TextBlock Grid.Column="1" Classes="header" Text="{DynamicResource Text.WorkingCopy}"/>
-                  <Border Grid.Column="2"
-                          Height="18"
-                          Margin="6,0" Padding="9,0"
-                          CornerRadius="9"
-                          VerticalAlignment="Center"
-                          Background="{DynamicResource Brush.Badge}"
-                          IsVisible="{Binding LocalChangesCount, Mode=OneWay, Converter={x:Static c:IntConverters.IsGreaterThanZero}}">
-                    <TextBlock Text="{Binding LocalChangesCount, Mode=OneWay}"
-                               Foreground="{DynamicResource Brush.BadgeFG}"
-                               FontFamily="{DynamicResource Fonts.Monospace}"
-                               FontSize="10"/>
-                  </Border>
-                  <Path Grid.Column="3"
-                        Width="12" Height="12"
-                        Margin="0,0,6,0"
-                        Data="{StaticResource Icons.Info}"
-                        Fill="DarkOrange"
-                        IsVisible="{Binding InProgressContext, Converter={x:Static ObjectConverters.IsNotNull}}"/>
-                  <Button Grid.Column="4"
-                          Classes="icon_button"
-                          Width="26" Height="26"
-                          Command="{Binding DiscardAllChanges}"
-                          ToolTip.Tip="{DynamicResource Text.Repository.DiscardAll}">
-                    <Path Width="12" Height="12" Data="{StaticResource Icons.Undo}"/>
-                  </Button>
-                </Grid>
-              </ListBoxItem>
+            <ListBoxItem IsVisible="{Binding !IsBare}">
+              <Grid ColumnDefinitions="Auto,*,Auto,Auto,Auto">
+                <Path Grid.Column="0" Classes="icon" Data="{StaticResource Icons.Changes}"/>
+                <TextBlock Grid.Column="1" Classes="header" Text="{DynamicResource Text.WorkingCopy}"/>
+                <Border Grid.Column="2"
+                        Height="18"
+                        Margin="6,0" Padding="9,0"
+                        CornerRadius="9"
+                        VerticalAlignment="Center"
+                        Background="{DynamicResource Brush.Badge}"
+                        IsVisible="{Binding LocalChangesCount, Mode=OneWay, Converter={x:Static c:IntConverters.IsGreaterThanZero}}">
+                  <TextBlock Text="{Binding LocalChangesCount, Mode=OneWay}"
+                             Foreground="{DynamicResource Brush.BadgeFG}"
+                             FontFamily="{DynamicResource Fonts.Monospace}"
+                             FontSize="10"/>
+                </Border>
+                <Path Grid.Column="3"
+                      Width="12" Height="12"
+                      Margin="0,0,6,0"
+                      Data="{StaticResource Icons.Info}"
+                      Fill="DarkOrange"
+                      IsVisible="{Binding InProgressContext, Converter={x:Static ObjectConverters.IsNotNull}}"/>
+                <Button Grid.Column="4"
+                        Classes="icon_button"
+                        Width="26" Height="26"
+                        Command="{Binding DiscardAllChanges}"
+                        ToolTip.Tip="{DynamicResource Text.Repository.DiscardAll}">
+                  <Path Width="12" Height="12" Data="{StaticResource Icons.Undo}"/>
+                </Button>
+              </Grid>
+            </ListBoxItem>
 
-              <ListBoxItem IsVisible="{Binding !IsBare}">
-                <Grid ColumnDefinitions="Auto,*,Auto,Auto">
-                  <Path Grid.Column="0" Classes="icon" Data="{StaticResource Icons.Stashes}"/>
-                  <TextBlock Grid.Column="1" Classes="header" Text="{DynamicResource Text.Stashes}"/>
-                  <Border Grid.Column="2"
-                          Height="18"
-                          Margin="6,0" Padding="9,0"
-                          CornerRadius="9"
-                          VerticalAlignment="Center"
-                          Background="{DynamicResource Brush.Badge}"
-                          IsVisible="{Binding StashesCount, Mode=OneWay, Converter={x:Static c:IntConverters.IsGreaterThanZero}}">
-                    <TextBlock Text="{Binding StashesCount, Mode=OneWay}"
-                               Foreground="{DynamicResource Brush.BadgeFG}"
-                               FontFamily="{DynamicResource Fonts.Monospace}"
-                               FontSize="10"/>
-                  </Border>
-                  <Button Grid.Column="3"
-                          Classes="icon_button"
-                          Width="26" Height="26"
-                          Command="{Binding ClearStashes}"
-                          ToolTip.Tip="{DynamicResource Text.Repository.ClearStashes}">
-                    <Path Width="12" Height="12" Data="{StaticResource Icons.RemoveAll}"/>
-                  </Button>
-                </Grid>
-              </ListBoxItem>
-            </ListBox>
-          </Border>
+            <ListBoxItem IsVisible="{Binding !IsBare}">
+              <Grid ColumnDefinitions="Auto,*,Auto,Auto">
+                <Path Grid.Column="0" Classes="icon" Data="{StaticResource Icons.Stashes}"/>
+                <TextBlock Grid.Column="1" Classes="header" Text="{DynamicResource Text.Stashes}"/>
+                <Border Grid.Column="2"
+                        Height="18"
+                        Margin="6,0" Padding="9,0"
+                        CornerRadius="9"
+                        VerticalAlignment="Center"
+                        Background="{DynamicResource Brush.Badge}"
+                        IsVisible="{Binding StashesCount, Mode=OneWay, Converter={x:Static c:IntConverters.IsGreaterThanZero}}">
+                  <TextBlock Text="{Binding StashesCount, Mode=OneWay}"
+                             Foreground="{DynamicResource Brush.BadgeFG}"
+                             FontFamily="{DynamicResource Fonts.Monospace}"
+                             FontSize="10"/>
+                </Border>
+                <Button Grid.Column="3"
+                        Classes="icon_button"
+                        Width="26" Height="26"
+                        Command="{Binding ClearStashes}"
+                        ToolTip.Tip="{DynamicResource Text.Repository.ClearStashes}">
+                  <Path Width="12" Height="12" Data="{StaticResource Icons.RemoveAll}"/>
+                </Button>
+              </Grid>
+            </ListBoxItem>
+          </ListBox>
         </Border>
 
         <!-- Filter Branches/Tags/Submodules -->

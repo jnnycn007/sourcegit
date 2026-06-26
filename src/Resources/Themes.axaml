@@ -6,7 +6,7 @@
       <Color x:Key="Color.WindowBorder">#FF999999</Color>
       <Color x:Key="Color.TitleBar">#FFCFDEEA</Color>
       <Color x:Key="Color.ToolBar">#FFF0F5F9</Color>
-      <Color x:Key="Color.Popup">#FFF8F8F8</Color>
+      <Color x:Key="Color.Popup">#FFF4F8FB</Color>
       <Color x:Key="Color.PopupBorder">White</Color>
       <Color x:Key="Color.Contents">#FFFAFAFA</Color>
       <Color x:Key="Color.Badge">#FFB0CEE8</Color>

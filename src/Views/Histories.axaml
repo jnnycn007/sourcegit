@@ -48,6 +48,7 @@
             </Style>
             <Style Selector="^ /template/ Rectangle#PART_ColumnHeadersAndRowsSeparator">
               <Setter Property="Fill" Value="{DynamicResource Brush.Border0}"/>
+              <Setter Property="Height" Value="0.65"/>
             </Style>
             <Style Selector="^ /template/ ScrollBar">
               <Setter Property="Background" Value="{DynamicResource Brush.Contents}"/>
