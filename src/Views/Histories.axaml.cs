@@ -1502,6 +1502,18 @@ namespace SourceGit.Views
                 submenu.Items.Add(merge);
             }
 
+            var push = new MenuItem();
+            push.Header = App.Text("BranchCM.Push", branch.Name);
+            push.Icon = this.CreateMenuIcon("Icons.Push");
+            push.IsEnabled = repo.Remotes.Count > 0;
+            push.Click += (_, e) =>
+            {
+                if (repo.CanCreatePopup())
+                    repo.ShowPopup(new ViewModels.Push(repo, branch));
+                e.Handled = true;
+            };
+            submenu.Items.Add(push);
+
             var rename = new MenuItem();
             rename.Header = App.Text("BranchCM.Rename", branch.Name);
             rename.Icon = this.CreateMenuIcon("Icons.Rename");
