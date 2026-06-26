@@ -4,7 +4,6 @@
         xmlns:v="using:SourceGit.Views"
         xmlns:c="using:SourceGit.Converters"
         xmlns:ae="using:AvaloniaEdit"
-        xmlns:aec="using:AvaloniaEdit.CodeCompletion"
         xmlns:aee="using:AvaloniaEdit.Editing"
         xmlns:aes="using:AvaloniaEdit.Search">
   <Design.PreviewWith>
@@ -1470,20 +1469,6 @@
         </Border>
       </ControlTemplate>
     </Setter>
-  </Style>
-
-  <Style Selector="aec|CompletionListBox">
-    <Setter Property="Background" Value="{DynamicResource Brush.Popup}"/>
-    <Setter Property="BorderThickness" Value="1"/>
-    <Setter Property="BorderBrush" Value="{DynamicResource Brush.Border0}"/>
-    <Setter Property="Padding" Value="8,4"/>
-    <Setter Property="CornerRadius" Value="4"/>
-  </Style>
-
-  <Style Selector="aec|CompletionListBox ListBoxItem">
-    <Setter Property="Height" Value="24"/>
-    <Setter Property="Margin" Value="0,2"/>
-    <Setter Property="CornerRadius" Value="4"/>
   </Style>
 </Styles>
 
