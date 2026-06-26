@@ -839,7 +839,7 @@
   <x:String x:Key="Text.Repository.Submodules.Add" xml:space="preserve">Add Submodule</x:String>
   <x:String x:Key="Text.Repository.Submodules.Update" xml:space="preserve">Update Submodule</x:String>
   <x:String x:Key="Text.Repository.Tags" xml:space="preserve">TAGS</x:String>
-  <x:String x:Key="Text.Repository.Tags.Add" xml:space="preserve">New Tag</x:String>
+  <x:String x:Key="Text.Repository.Tags.Add" xml:space="preserve">Create Tag</x:String>
   <x:String x:Key="Text.Repository.Tags.OrderByCreatorDate" xml:space="preserve">By Creator Date</x:String>
   <x:String x:Key="Text.Repository.Tags.OrderByName" xml:space="preserve">By Name</x:String>
   <x:String x:Key="Text.Repository.Tags.Sort" xml:space="preserve">Sort</x:String>
