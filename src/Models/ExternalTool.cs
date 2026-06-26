@@ -27,13 +27,13 @@ namespace SourceGit.Models
         public string Name { get; }
         public string ExecFile { get; }
         public Bitmap IconImage { get; }
-        public bool SupportOpenAsFolder { get; }
+        public bool SupportOpenFolder { get; }
 
-        public ExternalTool(string name, string icon, string execFile, Func<string, List<LaunchOption>> optionsGenerator, bool supportOpenAsFolder)
+        public ExternalTool(string name, string icon, string execFile, Func<string, List<LaunchOption>> optionsGenerator, bool supportOpenFolder)
         {
             Name = name;
             ExecFile = execFile;
-            SupportOpenAsFolder = supportOpenAsFolder;
+            SupportOpenFolder = supportOpenFolder;
 
             _optionsGenerator = optionsGenerator;
 
@@ -149,20 +149,20 @@ namespace SourceGit.Models
             _customization ??= new ExternalToolCustomization();
         }
 
-        public void TryAdd(string name, string icon, Func<string> finder, Func<string, List<ExternalTool.LaunchOption>> optionsGenerator = null, bool supportOpenAsFolder = true)
+        public void TryAdd(string name, string icon, Func<string> finder, Func<string, List<ExternalTool.LaunchOption>> optionsGenerator = null, bool supportOpenFolder = true)
         {
             if (_customization.Excludes.Contains(name))
                 return;
 
             if (_customization.Tools.TryGetValue(name, out var customPath) && File.Exists(customPath))
             {
-                Tools.Add(new ExternalTool(name, icon, customPath, optionsGenerator, supportOpenAsFolder));
+                Tools.Add(new ExternalTool(name, icon, customPath, optionsGenerator, supportOpenFolder));
             }
             else
             {
                 var path = finder();
                 if (!string.IsNullOrEmpty(path) && File.Exists(path))
-                    Tools.Add(new ExternalTool(name, icon, path, optionsGenerator, supportOpenAsFolder));
+                    Tools.Add(new ExternalTool(name, icon, path, optionsGenerator, supportOpenFolder));
             }
         }
 
