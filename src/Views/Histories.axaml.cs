@@ -1075,7 +1075,6 @@ namespace SourceGit.Views
                     {
                         var manually = new MenuItem();
                         manually.Header = App.Text("CommitCM.InteractiveRebase.Manually", current.Name, target);
-                        manually.Icon = this.CreateMenuIcon("Icons.InteractiveRebase");
                         manually.Click += async (_, e) =>
                         {
                             await this.ShowDialogAsync(new ViewModels.InteractiveRebase(repo, commit));
