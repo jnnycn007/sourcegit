@@ -2,6 +2,7 @@
   <ResourceDictionary.MergedDictionaries>
     <ResourceInclude Source="avares://SourceGit/Resources/Locales/en_US.axaml"/>
   </ResourceDictionary.MergedDictionaries>
+
   <x:String x:Key="Text.About" xml:space="preserve">情報</x:String>
   <x:String x:Key="Text.About.Menu" xml:space="preserve">SourceGit について</x:String>
   <x:String x:Key="Text.About.ReleaseDate" xml:space="preserve">リリース日: {0}</x:String>
