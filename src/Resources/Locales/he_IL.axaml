@@ -4,7 +4,6 @@
   </ResourceDictionary.MergedDictionaries>
 
   <x:String x:Key="Text.About" xml:space="preserve">אודות</x:String>
-  <x:String x:Key="Text.About.GitSourceRevision" xml:space="preserve">Source Revision:</x:String>
   <x:String x:Key="Text.About.Menu" xml:space="preserve">אודות SourceGit</x:String>
   <x:String x:Key="Text.About.ReleaseDate" xml:space="preserve">תאריך שחרור: {0}</x:String>
   <x:String x:Key="Text.About.ReleaseNotes" xml:space="preserve">הערות שחרור</x:String>
@@ -112,9 +111,6 @@
   <x:String x:Key="Text.ChangeSubmoduleUrl.Submodule" xml:space="preserve">Submodule:</x:String>
   <x:String x:Key="Text.ChangeSubmoduleUrl.URL" xml:space="preserve">URL:</x:String>
   <x:String x:Key="Text.Checkout" xml:space="preserve">Checkout של Branch</x:String>
-  <x:String x:Key="Text.Checkout.Commit" xml:space="preserve">Checkout של Commit</x:String>
-  <x:String x:Key="Text.Checkout.Commit.Target" xml:space="preserve">Commit:</x:String>
-  <x:String x:Key="Text.Checkout.Commit.Warning" xml:space="preserve">אזהרה: ביצוע checkout ל־commit יגרום ל־HEAD להפוך ל־detached</x:String>
   <x:String x:Key="Text.Checkout.LocalChanges" xml:space="preserve">שינויים מקומיים:</x:String>
   <x:String x:Key="Text.Checkout.Target" xml:space="preserve">Branch:</x:String>
   <x:String x:Key="Text.Checkout.WarnLostCommits" xml:space="preserve">ה־HEAD הנוכחי מכיל commits שאינם מקושרים לאף branch או tag! האם להמשיך?</x:String>
@@ -340,7 +336,6 @@
   <x:String x:Key="Text.DeleteBranch" xml:space="preserve">מחק Branch</x:String>
   <x:String x:Key="Text.DeleteBranch.Branch" xml:space="preserve">Branch:</x:String>
   <x:String x:Key="Text.DeleteBranch.IsRemoteTip" xml:space="preserve">פעולה זו תמחק branch מרוחק!!!</x:String>
-  <x:String x:Key="Text.DeleteBranch.WithTrackingRemote" xml:space="preserve">למחוק גם את ה־branch המרוחק ${0}$</x:String>
   <x:String x:Key="Text.DeleteMultiBranch" xml:space="preserve">מחק מספר Branches</x:String>
   <x:String x:Key="Text.DeleteMultiBranch.Tip" xml:space="preserve">פעולה זו תמחק מספר branches בו זמנית. בדוק היטב לפני הביצוע!</x:String>
   <x:String x:Key="Text.DeleteMultiTags" xml:space="preserve">מחק מספר Tags</x:String>
@@ -360,7 +355,6 @@
   <x:String x:Key="Text.DeleteTag.Tag" xml:space="preserve">Tag:</x:String>
   <x:String x:Key="Text.DeleteTag.WithRemote" xml:space="preserve">מחק גם ממאגרים מרוחקים</x:String>
   <x:String x:Key="Text.Diff.Binary" xml:space="preserve">DIFF בינארי</x:String>
-  <x:String x:Key="Text.Diff.FileModeChanged" xml:space="preserve">הרשאות הקובץ שונו</x:String>
   <x:String x:Key="Text.Diff.First" xml:space="preserve">ההבדל הראשון</x:String>
   <x:String x:Key="Text.Diff.IgnoreWhitespace" xml:space="preserve">התעלמות משינויי Whitespace</x:String>
   <x:String x:Key="Text.Diff.Image.Blend" xml:space="preserve">מיזוג</x:String>
@@ -795,7 +789,6 @@
   <x:String x:Key="Text.Repository.Resolve" xml:space="preserve">פתור</x:String>
   <x:String x:Key="Text.Repository.Search" xml:space="preserve">חיפוש Commit</x:String>
   <x:String x:Key="Text.Repository.Search.ByAuthor" xml:space="preserve">Author</x:String>
-  <x:String x:Key="Text.Repository.Search.ByCommitter" xml:space="preserve">Committer</x:String>
   <x:String x:Key="Text.Repository.Search.ByContent" xml:space="preserve">תוכן</x:String>
   <x:String x:Key="Text.Repository.Search.ByMessage" xml:space="preserve">הודעה</x:String>
   <x:String x:Key="Text.Repository.Search.ByPath" xml:space="preserve">נתיב</x:String>

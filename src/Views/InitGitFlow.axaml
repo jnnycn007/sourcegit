@@ -26,7 +26,7 @@
                Height="26"
                VerticalAlignment="Center"
                CornerRadius="3"
-               Text="{Binding Master, Mode=TwoWay}"/>
+               Text="{Binding Production, Mode=TwoWay}"/>
 
       <TextBlock Grid.Row="1" Grid.Column="0"
                  HorizontalAlignment="Right" VerticalAlignment="Center"
@@ -81,7 +81,7 @@
                Height="26"
                VerticalAlignment="Center"
                CornerRadius="3"
-               PlaceholderText="{DynamicResource Text.Optional}"
+               Watermark="{DynamicResource Text.Optional}"
                Text="{Binding TagPrefix, Mode=TwoWay}"/>
     </Grid>
   </StackPanel>

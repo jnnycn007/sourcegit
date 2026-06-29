@@ -317,27 +317,45 @@ namespace SourceGit.Views
                 repo.SearchCommitContext.ClearSuggestions();
                 e.Handled = true;
             }
-            else if (e.Key == Key.Enter && SearchSuggestionBox.SelectedItem is string content)
+            else if (e.Key == Key.Enter)
             {
-                repo.SearchCommitContext.Filter = content;
-                TxtSearchCommitsBox.CaretIndex = content.Length;
+                var selected = SearchSuggestionBox.SelectedItem;
+                if (selected is string content)
+                {
+                    repo.SearchCommitContext.Filter = content;
+                    TxtSearchCommitsBox.CaretIndex = content.Length;
+                }
+                else if (selected is Models.User user)
+                {
+                    var apply = user.ToString();
+                    repo.SearchCommitContext.Filter = apply;
+                    TxtSearchCommitsBox.CaretIndex = apply.Length;
+                }
+
                 repo.SearchCommitContext.StartSearch();
                 e.Handled = true;
             }
         }
 
-        private void OnSearchSuggestionDoubleTapped(object sender, TappedEventArgs e)
+        private void OnSearchSuggestionTapped(object sender, TappedEventArgs e)
         {
             if (DataContext is not ViewModels.Repository repo)
                 return;
 
-            var content = (sender as StackPanel)?.DataContext as string;
-            if (!string.IsNullOrEmpty(content))
+            var ctx = (sender as Control)?.DataContext;
+            if (ctx is string content)
             {
                 repo.SearchCommitContext.Filter = content;
                 TxtSearchCommitsBox.CaretIndex = content.Length;
-                repo.SearchCommitContext.StartSearch();
             }
+            else if (ctx is Models.User user)
+            {
+                var apply = user.ToString();
+                repo.SearchCommitContext.Filter = apply;
+                TxtSearchCommitsBox.CaretIndex = apply.Length;
+            }
+
+            repo.SearchCommitContext.StartSearch();
             e.Handled = true;
         }
 

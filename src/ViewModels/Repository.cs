@@ -536,8 +536,8 @@ namespace SourceGit.ViewModels
         public bool IsGitFlowEnabled()
         {
             return GitFlow is { IsValid: true } &&
-                _branches.Find(x => x.IsLocal && x.Name.Equals(GitFlow.Master, StringComparison.Ordinal)) != null &&
-                _branches.Find(x => x.IsLocal && x.Name.Equals(GitFlow.Develop, StringComparison.Ordinal)) != null;
+                _branches.Find(x => x.IsLocal && x.Name.Equals(GitFlow.ProductionBranch, StringComparison.Ordinal)) != null &&
+                _branches.Find(x => x.IsLocal && x.Name.Equals(GitFlow.DevelopmentBranch, StringComparison.Ordinal)) != null;
         }
 
         public Models.GitFlowBranchType GetGitFlowType(Models.Branch b)
@@ -654,17 +654,7 @@ namespace SourceGit.ViewModels
 
                 var config = await new Commands.Config(FullPath).ReadAllAsync().ConfigureAwait(false);
                 _hasAllowedSignersFile = config.TryGetValue("gpg.ssh.allowedsignersfile", out var allowedSignersFile) && !string.IsNullOrEmpty(allowedSignersFile);
-
-                if (config.TryGetValue("gitflow.branch.master", out var masterName))
-                    GitFlow.Master = masterName;
-                if (config.TryGetValue("gitflow.branch.develop", out var developName))
-                    GitFlow.Develop = developName;
-                if (config.TryGetValue("gitflow.prefix.feature", out var featurePrefix))
-                    GitFlow.FeaturePrefix = featurePrefix;
-                if (config.TryGetValue("gitflow.prefix.release", out var releasePrefix))
-                    GitFlow.ReleasePrefix = releasePrefix;
-                if (config.TryGetValue("gitflow.prefix.hotfix", out var hotfixPrefix))
-                    GitFlow.HotfixPrefix = hotfixPrefix;
+                GitFlow.Parse(config);
             });
         }
 
@@ -771,7 +761,7 @@ namespace SourceGit.ViewModels
             _watcher?.MarkBranchUpdated();
             _watcher?.MarkWorkingCopyUpdated();
 
-            _branches.RemoveAll(b => b.IsLocal && b.FriendlyName.Equals(created.FriendlyName, StringComparison.Ordinal));
+            _branches.RemoveAll(b => b.IsLocal && b.Name.Equals(created.Name, StringComparison.Ordinal));
             _branches.Add(created);
 
             if (checkout)
@@ -799,15 +789,21 @@ namespace SourceGit.ViewModels
                 CurrentBranch = created;
             }
 
-            List<Models.Branch> locals = [];
+            var locals = new List<Models.Branch>();
+            var count = 0;
             foreach (var b in _branches)
             {
                 if (b.IsLocal)
+                {
                     locals.Add(b);
+                    if (!b.IsDetachedHead)
+                        count++;
+                }
             }
 
             var builder = BuildBranchTree(locals, [], false);
             LocalBranchTrees = builder.Locals;
+            LocalBranchesCount = count;
 
             RefreshCommits();
             RefreshWorkingCopyChanges();
@@ -857,8 +853,28 @@ namespace SourceGit.ViewModels
             var newFullName = $"refs/heads/{newName}";
             _uiStates.RenameBranchFilter(b.FullName, newFullName);
 
-            b.Name = newName;
-            b.FullName = newFullName;
+            var renamed = new Models.Branch
+            {
+                Name = newName,
+                FullName = newFullName,
+                CommitterDate = b.CommitterDate,
+                Head = b.Head,
+                IsLocal = b.IsLocal,
+                IsCurrent = b.IsCurrent,
+                IsDetachedHead = b.IsDetachedHead,
+                Upstream = b.Upstream,
+                Ahead = b.Ahead,
+                Behind = b.Behind,
+                Remote = b.Remote,
+                IsUpstreamGone = b.IsUpstreamGone,
+                WorktreePath = b.WorktreePath,
+            };
+
+            _branches.Remove(b);
+            _branches.Add(renamed);
+
+            if (b.IsCurrent)
+                CurrentBranch = renamed;
 
             List<Models.Branch> locals = [];
             foreach (var branch in _branches)
